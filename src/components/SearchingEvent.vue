@@ -1,22 +1,27 @@
 <template>
-        <section>
-      <div class="w-100 position-relative">
-        <div class="feat-wrap pt-140 pb-140 dark-layer position-relative opc7 w-100">
+  <section>
+    <div class="w-100 position-relative">
         <!-- <div class="feat-wrap pt-140 pb-140 dark-layer position-relative opc7 w-100"> -->
         <div class="pt-140 pb-140 dark-layer position-relative opc7 w-100">
-          <div class="fixed-bg" style="background-image: url(assets/images/bg.jpg);"></div>
+          <div
+            class="fixed-bg"
+            style="background-image: url(assets/images/bg.jpg)"
+          ></div>
           <div class="container">
             <div class="feat-inner pt-240 w-100">
-              <h2 class="mb-0 text-center">Explore on-going and <br> Upcoming Events Around you...</h2>
+              <h2 class="mb-0 text-center">
+                Explore on-going and <br />
+                Upcoming Events Around you...
+              </h2>
               <form class="dir-form d-flex">
                 <div class="field">
                   <label class="thm-clr">I'am looking for</label>
-                  <input type="text" placeholder="Event name">
+                  <input type="text" placeholder="Event name" />
                   <i class="fas fa-search"></i>
                 </div>
                 <div class="field loc">
                   <label class="thm-clr">Location</label>
-                  <input type="text" placeholder="15th Feb 2016">
+                  <input type="text" placeholder="15th Feb 2016" />
                   <i class="fas fa-map-marker-alt"></i>
                 </div>
                 <div class="field slc">
@@ -29,7 +34,9 @@
                     </select>
                   </div>
                 </div>
-                <button class="thm-btn" type="submit"><i class="fas fa-search"></i>DISCOVER NOW</button>
+                <button class="thm-btn" type="submit">
+                  <i class="fas fa-search"></i>DISCOVER NOW
+                </button>
               </form>
               <!-- <div class="dir-cate-wrap text-center w-100">
                 <h4 class="mb-0">Use quick search by category</h4>
@@ -66,9 +73,10 @@
                   </li>
                 </ul>
               </div> -->
-            </div><!-- Feat Wrap -->
+            </div>
+            <!-- Feat Wrap -->
           </div>
         </div>
       </div>
-    </section>
+  </section>
 </template>
