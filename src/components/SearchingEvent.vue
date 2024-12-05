@@ -2,6 +2,8 @@
         <section>
       <div class="w-100 position-relative">
         <div class="feat-wrap pt-140 pb-140 dark-layer position-relative opc7 w-100">
+        <!-- <div class="feat-wrap pt-140 pb-140 dark-layer position-relative opc7 w-100"> -->
+        <div class="pt-140 pb-140 dark-layer position-relative opc7 w-100">
           <div class="fixed-bg" style="background-image: url(assets/images/bg.jpg);"></div>
           <div class="container">
             <div class="feat-inner pt-240 w-100">
