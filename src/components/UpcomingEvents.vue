@@ -5,7 +5,7 @@
         <span class="d-block thm-clr"
           >acinia viverra lectus. Fusce imperdiet</span
         >
-        <h2 class="mb-0">Featured Events in your city</h2>
+        <h2 class="mb-0">Featured Events in your cityyyyyyyyyyyy</h2>
       </div>
       <!-- Sec Title -->
       <div class="feat-post-wrap w-100">
