@@ -15,6 +15,9 @@ import LogIn from "@/components/Login.vue";
 import PageNotFound from "@/components/pageNotFound.vue";
 import OurBlog from "@/components/OurBlog.vue"
 import Media from "@/components/Media.vue"
+import { createPinia } from "pinia";
+
+const pinia = createPinia()
 
 const routes = [
   { path: "/", component: Home },
@@ -37,6 +40,6 @@ const router = createRouter({
 });
 
 const app = createApp(App);
-
+app.use(pinia)
 app.use(router);
 app.mount("#app");
