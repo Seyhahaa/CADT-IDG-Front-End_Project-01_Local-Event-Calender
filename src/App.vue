@@ -1,8 +1,8 @@
 <template>
+  <Header></Header>
   <router-view></router-view>
-    <Header></Header>
-    <!-- <AboutUs></AboutUs> -->
-    <Footer></Footer>
+  <!-- <AboutUs></AboutUs> -->
+  <Footer></Footer>
 </template>
 
 <script>
