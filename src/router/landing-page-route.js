@@ -12,18 +12,17 @@ import Media from "@/components/Media.vue";
 import PageNotFound from "@/components/pageNotFound.vue";
 import HomePage from "@/Pages/HomePage.vue";
 
-
 export default [
-     { path: "/", component: HomePage },
-    { path: "/eventdetail", component: EventDetail },
-    { path: "/eventimage", component: EventImage },
-    { path: "/eventimagedetail", component: EventsImageDetail },
-    { path: "/eventplacelisitng", component: EventsPlacesListing },
-    { path: "/placewithmap", component: PlaceListingWithMap1 },
-    { path: "/aboutus", component: AboutUs },
-    { path: "/contactus", component: ContactUs },
-    { path: "/login", component: LogIn },
-    { path: "/blog", component: OurBlog },
-    { path: "/media", component: Media },
-    { path: "/:pathMatch(.*)*", component: PageNotFound },
-]
+  { path: "/", component: HomePage },
+  { path: "/eventdetail", component: EventDetail },
+  { path: "/eventimage", component: EventImage },
+  { path: "/eventimagedetail", component: EventsImageDetail },
+  { path: "/eventplacelisitng", component: EventsPlacesListing },
+  { path: "/placewithmap", component: PlaceListingWithMap1 },
+  { path: "/aboutus", component: AboutUs },
+  { path: "/contactus", component: ContactUs },
+  { path: "/login", component: LogIn },
+  { path: "/blog", component: OurBlog },
+  { path: "/media", component: Media },
+  { path: "/:pathMatch(.*)*", component: PageNotFound },
+];

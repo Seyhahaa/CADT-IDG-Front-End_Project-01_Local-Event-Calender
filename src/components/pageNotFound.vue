@@ -1,7 +1,8 @@
 <template>
   <!-- Error 404 Template 1 - Bootstrap Brain Component -->
   <section
-    id="bgcolor" class="py-3 py-md-5 min-vh-100 d-flex justify-content-center align-items-center"
+    id="bgcolor"
+    class="py-3 py-md-5 min-vh-100 d-flex justify-content-center align-items-center"
   >
     <div class="container">
       <div class="row">
@@ -32,7 +33,7 @@
 </template>
 
 <style scoped>
-  #bgcolor{
-    background-color: #545454;
-  }
+#bgcolor {
+  background-color: #545454;
+}
 </style>

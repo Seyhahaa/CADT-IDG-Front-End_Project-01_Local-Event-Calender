@@ -1,6 +1,10 @@
 <template>
   <div>
-    <MobileSidebar :open="sidebarOpen" :navigation="navigation" @close="sidebarOpen = false" />
+    <MobileSidebar
+      :open="sidebarOpen"
+      :navigation="navigation"
+      @close="sidebarOpen = false"
+    />
     <Sidebar :navigation="navigation" />
     <div class="lg:pl-72">
       <AppHeader
@@ -16,13 +20,14 @@
     </div>
   </div>
 </template>
-<script setup>
-import { ref } from 'vue'
-import MobileSidebar from '@/components/admin/layout/MobileSidebar.vue'
-import Sidebar from '@/components/admin/sidebar/Sidebar.vue'
-import AppHeader from '@/components/admin/layout/AppHeader.vue'
-import { useNavigation } from '@/composables/useNavigation'
 
-const { navigation, userNavigation } = useNavigation()
-const sidebarOpen = ref(false)
+<script setup>
+import { ref } from "vue";
+import MobileSidebar from "@/components/admin/layout/MobileSidebar.vue";
+import Sidebar from "@/components/admin/sidebar/Sidebar.vue";
+import AppHeader from "@/components/admin/layout/AppHeader.vue";
+import { useNavigation } from "@/composables/useNavigation";
+
+const { navigation, userNavigation } = useNavigation();
+const sidebarOpen = ref(false);
 </script>

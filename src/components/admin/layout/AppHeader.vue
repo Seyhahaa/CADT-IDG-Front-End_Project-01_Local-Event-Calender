@@ -1,7 +1,7 @@
 <script setup>
-import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
-import { Bars3Icon, BellIcon } from '@heroicons/vue/24/outline'
-import { ChevronDownIcon, MagnifyingGlassIcon } from '@heroicons/vue/20/solid'
+import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/vue";
+import { Bars3Icon, BellIcon } from "@heroicons/vue/24/outline";
+import { ChevronDownIcon, MagnifyingGlassIcon } from "@heroicons/vue/20/solid";
 
 defineProps({
   sidebarOpen: {
@@ -12,9 +12,9 @@ defineProps({
     type: Array,
     required: true,
   },
-})
+});
 
-const emit = defineEmits(['openSidebar'])
+const emit = defineEmits(["openSidebar"]);
 </script>
 
 <template>
@@ -50,12 +50,18 @@ const emit = defineEmits(['openSidebar'])
         </form>
 
         <div class="flex items-center gap-x-4 lg:gap-x-6">
-          <button type="button" class="-m-2.5 p-2.5 text-gray-400 hover:text-gray-500">
+          <button
+            type="button"
+            class="-m-2.5 p-2.5 text-gray-400 hover:text-gray-500"
+          >
             <span class="sr-only">View notifications</span>
             <BellIcon class="size-6" aria-hidden="true" />
           </button>
 
-          <div class="hidden lg:block lg:h-6 lg:w-px lg:bg-gray-200" aria-hidden="true" />
+          <div
+            class="hidden lg:block lg:h-6 lg:w-px lg:bg-gray-200"
+            aria-hidden="true"
+          />
 
           <!-- Profile dropdown -->
           <Menu as="div" class="relative">
@@ -67,10 +73,15 @@ const emit = defineEmits(['openSidebar'])
                 alt=""
               />
               <span class="hidden lg:flex lg:items-center">
-                <span class="ml-4 text-sm/6 font-semibold text-gray-900" aria-hidden="true"
+                <span
+                  class="ml-4 text-sm/6 font-semibold text-gray-900"
+                  aria-hidden="true"
                   >Tom Cook</span
                 >
-                <ChevronDownIcon class="ml-2 size-5 text-gray-400" aria-hidden="true" />
+                <ChevronDownIcon
+                  class="ml-2 size-5 text-gray-400"
+                  aria-hidden="true"
+                />
               </span>
             </MenuButton>
             <transition
@@ -84,7 +95,11 @@ const emit = defineEmits(['openSidebar'])
               <MenuItems
                 class="absolute right-0 z-10 mt-2.5 w-32 origin-top-right rounded-md bg-white py-2 shadow-lg ring-1 ring-gray-900/5 focus:outline-none"
               >
-                <MenuItem v-for="item in userNavigation" :key="item.name" v-slot="{ active }">
+                <MenuItem
+                  v-for="item in userNavigation"
+                  :key="item.name"
+                  v-slot="{ active }"
+                >
                   <router-link
                     v-if="item.to !== '#'"
                     :to="item.to"

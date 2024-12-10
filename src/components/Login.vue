@@ -38,11 +38,11 @@
                 </div>
                 <form @submit.prevent="passwordLogin" class="w-100">
                   <input
-                  v-model="email"
-                  id="email"
-                  class="rounded-pill"
-                  type="email"
-                  placeholder="Email Address"
+                    v-model="email"
+                    id="email"
+                    class="rounded-pill"
+                    type="email"
+                    placeholder="Email Address"
                   />
                   <input
                     v-model="password"
@@ -143,20 +143,21 @@
   </section>
 </template>
 <script>
-import { mapActions } from 'pinia';
-import { useAuthStore } from '@/stores/auth.js'
+import { mapActions } from "pinia";
+import { useAuthStore } from "@/stores/auth.js";
 export default {
-    data() {
-        return {
-            username: '',
-            password: ''
-        };
+  data() {
+    return {
+      username: "",
+      password: "",
+    };
+  },
+  methods: {
+    ...mapActions(useAuthStore, ["login"]),
+    async passwordLogin() {
+      await this.login(this.email, this.password);
+      this.$router.push("/");
     },
-    methods: {
-        ...mapActions(useAuthStore, ['login']),
-        async passwordLogin() {
-            await this.login(this.email, this.password)
-            this.$router.push('/')
-        }
-    }
-}</script>
+  },
+};
+</script>

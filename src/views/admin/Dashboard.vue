@@ -1,30 +1,34 @@
 <script setup>
-import { CalendarIcon, UsersIcon, ChartPieIcon } from '@heroicons/vue/24/outline'
-import { ref } from 'vue'
+import {
+  CalendarIcon,
+  UsersIcon,
+  ChartPieIcon,
+} from "@heroicons/vue/24/outline";
+import { ref } from "vue";
 
 const events = ref([
   {
     id: 1,
-    name: 'Tech Conference 2024',
-    date: 'March 15, 2024',
+    name: "Tech Conference 2024",
+    date: "March 15, 2024",
     attendees: 250,
     rating: 4.8,
   },
   {
     id: 2,
-    name: 'Startup Meetup',
-    date: 'March 20, 2024',
+    name: "Startup Meetup",
+    date: "March 20, 2024",
     attendees: 120,
     rating: 4.6,
   },
   {
     id: 3,
-    name: 'Design Workshop',
-    date: 'March 25, 2024',
+    name: "Design Workshop",
+    date: "March 25, 2024",
     attendees: 75,
     rating: 4.9,
   },
-])
+]);
 </script>
 
 <template>
@@ -39,12 +43,21 @@ const events = ref([
           <div class="p-5">
             <div class="flex items-center">
               <div class="flex-shrink-0">
-                <CalendarIcon class="h-6 w-6 text-gray-400" aria-hidden="true" />
+                <CalendarIcon
+                  class="h-6 w-6 text-gray-400"
+                  aria-hidden="true"
+                />
               </div>
               <div class="ml-5 w-0 flex-1">
                 <dl>
-                  <dt class="truncate text-sm font-medium text-gray-500">Total Events</dt>
-                  <dd class="text-3xl font-semibold tracking-tight text-gray-900">12</dd>
+                  <dt class="truncate text-sm font-medium text-gray-500">
+                    Total Events
+                  </dt>
+                  <dd
+                    class="text-3xl font-semibold tracking-tight text-gray-900"
+                  >
+                    12
+                  </dd>
                 </dl>
               </div>
             </div>
@@ -59,8 +72,14 @@ const events = ref([
               </div>
               <div class="ml-5 w-0 flex-1">
                 <dl>
-                  <dt class="truncate text-sm font-medium text-gray-500">Total Attendees</dt>
-                  <dd class="text-3xl font-semibold tracking-tight text-gray-900">2.1k</dd>
+                  <dt class="truncate text-sm font-medium text-gray-500">
+                    Total Attendees
+                  </dt>
+                  <dd
+                    class="text-3xl font-semibold tracking-tight text-gray-900"
+                  >
+                    2.1k
+                  </dd>
                 </dl>
               </div>
             </div>
@@ -71,12 +90,21 @@ const events = ref([
           <div class="p-5">
             <div class="flex items-center">
               <div class="flex-shrink-0">
-                <ChartPieIcon class="h-6 w-6 text-gray-400" aria-hidden="true" />
+                <ChartPieIcon
+                  class="h-6 w-6 text-gray-400"
+                  aria-hidden="true"
+                />
               </div>
               <div class="ml-5 w-0 flex-1">
                 <dl>
-                  <dt class="truncate text-sm font-medium text-gray-500">Average Rating</dt>
-                  <dd class="text-3xl font-semibold tracking-tight text-gray-900">4.8</dd>
+                  <dt class="truncate text-sm font-medium text-gray-500">
+                    Average Rating
+                  </dt>
+                  <dd
+                    class="text-3xl font-semibold tracking-tight text-gray-900"
+                  >
+                    4.8
+                  </dd>
                 </dl>
               </div>
             </div>
@@ -88,8 +116,12 @@ const events = ref([
       <div class="mt-8">
         <div class="overflow-hidden rounded-lg bg-white shadow">
           <div class="p-6">
-            <h2 class="text-base font-semibold leading-6 text-gray-900">Upcoming Events</h2>
-            <div class="mt-6 grid grid-cols-7 text-center text-xs leading-6 text-gray-500">
+            <h2 class="text-base font-semibold leading-6 text-gray-900">
+              Upcoming Events
+            </h2>
+            <div
+              class="mt-6 grid grid-cols-7 text-center text-xs leading-6 text-gray-500"
+            >
               <div>Mon</div>
               <div>Tue</div>
               <div>Wed</div>
@@ -104,7 +136,11 @@ const events = ref([
                 <button
                   type="button"
                   class="mx-auto flex h-8 w-8 items-center justify-center rounded-full"
-                  :class="n === 15 ? 'bg-indigo-600 font-semibold text-white' : 'text-gray-900'"
+                  :class="
+                    n === 15
+                      ? 'bg-indigo-600 font-semibold text-white'
+                      : 'text-gray-900'
+                  "
                 >
                   {{ n }}
                 </button>
@@ -119,7 +155,9 @@ const events = ref([
         <div class="overflow-hidden rounded-lg bg-white shadow">
           <div class="p-6">
             <div class="flex justify-between items-center">
-              <h2 class="text-base font-semibold leading-6 text-gray-900">Your Events</h2>
+              <h2 class="text-base font-semibold leading-6 text-gray-900">
+                Your Events
+              </h2>
               <router-link
                 to="/admin/events/create"
                 class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition"
@@ -132,8 +170,12 @@ const events = ref([
                 <li v-for="event in events" :key="event.id" class="py-5">
                   <div class="flex items-center space-x-4">
                     <div class="min-w-0 flex-1">
-                      <p class="truncate text-sm font-medium text-gray-900">{{ event.name }}</p>
-                      <p class="truncate text-sm text-gray-500">{{ event.date }}</p>
+                      <p class="truncate text-sm font-medium text-gray-900">
+                        {{ event.name }}
+                      </p>
+                      <p class="truncate text-sm text-gray-500">
+                        {{ event.date }}
+                      </p>
                     </div>
                     <div>
                       <router-link

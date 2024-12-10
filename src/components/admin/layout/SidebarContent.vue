@@ -1,47 +1,49 @@
 <script setup>
-import { Cog6ToothIcon } from '@heroicons/vue/24/outline'
+import { Cog6ToothIcon } from "@heroicons/vue/24/outline";
 
 defineProps({
   navigation: {
     type: Array,
     required: true,
   },
-})
+});
 
 // Add computed functions for class bindings
 const getNavigationItemClasses = (item) => {
   return [
     item.current
-      ? 'bg-gray-50 text-indigo-600'
-      : 'text-gray-700 hover:bg-gray-50 hover:text-indigo-600',
-    'group flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold',
-  ]
-}
+      ? "bg-gray-50 text-indigo-600"
+      : "text-gray-700 hover:bg-gray-50 hover:text-indigo-600",
+    "group flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold",
+  ];
+};
 
 const getNavigationIconClasses = (item) => {
   return [
-    item.current ? 'text-indigo-600' : 'text-gray-400 group-hover:text-indigo-600',
-    'size-6 shrink-0',
-  ]
-}
+    item.current
+      ? "text-indigo-600"
+      : "text-gray-400 group-hover:text-indigo-600",
+    "size-6 shrink-0",
+  ];
+};
 
 const getTeamItemClasses = (team) => {
   return [
     team.current
-      ? 'bg-gray-50 text-indigo-600'
-      : 'text-gray-700 hover:bg-gray-50 hover:text-indigo-600',
-    'group flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold',
-  ]
-}
+      ? "bg-gray-50 text-indigo-600"
+      : "text-gray-700 hover:bg-gray-50 hover:text-indigo-600",
+    "group flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold",
+  ];
+};
 
 const getTeamInitialClasses = (team) => {
   return [
     team.current
-      ? 'border-indigo-600 text-indigo-600'
-      : 'border-gray-200 text-gray-400 group-hover:border-indigo-600 group-hover:text-indigo-600',
-    'flex size-6 shrink-0 items-center justify-center rounded-lg border bg-white text-[0.625rem] font-medium',
-  ]
-}
+      ? "border-indigo-600 text-indigo-600"
+      : "border-gray-200 text-gray-400 group-hover:border-indigo-600 group-hover:text-indigo-600",
+    "flex size-6 shrink-0 items-center justify-center rounded-lg border bg-white text-[0.625rem] font-medium",
+  ];
+};
 </script>
 
 <template>
@@ -58,7 +60,10 @@ const getTeamInitialClasses = (team) => {
         <li>
           <ul role="list" class="-mx-2 space-y-1">
             <li v-for="item in navigation" :key="item.name">
-              <router-link :to="item.to" :class="getNavigationItemClasses(item)">
+              <router-link
+                :to="item.to"
+                :class="getNavigationItemClasses(item)"
+              >
                 <component
                   :is="item.icon"
                   :class="getNavigationIconClasses(item)"

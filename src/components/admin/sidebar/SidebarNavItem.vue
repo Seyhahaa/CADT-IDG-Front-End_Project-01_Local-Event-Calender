@@ -12,7 +12,9 @@
       <component
         :is="item.icon"
         :class="[
-          item.current ? 'text-indigo-600' : 'text-gray-400 group-hover:text-indigo-600',
+          item.current
+            ? 'text-indigo-600'
+            : 'text-gray-400 group-hover:text-indigo-600',
           'size-6 shrink-0',
         ]"
         aria-hidden="true"
@@ -28,5 +30,5 @@ defineProps({
     type: Object,
     required: true,
   },
-})
+});
 </script>

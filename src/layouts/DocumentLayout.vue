@@ -12,8 +12,14 @@
 
         <!-- Navigation -->
         <nav class="space-y-1">
-          <div v-for="(section, index) in navigation" :key="index" class="space-y-2">
-            <h3 class="font-medium text-sm text-gray-500 uppercase tracking-wider">
+          <div
+            v-for="(section, index) in navigation"
+            :key="index"
+            class="space-y-2"
+          >
+            <h3
+              class="font-medium text-sm text-gray-500 uppercase tracking-wider"
+            >
               {{ section.title }}
             </h3>
             <div class="space-y-1">
@@ -54,7 +60,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref } from "vue";
 import {
   HomeIcon,
   SwatchIcon,
@@ -65,43 +71,43 @@ import {
   TableCellsIcon,
   UserIcon,
   CalendarIcon,
-} from '@heroicons/vue/24/outline'
+} from "@heroicons/vue/24/outline";
 
 const navigation = ref([
   {
-    title: 'Getting Started',
+    title: "Getting Started",
     items: [
-      { name: 'Introduction', href: '/docs', icon: HomeIcon },
-      { name: 'Installation', href: '/docs/installation', icon: CubeIcon },
+      { name: "Introduction", href: "/docs", icon: HomeIcon },
+      { name: "Installation", href: "/docs/installation", icon: CubeIcon },
     ],
   },
   {
-    title: 'Foundation',
+    title: "Foundation",
     items: [
-      { name: 'Colors', href: '/docs/colors', icon: SwatchIcon },
-      { name: 'Typography', href: '/docs/typography', icon: Squares2X2Icon },
+      { name: "Colors", href: "/docs/colors", icon: SwatchIcon },
+      { name: "Typography", href: "/docs/typography", icon: Squares2X2Icon },
     ],
   },
   {
-    title: 'Components',
+    title: "Components",
     items: [
-      { name: 'Alerts', href: '/docs/alerts', icon: BellIcon },
-      { name: 'Buttons', href: '/docs/buttons', icon: Squares2X2Icon },
-      { name: 'Cards', href: '/docs/cards', icon: Squares2X2Icon },
-      { name: 'Forms', href: '/docs/forms', icon: Squares2X2Icon },
-      { name: 'Modal', href: '/docs/modal', icon: ArrowsPointingOutIcon },
-      { name: 'Navigation', href: '/docs/navigation', icon: Squares2X2Icon },
-      { name: 'Tables', href: '/docs/tables', icon: TableCellsIcon },
-      { name: 'Tabs', href: '/docs/tabs', icon: Squares2X2Icon },
+      { name: "Alerts", href: "/docs/alerts", icon: BellIcon },
+      { name: "Buttons", href: "/docs/buttons", icon: Squares2X2Icon },
+      { name: "Cards", href: "/docs/cards", icon: Squares2X2Icon },
+      { name: "Forms", href: "/docs/forms", icon: Squares2X2Icon },
+      { name: "Modal", href: "/docs/modal", icon: ArrowsPointingOutIcon },
+      { name: "Navigation", href: "/docs/navigation", icon: Squares2X2Icon },
+      { name: "Tables", href: "/docs/tables", icon: TableCellsIcon },
+      { name: "Tabs", href: "/docs/tabs", icon: Squares2X2Icon },
     ],
   },
   {
-    title: 'Advanced Components',
+    title: "Advanced Components",
     items: [
-      { name: 'Avatar', href: '/docs/avatar', icon: UserIcon },
-      { name: 'DatePicker', href: '/docs/datepicker', icon: CalendarIcon },
-      { name: 'DataGrid', href: '/docs/datagrid', icon: TableCellsIcon },
+      { name: "Avatar", href: "/docs/avatar", icon: UserIcon },
+      { name: "DatePicker", href: "/docs/datepicker", icon: CalendarIcon },
+      { name: "DataGrid", href: "/docs/datagrid", icon: TableCellsIcon },
     ],
   },
-])
+]);
 </script>

@@ -28,17 +28,18 @@
 defineProps({
   show: {
     type: Boolean,
-    default: false
+    default: false,
   },
   title: {
     type: String,
-    default: 'Confirm Delete'
+    default: "Confirm Delete",
   },
   message: {
     type: String,
-    default: 'Are you sure you want to delete this item? This action cannot be undone.'
-  }
-})
+    default:
+      "Are you sure you want to delete this item? This action cannot be undone.",
+  },
+});
 
-defineEmits(['confirm', 'cancel'])
-</script> 
+defineEmits(["confirm", "cancel"]);
+</script>

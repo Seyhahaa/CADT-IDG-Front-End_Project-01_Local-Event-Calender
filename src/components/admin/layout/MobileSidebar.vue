@@ -1,7 +1,12 @@
 <script setup>
-import { Dialog, DialogPanel, TransitionChild, TransitionRoot } from '@headlessui/vue'
-import { XMarkIcon } from '@heroicons/vue/24/outline'
-import SidebarContent from '@/components/admin/layout/SidebarContent.vue'
+import {
+  Dialog,
+  DialogPanel,
+  TransitionChild,
+  TransitionRoot,
+} from "@headlessui/vue";
+import { XMarkIcon } from "@heroicons/vue/24/outline";
+import SidebarContent from "@/components/admin/layout/SidebarContent.vue";
 
 defineProps({
   open: {
@@ -11,10 +16,10 @@ defineProps({
   navigation: {
     type: Array,
     required: true,
-  }
-})
+  },
+});
 
-const emit = defineEmits(['close'])
+const emit = defineEmits(["close"]);
 </script>
 
 <template>
@@ -51,8 +56,14 @@ const emit = defineEmits(['close'])
               leave-from="opacity-100"
               leave-to="opacity-0"
             >
-              <div class="absolute left-full top-0 flex w-16 justify-center pt-5">
-                <button type="button" class="-m-2.5 p-2.5" @click="emit('close')">
+              <div
+                class="absolute left-full top-0 flex w-16 justify-center pt-5"
+              >
+                <button
+                  type="button"
+                  class="-m-2.5 p-2.5"
+                  @click="emit('close')"
+                >
                   <span class="sr-only">Close sidebar</span>
                   <XMarkIcon class="size-6 text-white" aria-hidden="true" />
                 </button>

@@ -22,7 +22,11 @@
     <div v-if="event" class="space-y-6">
       <!-- Main Image and Basic Info -->
       <div class="bg-white rounded-lg shadow overflow-hidden">
-        <img :src="event.image" class="w-full h-64 object-cover" :alt="event.title" />
+        <img
+          :src="event.image"
+          class="w-full h-64 object-cover"
+          :alt="event.title"
+        />
         <div class="p-6">
           <div class="flex items-center justify-between mb-4">
             <span
@@ -32,7 +36,7 @@
               {{ event.status }}
             </span>
             <span class="text-2xl font-bold text-gray-900">
-              {{ event.price ? `$${event.price}` : 'Free' }}
+              {{ event.price ? `$${event.price}` : "Free" }}
             </span>
           </div>
           <p class="text-gray-600 mb-4">{{ event.description }}</p>
@@ -94,7 +98,10 @@
 
     <div v-else class="text-center py-12">
       <p class="text-gray-500">Event not found</p>
-      <router-link to="/admin/events" class="text-blue-600 hover:text-blue-800 mt-4 inline-block">
+      <router-link
+        to="/admin/events"
+        class="text-blue-600 hover:text-blue-800 mt-4 inline-block"
+      >
         Back to Events
       </router-link>
     </div>
@@ -110,65 +117,65 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
-import { useRouter, useRoute } from 'vue-router'
-import { useEvents } from '@/composables/useEvents.js'
-import DeleteConfirmationDialog from '@/components/events/DeleteConfirmationDialog.vue'
+import { ref, onMounted } from "vue";
+import { useRouter, useRoute } from "vue-router";
+import { useEvents } from "@/composables/useEvents.js";
+import DeleteConfirmationDialog from "@/components/events/DeleteConfirmationDialog.vue";
 
-const router = useRouter()
-const route = useRoute()
-const { getEvent, deleteEvent } = useEvents()
-const event = ref(null)
-const showDeleteDialog = ref(false)
+const router = useRouter();
+const route = useRoute();
+const { getEvent, deleteEvent } = useEvents();
+const event = ref(null);
+const showDeleteDialog = ref(false);
 
 onMounted(() => {
-  const eventId = Number(route.params.id)
-  const foundEvent = getEvent(eventId)
+  const eventId = Number(route.params.id);
+  const foundEvent = getEvent(eventId);
   if (foundEvent) {
-    event.value = foundEvent
+    event.value = foundEvent;
   }
-})
+});
 
 const formatDate = (date) => {
-  return new Date(date).toLocaleDateString('en-US', {
-    weekday: 'long',
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  })
-}
+  return new Date(date).toLocaleDateString("en-US", {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+};
 
 const getStatusClass = (status) => {
   const classes = {
-    Upcoming: 'bg-yellow-100 text-yellow-800',
-    'In Progress': 'bg-green-100 text-green-800',
-    Completed: 'bg-gray-100 text-gray-800',
-    Cancelled: 'bg-red-100 text-red-800',
-  }
-  return classes[status] || ''
-}
+    Upcoming: "bg-yellow-100 text-yellow-800",
+    "In Progress": "bg-green-100 text-green-800",
+    Completed: "bg-gray-100 text-gray-800",
+    Cancelled: "bg-red-100 text-red-800",
+  };
+  return classes[status] || "";
+};
 
 const getEmbedUrl = (url) => {
   // Convert YouTube URL to embed URL
-  if (url.includes('youtube.com/watch')) {
-    const videoId = url.split('v=')[1]
-    return `https://www.youtube.com/embed/${videoId}`
+  if (url.includes("youtube.com/watch")) {
+    const videoId = url.split("v=")[1];
+    return `https://www.youtube.com/embed/${videoId}`;
   }
-  return url
-}
+  return url;
+};
 
 const confirmDelete = () => {
-  showDeleteDialog.value = true
-}
+  showDeleteDialog.value = true;
+};
 
 const handleDelete = async () => {
   if (event.value) {
-    await deleteEvent(event.value.id)
-    router.push('/admin/events')
+    await deleteEvent(event.value.id);
+    router.push("/admin/events");
   }
-}
+};
 
 const cancelDelete = () => {
-  showDeleteDialog.value = false
-}
+  showDeleteDialog.value = false;
+};
 </script>
