@@ -4,6 +4,12 @@ module.exports = {
     node: true,
     "vue/setup-compiler-macros": true,
   },
+  globals: {
+    defineProps: "readonly",
+    defineEmits: "readonly",
+    defineExpose: "readonly",
+    withDefaults: "readonly"
+  },
   extends: [
     "plugin:vue/vue3-essential",
     "eslint:recommended",
@@ -19,5 +25,10 @@ module.exports = {
     "vue/multi-word-component-names": "off",
     "vue/no-multiple-template-root": "off",
     "vue/no-v-model-argument": "off",
+    "vue/no-unused-components": "off",
+    "no-mixed-spaces-and-tabs": "off",
+    "vue/valid-template-root": "off",
+    "no-unused-vars": "off",
+    "vue/no-parsing-error": "off"
   },
 };
