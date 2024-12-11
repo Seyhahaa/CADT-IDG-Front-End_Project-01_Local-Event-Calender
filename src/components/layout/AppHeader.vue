@@ -1,20 +1,40 @@
 <script setup>
-import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/vue";
-import { Bars3Icon, BellIcon } from "@heroicons/vue/24/outline";
-import { ChevronDownIcon, MagnifyingGlassIcon } from "@heroicons/vue/20/solid";
+  import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue';
+  import { Bars3Icon, BellIcon } from '@heroicons/vue/24/outline';
+  import { ChevronDownIcon, MagnifyingGlassIcon } from '@heroicons/vue/20/solid';
 
-defineProps({
-  sidebarOpen: {
-    type: Boolean,
-    required: true,
-  },
-  userNavigation: {
-    type: Array,
-    required: true,
-  },
-});
+  const props = defineProps({
+    sidebarOpen: {
+      type: Boolean,
+      required: true,
+    },
+    userNavigation: {
+      type: Array,
+      required: true,
+    },
+    isAdmin: {
+      type: Boolean,
+      default: false,
+    },
+    showSearch: {
+      type: Boolean,
+      default: true,
+    },
+    showNotifications: {
+      type: Boolean,
+      default: true,
+    },
+    user: {
+      type: Object,
+      default: () => ({
+        name: 'User',
+        imageUrl:
+          'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+      }),
+    },
+  });
 
-const emit = defineEmits(["openSidebar"]);
+  const emit = defineEmits(['openSidebar']);
 </script>
 
 <template>
@@ -22,6 +42,7 @@ const emit = defineEmits(["openSidebar"]);
     <div
       class="flex h-16 items-center gap-x-4 border-b border-gray-200 bg-white px-4 shadow-sm sm:gap-x-6 sm:px-6 lg:px-0 lg:shadow-none"
     >
+      <!-- Mobile menu button -->
       <button
         type="button"
         class="-m-2.5 p-2.5 text-gray-700 lg:hidden"
@@ -34,7 +55,8 @@ const emit = defineEmits(["openSidebar"]);
       <div class="h-6 w-px bg-gray-200 lg:hidden" aria-hidden="true" />
 
       <div class="flex flex-1 gap-x-4 self-stretch lg:gap-x-6">
-        <form class="relative flex flex-1" action="#" method="GET">
+        <!-- Search -->
+        <form v-if="showSearch" class="relative flex flex-1" action="#" method="GET">
           <label for="search-field" class="sr-only">Search</label>
           <MagnifyingGlassIcon
             class="pointer-events-none absolute inset-y-0 left-0 h-full w-5 text-gray-400"
@@ -50,7 +72,9 @@ const emit = defineEmits(["openSidebar"]);
         </form>
 
         <div class="flex items-center gap-x-4 lg:gap-x-6">
+          <!-- Notifications -->
           <button
+            v-if="showNotifications"
             type="button"
             class="-m-2.5 p-2.5 text-gray-400 hover:text-gray-500"
           >
@@ -58,30 +82,18 @@ const emit = defineEmits(["openSidebar"]);
             <BellIcon class="size-6" aria-hidden="true" />
           </button>
 
-          <div
-            class="hidden lg:block lg:h-6 lg:w-px lg:bg-gray-200"
-            aria-hidden="true"
-          />
+          <div class="hidden lg:block lg:h-6 lg:w-px lg:bg-gray-200" aria-hidden="true" />
 
           <!-- Profile dropdown -->
           <Menu as="div" class="relative">
             <MenuButton class="-m-1.5 flex items-center p-1.5">
               <span class="sr-only">Open user menu</span>
-              <img
-                class="size-8 rounded-full bg-gray-50"
-                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                alt=""
-              />
+              <img class="size-8 rounded-full bg-gray-50" :src="user.imageUrl" :alt="user.name" />
               <span class="hidden lg:flex lg:items-center">
-                <span
-                  class="ml-4 text-sm/6 font-semibold text-gray-900"
-                  aria-hidden="true"
-                  >Tom Cook</span
-                >
-                <ChevronDownIcon
-                  class="ml-2 size-5 text-gray-400"
-                  aria-hidden="true"
-                />
+                <span class="ml-4 text-sm/6 font-semibold text-gray-900" aria-hidden="true">{{
+                  user.name
+                }}</span>
+                <ChevronDownIcon class="ml-2 size-5 text-gray-400" aria-hidden="true" />
               </span>
             </MenuButton>
             <transition
@@ -95,13 +107,9 @@ const emit = defineEmits(["openSidebar"]);
               <MenuItems
                 class="absolute right-0 z-10 mt-2.5 w-32 origin-top-right rounded-md bg-white py-2 shadow-lg ring-1 ring-gray-900/5 focus:outline-none"
               >
-                <MenuItem
-                  v-for="item in userNavigation"
-                  :key="item.name"
-                  v-slot="{ active }"
-                >
+                <MenuItem v-for="item in userNavigation" :key="item.name" v-slot="{ active }">
                   <router-link
-                    v-if="item.to !== '#'"
+                    v-if="item.to && item.to !== '#'"
                     :to="item.to"
                     :class="[
                       active ? 'bg-gray-50 outline-none' : '',

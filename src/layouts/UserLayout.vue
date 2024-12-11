@@ -3,18 +3,18 @@
     <MobileSidebar
       :open="sidebarOpen"
       :navigation="navigation"
-      :isAdmin="true"
+      :isAdmin="false"
       @close="sidebarOpen = false"
     />
 
     <!-- Static sidebar for desktop -->
-    <Sidebar :navigation="navigation" :isAdmin="true" />
+    <Sidebar :navigation="navigation" :isAdmin="false" />
 
     <div class="lg:pl-72">
       <AppHeader
         :sidebarOpen="sidebarOpen"
         :userNavigation="userNavigation"
-        :isAdmin="true"
+        :isAdmin="false"
         :user="user"
         @openSidebar="sidebarOpen = true"
       />
@@ -30,33 +30,18 @@
 
 <script setup>
   import { ref } from 'vue';
-  import { useRouter } from 'vue-router';
-  import { useUserStore } from '@/stores/userStore';
   import Sidebar from '@/components/layout/Sidebar.vue';
   import MobileSidebar from '@/components/layout/MobileSidebar.vue';
   import AppHeader from '@/components/layout/AppHeader.vue';
-  import { useNavigation } from '@/composables/useNavigation';
+  import { useUserNavigation } from '@/composables/useUserNavigation';
 
-  const router = useRouter();
-  const userStore = useUserStore();
-  const { navigation, userNavigation } = useNavigation();
+  const { navigation, userNavigation } = useUserNavigation();
 
   const user = {
-    name: userStore.user?.name || 'Admin User',
+    name: 'Regular User',
     imageUrl:
-      userStore.user?.avatar ||
       'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
   };
 
   const sidebarOpen = ref(false);
-
-  // Handle logout
-  async function handleLogout() {
-    try {
-      await userStore.logout();
-      router.push('/login');
-    } catch (error) {
-      console.error('Logout failed:', error);
-    }
-  }
 </script>
