@@ -1,4 +1,3 @@
-import Home from "@/Pages/HomePage.vue";
 import EventDetail from "@/Events/EventDetail.vue";
 import EventImage from "@/Events/EventsImage.vue";
 import EventsImageDetail from "@/Events/EventsImageDetail.vue";

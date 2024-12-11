@@ -1,31 +1,40 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import LandingPageLayout from '@/layouts/LandingPageLayout.vue'
-
-import adminRoutes from './admin-route'
-import LandingPageRoute from './landing-page-route';
+import { createRouter, createWebHistory } from "vue-router";
+import LandingPageLayout from "@/layouts/LandingPageLayout.vue";
+import { adminRoutes } from "./admin.routes";
+import LandingPageRoute from "./landing-page.routes";
+import { userRoutes } from "./user.routes";
 
 // Marketing routes
 const landingPageRoute = {
-    path: '/',
-    component: LandingPageLayout,
-    children: [
-        ...LandingPageRoute,
-    ],
-}
-
-// Admin/Dashboard routes
-const adminRoute = {
-    path: '/admin',
-    redirect: { name: 'dashboard' },
-    component: () => import('@/layouts/AdminLayout.vue'),
-    children: [
-        ...adminRoutes,
-    ],
-}
+  path: "/",
+  component: LandingPageLayout,
+  children: [...LandingPageRoute],
+};
 
 const router = createRouter({
-    history: createWebHistory(process.env.BASE_URL),
-    routes: [landingPageRoute, adminRoute],
-})
+  history: createWebHistory(process.env.BASE_URL),
+  routes: [
+    landingPageRoute,
+    adminRoutes,
+    userRoutes,
+    // Catch-all / 404 route
+    {
+      path: '/:pathMatch(.*)*',
+      name: 'not-found',
+      component: () => import('@/components/pageNotFound.vue'),
+    },
+  ],
+});
 
-export default router
+// Navigation guard for auth
+router.beforeEach((to, from, next) => {
+  if (to.meta.requiresAuth) {
+    // Add your auth check logic here
+    // For now, just proceeding
+    next();
+  } else {
+    next();
+  }
+});
+
+export default router;

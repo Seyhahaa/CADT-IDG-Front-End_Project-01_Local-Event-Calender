@@ -1,66 +1,117 @@
-import { CalendarIcon, ChartPieIcon, FolderIcon, HomeIcon } from '@heroicons/vue/24/outline'
-import { computed } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
-import { useAuth } from '@/composables/useAuth'
+import { computed } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
+import { useUserStore } from '@/stores/userStore';
+import {
+  HomeIcon,
+  UsersIcon,
+  CalendarIcon,
+  FolderIcon,
+  ChartBarIcon,
+  Cog6ToothIcon,
+  BellIcon,
+  ShieldCheckIcon,
+  UserIcon,
+} from '@heroicons/vue/24/outline';
 
 export function useNavigation() {
-  const route = useRoute()
-  const router = useRouter()
-  const { logout: authLogout } = useAuth()
+  const route = useRoute();
+  const router = useRouter();
+  const userStore = useUserStore();
 
-  const handleLogout = async () => {
-    try {
-      await authLogout()
-      // redirect to login page after logout
-      router.push('/login')
-    } catch (error) {
-      console.error('Logout failed:', error)
-    }
-  }
+  const isCurrentRoute = (path) => route.path === path;
 
-  const navigation = computed(() => [
-    {
-      name: 'Dashboard',
-      to: '/admin/dashboard',
-      icon: HomeIcon,
-      current: route.path === '/admin/dashboard',
-    },
+  // Base navigation items
+  const baseNavigation = [
+    { name: 'Dashboard', to: '/admin', icon: HomeIcon, current: isCurrentRoute('/admin') },
+    { name: 'Users', to: '/admin/users', icon: UsersIcon, current: isCurrentRoute('/admin/users') },
     {
       name: 'Events',
       to: '/admin/events',
-      icon: FolderIcon,
-      current: route.path === '/admin/events',
+      icon: CalendarIcon,
+      current: isCurrentRoute('/admin/events'),
     },
     {
-      name: 'Calendar',
-      to: '/admin/calendar',
-      icon: CalendarIcon,
-      current: route.path === '/admin/calendar',
+      name: 'Categories',
+      to: '/admin/categories',
+      icon: FolderIcon,
+      current: isCurrentRoute('/admin/categories'),
     },
     {
       name: 'Reports',
       to: '/admin/reports',
-      icon: ChartPieIcon,
-      current: route.path === '/admin/reports',
+      icon: ChartBarIcon,
+      current: isCurrentRoute('/admin/reports'),
     },
-  ])
+  ];
 
-  const userNavigation = [
+  // Settings navigation
+  const settingsNavigation = [
+    { name: 'Settings', type: 'divider' },
     {
-      name: 'Your profile',
+      name: 'General Settings',
+      to: '/admin/settings',
+      icon: Cog6ToothIcon,
+      current: isCurrentRoute('/admin/settings'),
+    },
+    {
+      name: 'Security',
+      to: '/admin/settings/security',
+      icon: ShieldCheckIcon,
+      current: isCurrentRoute('/admin/settings/security'),
+    },
+    {
+      name: 'Notifications',
+      to: '/admin/settings/notifications',
+      icon: BellIcon,
+      current: isCurrentRoute('/admin/settings/notifications'),
+    },
+    {
+      name: 'Privacy',
+      to: '/admin/settings/privacy',
+      icon: UserIcon,
+      current: isCurrentRoute('/admin/settings/privacy'),
+    },
+  ];
+
+  // Main navigation computed property
+  const navigation = computed(() => {
+    const nav = [...baseNavigation, ...settingsNavigation];
+    return nav;
+  });
+
+  const userNavigation = computed(() => [
+    {
+      name: 'Your Profile',
       to: '/admin/profile',
-      current: route.path === '/admin/profile',
+      current: route.path.startsWith('/admin/profile'),
+    },
+    {
+      name: 'Settings',
+      to: '/admin/settings',
+      current: route.path.startsWith('/admin/settings'),
+    },
+    {
+      name: 'User Page',
+      to: '/user',
+      current: route.path.startsWith('/user'),
     },
     {
       name: 'Sign out',
       to: '#',
-      onClick: handleLogout,
+      onClick: async () => {
+        try {
+          await userStore.logout();
+          router.push('/login');
+        } catch (error) {
+          console.error('Logout failed:', error);
+        }
+      },
     },
-  ]
+  ]);
 
   return {
     navigation,
     userNavigation,
-    handleLogout,
-  }
+    isCurrentRoute,
+  };
 }

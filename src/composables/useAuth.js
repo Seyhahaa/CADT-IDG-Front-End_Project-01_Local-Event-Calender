@@ -1,8 +1,8 @@
 export function useAuth() {
   const logout = async () => {
     // Clear localStorage/sessionStorage
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
 
     // If you're using Pinia/Vuex, clear the auth store
     // authStore.clearAuth()
