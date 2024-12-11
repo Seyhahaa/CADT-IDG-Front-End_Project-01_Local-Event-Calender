@@ -1,10 +1,10 @@
 <template>
-  <ProfileView :showRole="true" :userId="userStore.user?.id" />
+    <ProfileView :showRole="true" :userId="userStore.user?.id" />
 </template>
 
 <script setup>
-import { useUserStore } from '@/stores/userStore';
-import ProfileView from '@/views/profile/ProfileView.vue';
+    import { useUserStore } from '@/stores/userStore';
+    import ProfileView from '@/views/profile/ProfileView.vue';
 
-const userStore = useUserStore();
+    const userStore = useUserStore();
 </script>
