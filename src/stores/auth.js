@@ -16,11 +16,6 @@ export const useAuthStore = defineStore('auth', {
                     password: password
                 });
 
-                // const { data } = await axios.get(`${process.env.VUE_APP_SERVER}/auth/me`, {
-                //     headers: {
-                //         authorization: `Bearer ${response.data.token}`
-                //     }
-                // });
                 this.token = response.data.token
                 console.log(this.token);
                 //this.user = data
