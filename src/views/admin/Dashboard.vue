@@ -1,155 +1,183 @@
-<script setup>
-import { CalendarIcon, UsersIcon, ChartPieIcon } from '@heroicons/vue/24/outline'
-import { ref } from 'vue'
-
-const events = ref([
-  {
-    id: 1,
-    name: 'Tech Conference 2024',
-    date: 'March 15, 2024',
-    attendees: 250,
-    rating: 4.8,
-  },
-  {
-    id: 2,
-    name: 'Startup Meetup',
-    date: 'March 20, 2024',
-    attendees: 120,
-    rating: 4.6,
-  },
-  {
-    id: 3,
-    name: 'Design Workshop',
-    date: 'March 25, 2024',
-    attendees: 75,
-    rating: 4.9,
-  },
-])
-</script>
-
 <template>
-  <div class="py-6">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <h1 class="text-2xl font-semibold text-gray-900">Dashboard</h1>
-    </div>
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <!-- Stats -->
-      <div class="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        <div class="overflow-hidden rounded-lg bg-white shadow">
-          <div class="p-5">
-            <div class="flex items-center">
-              <div class="flex-shrink-0">
-                <CalendarIcon class="h-6 w-6 text-gray-400" aria-hidden="true" />
-              </div>
-              <div class="ml-5 w-0 flex-1">
-                <dl>
-                  <dt class="truncate text-sm font-medium text-gray-500">Total Events</dt>
-                  <dd class="text-3xl font-semibold tracking-tight text-gray-900">12</dd>
-                </dl>
-              </div>
-            </div>
-          </div>
+    <div>
+        <div class="px-4 sm:px-0">
+            <h3 class="text-2xl font-semibold leading-7 text-gray-900">Dashboard</h3>
+            <p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500">
+                Overview of your system's performance and key metrics.
+            </p>
         </div>
 
-        <div class="overflow-hidden rounded-lg bg-white shadow">
-          <div class="p-5">
-            <div class="flex items-center">
-              <div class="flex-shrink-0">
-                <UsersIcon class="h-6 w-6 text-gray-400" aria-hidden="true" />
-              </div>
-              <div class="ml-5 w-0 flex-1">
-                <dl>
-                  <dt class="truncate text-sm font-medium text-gray-500">Total Attendees</dt>
-                  <dd class="text-3xl font-semibold tracking-tight text-gray-900">2.1k</dd>
-                </dl>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="overflow-hidden rounded-lg bg-white shadow">
-          <div class="p-5">
-            <div class="flex items-center">
-              <div class="flex-shrink-0">
-                <ChartPieIcon class="h-6 w-6 text-gray-400" aria-hidden="true" />
-              </div>
-              <div class="ml-5 w-0 flex-1">
-                <dl>
-                  <dt class="truncate text-sm font-medium text-gray-500">Average Rating</dt>
-                  <dd class="text-3xl font-semibold tracking-tight text-gray-900">4.8</dd>
-                </dl>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Calendar -->
-      <div class="mt-8">
-        <div class="overflow-hidden rounded-lg bg-white shadow">
-          <div class="p-6">
-            <h2 class="text-base font-semibold leading-6 text-gray-900">Upcoming Events</h2>
-            <div class="mt-6 grid grid-cols-7 text-center text-xs leading-6 text-gray-500">
-              <div>Mon</div>
-              <div>Tue</div>
-              <div>Wed</div>
-              <div>Thu</div>
-              <div>Fri</div>
-              <div>Sat</div>
-              <div>Sun</div>
-            </div>
-            <div class="mt-2 grid grid-cols-7 text-sm">
-              <!-- Calendar grid would go here - simplified for example -->
-              <div v-for="n in 31" :key="n" class="py-2">
-                <button
-                  type="button"
-                  class="mx-auto flex h-8 w-8 items-center justify-center rounded-full"
-                  :class="n === 15 ? 'bg-indigo-600 font-semibold text-white' : 'text-gray-900'"
+        <div class="mt-6">
+            <!-- Stats -->
+            <dl class="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+                <div
+                    class="relative overflow-hidden rounded-lg bg-white px-4 pb-12 pt-5 shadow sm:px-6 sm:pt-6"
                 >
-                  {{ n }}
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+                    <dt>
+                        <div class="absolute rounded-md bg-indigo-500 p-3">
+                            <UsersIcon class="h-6 w-6 text-white" aria-hidden="true" />
+                        </div>
+                        <p class="ml-16 truncate text-sm font-medium text-gray-500">Total Users</p>
+                    </dt>
+                    <dd class="ml-16 flex items-baseline pb-6 sm:pb-7">
+                        <p class="text-2xl font-semibold text-gray-900">1,234</p>
+                        <p class="ml-2 flex items-baseline text-sm font-semibold text-green-600">
+                            <ArrowUpIcon
+                                class="h-5 w-5 flex-shrink-0 self-center text-green-500"
+                                aria-hidden="true"
+                            />
+                            <span class="sr-only">Increased by</span>
+                            12%
+                        </p>
+                    </dd>
+                </div>
 
-      <!-- Events List -->
-      <div class="mt-8">
-        <div class="overflow-hidden rounded-lg bg-white shadow">
-          <div class="p-6">
-            <div class="flex justify-between items-center">
-              <h2 class="text-base font-semibold leading-6 text-gray-900">Your Events</h2>
-              <router-link
-                to="/admin/events/create"
-                class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition"
-              >
-                Create Event
-              </router-link>
-            </div>
-            <div class="mt-6 flow-root">
-              <ul role="list" class="-my-5 divide-y divide-gray-200">
-                <li v-for="event in events" :key="event.id" class="py-5">
-                  <div class="flex items-center space-x-4">
-                    <div class="min-w-0 flex-1">
-                      <p class="truncate text-sm font-medium text-gray-900">{{ event.name }}</p>
-                      <p class="truncate text-sm text-gray-500">{{ event.date }}</p>
+                <div
+                    class="relative overflow-hidden rounded-lg bg-white px-4 pb-12 pt-5 shadow sm:px-6 sm:pt-6"
+                >
+                    <dt>
+                        <div class="absolute rounded-md bg-indigo-500 p-3">
+                            <CalendarIcon class="h-6 w-6 text-white" aria-hidden="true" />
+                        </div>
+                        <p class="ml-16 truncate text-sm font-medium text-gray-500">
+                            Active Events
+                        </p>
+                    </dt>
+                    <dd class="ml-16 flex items-baseline pb-6 sm:pb-7">
+                        <p class="text-2xl font-semibold text-gray-900">89</p>
+                        <p class="ml-2 flex items-baseline text-sm font-semibold text-green-600">
+                            <ArrowUpIcon
+                                class="h-5 w-5 flex-shrink-0 self-center text-green-500"
+                                aria-hidden="true"
+                            />
+                            <span class="sr-only">Increased by</span>
+                            8%
+                        </p>
+                    </dd>
+                </div>
+
+                <div
+                    class="relative overflow-hidden rounded-lg bg-white px-4 pb-12 pt-5 shadow sm:px-6 sm:pt-6"
+                >
+                    <dt>
+                        <div class="absolute rounded-md bg-indigo-500 p-3">
+                            <TicketIcon class="h-6 w-6 text-white" aria-hidden="true" />
+                        </div>
+                        <p class="ml-16 truncate text-sm font-medium text-gray-500">Tickets Sold</p>
+                    </dt>
+                    <dd class="ml-16 flex items-baseline pb-6 sm:pb-7">
+                        <p class="text-2xl font-semibold text-gray-900">3,456</p>
+                        <p class="ml-2 flex items-baseline text-sm font-semibold text-green-600">
+                            <ArrowUpIcon
+                                class="h-5 w-5 flex-shrink-0 self-center text-green-500"
+                                aria-hidden="true"
+                            />
+                            <span class="sr-only">Increased by</span>
+                            15%
+                        </p>
+                    </dd>
+                </div>
+
+                <div
+                    class="relative overflow-hidden rounded-lg bg-white px-4 pb-12 pt-5 shadow sm:px-6 sm:pt-6"
+                >
+                    <dt>
+                        <div class="absolute rounded-md bg-indigo-500 p-3">
+                            <CurrencyDollarIcon class="h-6 w-6 text-white" aria-hidden="true" />
+                        </div>
+                        <p class="ml-16 truncate text-sm font-medium text-gray-500">Revenue</p>
+                    </dt>
+                    <dd class="ml-16 flex items-baseline pb-6 sm:pb-7">
+                        <p class="text-2xl font-semibold text-gray-900">$45,678</p>
+                        <p class="ml-2 flex items-baseline text-sm font-semibold text-green-600">
+                            <ArrowUpIcon
+                                class="h-5 w-5 flex-shrink-0 self-center text-green-500"
+                                aria-hidden="true"
+                            />
+                            <span class="sr-only">Increased by</span>
+                            10%
+                        </p>
+                    </dd>
+                </div>
+            </dl>
+
+            <!-- Recent Activity -->
+            <div class="mt-8">
+                <div class="sm:flex sm:items-center">
+                    <div class="sm:flex-auto">
+                        <h2 class="text-lg font-medium text-gray-900">Recent Activity</h2>
+                        <p class="mt-2 text-sm text-gray-700">
+                            Latest events and updates from your system.
+                        </p>
                     </div>
-                    <div>
-                      <router-link
-                        :to="`/admin/events/${event.id}`"
-                        class="inline-flex items-center rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
-                      >
-                        View details
-                      </router-link>
+                </div>
+
+                <div class="mt-6 overflow-hidden rounded-xl border border-gray-200">
+                    <div class="min-w-full divide-y divide-gray-200">
+                        <div class="bg-gray-50 px-6 py-3">
+                            <div class="flex items-center justify-between">
+                                <div class="flex-1">
+                                    <h3 class="text-sm font-medium text-gray-900">Latest Events</h3>
+                                </div>
+                                <div class="ml-6 flex items-center">
+                                    <router-link
+                                        to="/admin/events"
+                                        class="text-sm font-medium text-indigo-600 hover:text-indigo-500"
+                                    >
+                                        View All
+                                    </router-link>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="divide-y divide-gray-200 bg-white">
+                            <div v-for="(event, index) in recentEvents" :key="index" class="p-6">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex-1">
+                                        <h4 class="text-sm font-medium text-gray-900">
+                                            {{ event.name }}
+                                        </h4>
+                                        <p class="mt-1 text-sm text-gray-500">
+                                            {{ event.description }}
+                                        </p>
+                                    </div>
+                                    <div class="ml-6">
+                                        <p class="text-sm text-gray-500">{{ event.date }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                  </div>
-                </li>
-              </ul>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
 </template>
+
+<script setup>
+    import {
+        UsersIcon,
+        CalendarIcon,
+        TicketIcon,
+        CurrencyDollarIcon,
+        ArrowUpIcon,
+    } from '@heroicons/vue/24/outline';
+
+    // Mock data for recent events
+    const recentEvents = [
+        {
+            name: 'Tech Conference 2024',
+            description: 'Annual technology conference featuring industry leaders',
+            date: '2024-03-15',
+        },
+        {
+            name: 'Music Festival',
+            description: 'Three-day music festival with top artists',
+            date: '2024-04-01',
+        },
+        {
+            name: 'Art Exhibition',
+            description: 'Contemporary art showcase',
+            date: '2024-03-20',
+        },
+    ];
+</script>
