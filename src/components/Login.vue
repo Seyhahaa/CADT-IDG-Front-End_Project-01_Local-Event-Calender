@@ -71,9 +71,71 @@
               </div>
             </div>
           </div>
-          
-          <register />
-
+          <div class="col-md-12 col-sm-12 col-lg-7">
+            <div class="register-wrap w-100">
+              <div class="register-inner">
+                <div class="title2 w-100">
+                  <h2 class="mb-0">Don't have an Account? Register Now</h2>
+                  <p class="mb-0">
+                    By creating an account with our store, you will be able to
+                    move through the checkout process faster,store multiple
+                    shipping addresses.
+                  </p>
+                </div>
+                <form class="w-100">
+                  <div class="row mrg20">
+                    <div class="col-md-6 col-sm-6 col-lg-6">
+                      <input
+                        class="rounded-pill"
+                        type="text"
+                        placeholder="Your Name"
+                      />
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-lg-6">
+                      <input
+                        class="rounded-pill"
+                        type="email"
+                        placeholder="Email Address"
+                      />
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-lg-6">
+                      <input
+                        class="rounded-pill"
+                        type="text"
+                        placeholder="Username"
+                      />
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-lg-6">
+                      <input
+                        class="rounded-pill"
+                        type="tel"
+                        placeholder="Phone"
+                      />
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-lg-6">
+                      <input
+                        class="rounded-pill"
+                        type="password"
+                        placeholder="Password"
+                      />
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-lg-6">
+                      <input
+                        class="rounded-pill"
+                        type="password"
+                        placeholder="Re - Password"
+                      />
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-lg-12">
+                      <button class="thm-btn rounded-pill" type="submit">
+                        Register Now
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <!-- Login Register Wrap -->
@@ -83,13 +145,11 @@
 <script>
 import { mapActions } from 'pinia';
 import { useAuthStore } from '@/stores/auth.js'
-import register from './register.vue';
 export default {
-  components: { register },
     data() {
         return {
             username: '',
-            password: '',
+            password: ''
         };
     },
     methods: {
@@ -97,7 +157,6 @@ export default {
         async passwordLogin() {
             await this.login(this.email, this.password)
             this.$router.push('/')
-        },
-        
+        }
     }
 }</script>

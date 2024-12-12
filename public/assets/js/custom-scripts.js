@@ -130,9 +130,9 @@ $(document).ready(function () {
   }
 
   //===== Scroll Up Bar =====//
-  if ($.isFunction($.fn.scrollupbar)) {
-    $('header:not(.style4)').scrollupbar();
-  }
+  // if ($.isFunction($.fn.scrollupbar)) {
+  //   $('header:not(.style4)').scrollupbar();
+  // }
 
   //===== Select =====//
   if ($('.slc-wp > select').length > 0) {
