@@ -15,6 +15,7 @@
         "@heroicons/vue": "^2.2.0",
         "axios": "^1.7.9",
         "core-js": "^3.8.3",
+        "domain-browser": "^5.7.0",
         "pinia": "^2.3.0",
         "vee-validate": "^4.14.7",
         "vue": "^3.2.13",

@@ -19,6 +19,16 @@ export const userRoutes = {
             name: 'user-event-detail',
             component: () => import('@/views/user/events/EventDetail.vue'),
         },
+        {
+            path: 'events/uploadEvent',
+            name: 'uploadEvent',
+            component: () => import('@/views/user/events/uploadEvent.vue'),
+        },
+        {
+            path: 'events/edit-event/:id',
+            name: 'edit-event',
+            component: () => import('@/views/user/events/edit-event.vue'),
+        },
         // Schedule/Calendar
         {
             path: 'calendar',

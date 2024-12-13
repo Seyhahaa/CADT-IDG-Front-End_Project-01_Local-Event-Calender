@@ -152,32 +152,5 @@
         </div>
     </div>
 </template>
+<script></script>
 
-<script setup>
-    import {
-        UsersIcon,
-        CalendarIcon,
-        TicketIcon,
-        CurrencyDollarIcon,
-        ArrowUpIcon,
-    } from '@heroicons/vue/24/outline';
-
-    // Mock data for recent events
-    const recentEvents = [
-        {
-            name: 'Tech Conference 2024',
-            description: 'Annual technology conference featuring industry leaders',
-            date: '2024-03-15',
-        },
-        {
-            name: 'Music Festival',
-            description: 'Three-day music festival with top artists',
-            date: '2024-04-01',
-        },
-        {
-            name: 'Art Exhibition',
-            description: 'Contemporary art showcase',
-            date: '2024-03-20',
-        },
-    ];
-</script>

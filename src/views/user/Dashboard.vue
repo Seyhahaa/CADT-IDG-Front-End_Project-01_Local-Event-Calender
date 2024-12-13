@@ -5,10 +5,13 @@
                 <h1 class="text-2xl font-semibold leading-6 text-gray-900">Dashboard</h1>
                 <p class="mt-2 text-sm text-gray-700">Welcome to your personal dashboard.</p>
             </div>
+            <div>
+                <routerLink to="/user/events/uploadEvent" class="btn btn-primary">បង្កើតព្រឹត្តិការណ៍ថ្មី</routerLink>
+            </div>
         </div>
 
         <!-- Quick Stats -->
-        <dl class="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <!-- <dl class="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
             <div
                 class="relative overflow-hidden rounded-lg bg-white px-4 pb-12 pt-5 shadow sm:px-6 sm:pt-6"
             >
@@ -70,7 +73,7 @@
             </div>
         </dl>
 
-        <!-- Recent Events -->
+        <-- Recent Events -->
         <div class="mt-8">
             <h2 class="text-base font-semibold leading-6 text-gray-900">Recent Events</h2>
             <div class="mt-4 overflow-hidden shadow ring-1 ring-black ring-opacity-5 sm:rounded-lg">
@@ -93,7 +96,7 @@
                                 scope="col"
                                 class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
                             >
-                                Status
+                                Action
                             </th>
                             <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6">
                                 <span class="sr-only">Actions</span>
@@ -101,32 +104,30 @@
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-200 bg-white">
-                        <tr v-for="event in recentEvents" :key="event.id">
+                        <tr v-for="events in event" :key="events.id">
                             <td
                                 class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6"
                             >
-                                {{ event.name }}
+                                {{ events.title.substring(0,100) }}
                             </td>
                             <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                                {{ event.date }}
+                                {{ 
+                                    new Date(events.date).toLocaleDateString(
+                                        'en-KH')
+                                        
+                                     }}
                             </td>
                             <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                                <span
-                                    :class="[
-                                        event.status === 'Upcoming'
-                                            ? 'text-green-700 bg-green-50'
-                                            : 'text-gray-700 bg-gray-50',
-                                        'inline-flex rounded-full px-2 text-xs font-semibold leading-5',
-                                    ]"
-                                >
-                                    {{ event.status }}
+                                <span>
+                                    <button class="btn btn-danger" @click="deleteEvent(events._id)">លុប</button>
+                                    <button class="ml-3 btn btn-warning text-white" @click="edditEvent(events._id)">កែប្រែ</button>
                                 </span>
                             </td>
                             <td
                                 class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6"
                             >
                                 <RouterLink
-                                    :to="`/user/events/${event.id}`"
+                                    :to="`/user/events/${events._id}`"
                                     class="text-indigo-600 hover:text-indigo-900"
                                 >
                                     View
@@ -139,30 +140,48 @@
         </div>
     </div>
 </template>
+<script>
+import axios from 'axios';
+    export default{
+    data() {
+        return{
+            event: null
+        }
+    },
+    mounted(){
+        this.getData()
+    },
+    methods: {
+        async getData() {
+        const token = localStorage.getItem('token');
+        try{
+        const result = await axios.get(`${process.env.VUE_APP_SERVER}/event/all-events`,{
+            headers: {
+                authorization: `Bearer ${token}`
+            }
+        })
+        this.event = result.data;
+        console.log(this.event) 
+        
+    }catch(e) {console.log(e.message)}
+        
+    },
+         async deleteEvent(id){
+            const token = localStorage.getItem('token');
+            //console.log(id)  
+            try{
+                const result = await axios.delete(`${process.env.VUE_APP_SERVER}/event/delete/`+id,{
+                    headers: {
+                        authorization: `Bearer ${token}`
+                    }
+                })
+                this.getData()
+            }catch(e) {console.log(e.message)}
+        },
+        async edditEvent(id){
+            this.$router.push(`/user/events/edit-event/`+id)
+        }
+    }
 
-<script setup>
-    import { RouterLink } from 'vue-router';
-    import { CalendarIcon, StarIcon, ClockIcon, ArrowUpIcon } from '@heroicons/vue/24/outline';
-
-    // Mock data - replace with actual API calls
-    const recentEvents = [
-        {
-            id: 1,
-            name: 'Tech Conference 2024',
-            date: 'Mar 15, 2024',
-            status: 'Upcoming',
-        },
-        {
-            id: 2,
-            name: 'Web Development Workshop',
-            date: 'Mar 20, 2024',
-            status: 'Registered',
-        },
-        {
-            id: 3,
-            name: 'AI Symposium',
-            date: 'Apr 5, 2024',
-            status: 'Upcoming',
-        },
-    ];
+}
 </script>

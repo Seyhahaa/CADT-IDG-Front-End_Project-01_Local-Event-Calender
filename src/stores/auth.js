@@ -6,8 +6,6 @@ export const useAuthStore = defineStore('auth', {
     state: () => {
         return { token: '', user: {} };
     },
-    // could also be defined as
-    // state: () => ({ count: 0 })
     actions: {
         async login(email, password) {
             try {
@@ -21,9 +19,9 @@ export const useAuthStore = defineStore('auth', {
                 //         authorization: `Bearer ${response.data.token}`
                 //     }
                 // });
-                this.token = response.data.token;
-                console.log(this.token);
-                //this.user = data
+                localStorage.setItem('token',response.data.token); 
+                this.token = response.data.token
+                this.user = response.data.token
             } catch (error) {
                 console.log(error);
                 alert('Login failed');
