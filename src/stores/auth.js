@@ -4,7 +4,7 @@ import axios from 'axios';
 
 export const useAuthStore = defineStore('auth', {
     state: () => {
-        return { token: '', user: {} };
+        return { token: '', isLoggedIn: false, };
     },
     actions: {
         async login(email, password) {
@@ -19,17 +19,18 @@ export const useAuthStore = defineStore('auth', {
                 //         authorization: `Bearer ${response.data.token}`
                 //     }
                 // });
-                localStorage.setItem('token',response.data.token); 
-                this.token = response.data.token
-                this.user = response.data.token
+                this.token = response.data.token;
+                this.isLoggedIn = true
+                console.log(this.token);
+                //this.user = data
             } catch (error) {
                 console.log(error);
                 alert('Login failed');
             }
         },
-        // async logout() {
-        //     this.token = ""
-        //     this.user = {}
-        // }
+        async logout() {
+            this.token = ""
+         this.isLoggedIn = false
+        }
     },
 });

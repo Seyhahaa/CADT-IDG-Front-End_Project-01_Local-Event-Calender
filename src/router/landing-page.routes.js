@@ -20,7 +20,7 @@ export default [
     { path: '/placewithmap', component: PlaceListingWithMap1 },
     { path: '/aboutus', component: AboutUs },
     { path: '/contactus', component: ContactUs },
-    { path: '/login', component: LogIn },
+    { path: '/login', component: LogIn,name: 'login'},
     { path: '/blog', component: OurBlog },
     { path: '/media', component: Media },
     { path: '/:pathMatch(.*)*', component: PageNotFound },
