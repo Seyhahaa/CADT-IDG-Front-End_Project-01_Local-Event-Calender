@@ -153,7 +153,7 @@ export default {
         };
     },
     methods: {
-        ...mapActions(useAuthStore, ['login']),
+        ...mapActions(useAuthStore, ['login','isAuthenticated']),
         async passwordLogin() {
             await this.login(this.email, this.password)
             this.$router.push('/user')

@@ -142,9 +142,13 @@
 </template>
 <script>
 import axios from 'axios';
+import { useAuthStore } from '@/stores/auth';
     export default{
     data() {
+        const user = useAuthStore()
         return{
+
+            user: user,
             event: null
         }
     },
@@ -161,7 +165,7 @@ import axios from 'axios';
             }
         })
         this.event = result.data;
-        console.log(this.event) 
+        console.log(this.user) 
         
     }catch(e) {console.log(e.message)}
         

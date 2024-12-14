@@ -1,7 +1,7 @@
 export const userRoutes = {
     path: '/user',
     component: () => import('@/layouts/UserLayout.vue'),
-    meta: { requiresAuth: true },
+    meta: { requiresAuth: true, isRedirect: false },
     children: [
         {
             path: '',
@@ -134,3 +134,4 @@ export const userRoutes = {
         },
     ],
 };
+

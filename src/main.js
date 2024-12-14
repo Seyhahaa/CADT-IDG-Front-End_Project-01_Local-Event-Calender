@@ -11,14 +11,15 @@ import { useAuthStore } from './stores/auth';
 const app = createApp(App);
 router.beforeEach((to, from,next) => {
     const authStore = useAuthStore()
-    if (to.meta.requiresAuth && !authStore.isLoggedIn) {
-        console.log(authStore.token)
-        next({name: 'login'})
-
+    if(to.meta.requiresAuth && !authStore.isAuthenticated){
+     next({name: 'login'})
     }
-    next() // redirect to login page
-    
+    else if(to.meta.isRedirect && authStore.isAuthenticated){
+     next({name: 'user-dashboard'})
+    }
+    next()
   })
+  
 
 // Register UI components globally
 registerComponents(app);
