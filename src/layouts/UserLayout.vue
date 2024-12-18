@@ -34,13 +34,16 @@
     import MobileSidebar from '@/components/layout/MobileSidebar.vue';
     import AppHeader from '@/components/layout/AppHeader.vue';
     import { useUserNavigation } from '@/composables/useUserNavigation';
+    import { useAuthStore } from '@/stores/auth';
+import { storeToRefs } from 'pinia';
 
     const { navigation, userNavigation } = useUserNavigation();
-
+    const auth = localStorage.getItem('user');
+    const parseData = JSON.parse(auth)
+    const username = parseData.firstname.concat(' ',parseData.lastname)
     const user = {
-        name: 'Regular User',
-        imageUrl:
-            'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+        name: username,
+        imageUrl:parseData.path
     };
 
     const sidebarOpen = ref(false);

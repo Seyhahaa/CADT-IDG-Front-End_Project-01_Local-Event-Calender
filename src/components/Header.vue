@@ -25,7 +25,10 @@
                         <li class="menu-item">
                             <router-link to="/">Home</router-link>
                         </li>
-                        <li class="menu-item-has-children">
+                        <li class="menu-item">
+                            <router-link to="/event">Events</router-link>
+                        </li>
+                        <!-- <li class="menu-item-has-children">
                             <a href="javascript:void(0);" title="">Events</a>
                             <ul class="children mb-0 inline-block text-left">
                                 <li>
@@ -37,12 +40,10 @@
                                     >
                                 </li>
                             </ul>
-                        </li>
+                        </li> -->
+                        
                         <li class="menu-item">
-                            <router-link to="/media">Media</router-link>
-                        </li>
-                        <li class="menu-item">
-                            <router-link to="/blog">Blog/News</router-link>
+                            <router-link to="/blog">News</router-link>
                         </li>
                         <li class="menu-item">
                             <router-link to="/aboutus">About Us</router-link>
@@ -51,7 +52,7 @@
                             <router-link to="/contactus">Contact Us</router-link>
                         </li>
                         <li class="menu-item">
-                            <router-link to="/login">Login OR Register</router-link>
+                            <router-link to="/login">Upload Event</router-link>
                         </li>
                     </ul>
                 </div>

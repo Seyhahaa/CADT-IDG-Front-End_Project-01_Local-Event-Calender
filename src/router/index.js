@@ -3,11 +3,13 @@ import LandingPageLayout from '@/layouts/LandingPageLayout.vue';
 import { adminRoutes } from './admin.routes';
 import LandingPageRoute from './landing-page.routes';
 import { userRoutes } from './user.routes';
+import Login from '@/components/Login.vue';
 
 // Marketing routes
 const landingPageRoute = {
     path: '/',
     component: LandingPageLayout,
+    meta: { requiresAuth: false, isRedirect: false },
     children: [...LandingPageRoute],
 };
 
@@ -18,6 +20,8 @@ const router = createRouter({
         adminRoutes,
         userRoutes,
         // Catch-all / 404 route
+        { path: '/login', component: Login,meta: { requiresAuth: false, isRedirect: true },name: 'login'},
+
         {
             path: '/:pathMatch(.*)*',
             name: 'not-found',
