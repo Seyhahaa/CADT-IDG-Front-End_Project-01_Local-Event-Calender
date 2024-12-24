@@ -34,8 +34,6 @@
     import MobileSidebar from '@/components/layout/MobileSidebar.vue';
     import AppHeader from '@/components/layout/AppHeader.vue';
     import { useUserNavigation } from '@/composables/useUserNavigation';
-    import { useAuthStore } from '@/stores/auth';
-import { storeToRefs } from 'pinia';
 
     const { navigation, userNavigation } = useUserNavigation();
     const auth = localStorage.getItem('user');

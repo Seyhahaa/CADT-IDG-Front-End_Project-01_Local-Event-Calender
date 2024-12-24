@@ -179,6 +179,10 @@ export default {
                 
               console.log(response);
               if(response.status == 201){
+                this.$toast.success('Register Success. Continou login', {
+                // override the global option
+                position: 'bottom'
+              })
               this.$router.push('/login')
             }
             else{

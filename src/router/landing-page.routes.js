@@ -12,7 +12,7 @@ import HomePage from '@/Pages/HomePage.vue';
 
 export default [
     { path: '/', component: HomePage },
-    { path: '/eventdetail', component: EventDetail },
+    { path: '/event/:id',name: 'eventDetail', component: EventDetail },
     { path: '/eventimage', component: EventImage },
     { path: '/eventimagedetail', component: EventsImageDetail },
     { path: '/eventplacelisitng', component: EventsPlacesListing },

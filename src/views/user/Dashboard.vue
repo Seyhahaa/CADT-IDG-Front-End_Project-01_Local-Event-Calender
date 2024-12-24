@@ -159,7 +159,7 @@ import { useAuthStore } from '@/stores/auth';
         async getData() {
         const token = localStorage.getItem('token');
         try{
-        const result = await axios.get(`${process.env.VUE_APP_SERVER}/event/all-events`,{
+        const result = await axios.get(`${process.env.VUE_APP_SERVER}/user/all-event`,{
             headers: {
                 authorization: `Bearer ${token}`
             }

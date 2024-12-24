@@ -632,12 +632,6 @@ nav ul ul,
   -webkit-transition: all 600ms cubic-bezier(0.175, 0.885, 0.320, 1.275); 
   -moz-transition: all 600ms cubic-bezier(0.175, 0.885, 0.320, 1.275); 
   -o-transition: all 600ms cubic-bezier(0.175, 0.885, 0.320, 1.275); 
-  transition: all 600ms cubic-bezier(0.175, 0.885, 0.320, 1..dir-opt-list > li a span275); /* easeOutBack */
-  -webkit-transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1); /* older webkit */
-  -webkit-transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.275); 
-  -moz-transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.275); 
-  -o-transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.275); 
-  transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.275); /* easeOutBack */
 }
 
 /*=== Border Radius ===*/
@@ -2870,7 +2864,6 @@ body.advance-filter-active .advance-filter-wrap {
   left: 0;
   right: 0;
   bottom: 0;
-  top: ;
   top: 0;
   background: -moz-linear-gradient(90deg, rgba(23,24,25,1) 0%, rgba(44,44,47,0) 42%, rgba(255,255,255,0) 100%);
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(255,255,255,0)), color-stop(58%, rgba(44,44,47,0)), color-stop(100%, rgba(23,24,25,1)));
@@ -6721,21 +6714,8 @@ ul.nav-tabs > li.nav-item a.nav-link.active,
 }
 
 
-{
-  border-top-color: #d35924;
-}
-
 .feat-inner2 > p a
 {
   border-bottom-color: #d35924;
 }
 
-
-{
-  border-left-color: #d35924;
-}
-
-
-{
-  border-right-color: #d35924;
-}

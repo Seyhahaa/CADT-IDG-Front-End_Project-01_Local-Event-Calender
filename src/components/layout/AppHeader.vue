@@ -3,6 +3,13 @@
     import { Bars3Icon, BellIcon } from '@heroicons/vue/24/outline';
     import { ChevronDownIcon, MagnifyingGlassIcon } from '@heroicons/vue/20/solid';
 
+    async function logout (){
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+        window.location.reload();
+
+}
+
     const props = defineProps({
         sidebarOpen: {
             type: Boolean,
@@ -87,6 +94,8 @@
                     <!-- Profile dropdown -->
                     <Menu as="div" class="relative">
                         <MenuButton class="-m-1.5 flex items-center p-1.5">
+
+                            <!-- User profile -->
                             <span class="sr-only">Open user menu</span>
                             <img
                                 class="size-8 rounded-full bg-gray-50"
@@ -116,32 +125,11 @@
                             <MenuItems
                                 class="absolute right-0 z-10 mt-2.5 w-32 origin-top-right rounded-md bg-white py-2 shadow-lg ring-1 ring-gray-900/5 focus:outline-none"
                             >
-                                <MenuItem
-                                    v-for="item in userNavigation"
-                                    :key="item.name"
-                                    v-slot="{ active }"
-                                >
-                                    <router-link
-                                        v-if="item.to && item.to !== '#'"
-                                        :to="item.to"
-                                        :class="[
-                                            active ? 'bg-gray-50 outline-none' : '',
-                                            'block px-3 py-1 text-sm/6 text-gray-900',
-                                        ]"
-                                    >
-                                        {{ item.name }}
-                                    </router-link>
-                                    <a
-                                        v-else
-                                        href="#"
-                                        @click.prevent="item.onClick && item.onClick()"
-                                        :class="[
-                                            active ? 'bg-gray-50 outline-none' : '',
-                                            'block px-3 py-1 text-sm/6 text-gray-900',
-                                        ]"
-                                    >
-                                        {{ item.name }}
-                                    </a>
+                                <MenuItem>
+                            
+                                    <button @click="logout" class="btn btn-danger ml-3">ចាកចេញ</button>
+                                        
+                                    
                                 </MenuItem>
                             </MenuItems>
                         </transition>
@@ -151,3 +139,4 @@
         </div>
     </div>
 </template>
+

@@ -138,7 +138,7 @@ export default {
                 address: '',
                 category: '',
                 date: '',
-                files: null,
+                files: [],
             },
         };
     },
@@ -168,7 +168,7 @@ export default {
             }catch(e){console.log(e.message)}
         },
     onFileSelected(event){
-        this.formData.files = event.target.files[0];
+        this.formData.files = event.target.files;
         console.log(this.formData.files);
     }
 },
