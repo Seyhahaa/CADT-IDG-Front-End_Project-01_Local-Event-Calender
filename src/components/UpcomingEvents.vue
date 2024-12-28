@@ -1,6 +1,6 @@
 <template>
     <section>
-        <div class="w-100 pb-140 position-relative">
+        <div class="w-100 pb-10 position-relative">
             <div class="sec-title text-center w-100">
                 <span class="d-block thm-clr">acinia viverra lectus. Fusce imperdiet</span>
                 <h2 class="mb-0">There are many upcoming events during this end of year</h2>
@@ -8,12 +8,12 @@
             <!-- Sec Title -->
             <div class="feat-post-wrap w-100">
                 <div class="row mrg10">
-                    <div class="col-md-6 col-sm-6 col-lg-3">
+                    <div class="col-md-6 col-sm-6 col-lg-3" v-for="item in event" :key="item.id">
                         <div class="feat-post-box position-relative w-100">
                             <div class="feat-post-img position-relative overflow-hidden w-100">
                                 <img
-                                    class="img-fluid w-100"
-                                    src="assets/images/resources/feat-post-img1-1.jpg"
+                                    class="w-100 h-[27rem]"
+                                    :src="item.images"
                                     alt="Featured Post Image 1"
                                 />
                             </div>
@@ -23,7 +23,7 @@
                                 <div class="feat-post-info-inner">
                                     <h3 class="mb-0">
                                         <a href="event-detail2.html" title=""
-                                            >Contraband Coffee Bar</a
+                                            >{{item.title}}</a
                                         >
                                     </h3>
                                     <span class="d-inline-block rate-star text-color2"
@@ -32,11 +32,11 @@
                                         ><i class="fas fa-star"></i><i class="fas fa-star"></i
                                         ><i class="fas fa-star"></i
                                     ></span>
-                                    <i class="d-block cite-cate">Cocktail Bars</i>
+                                    <i class="d-block cite-cate">{{ item.category }}</i>
                                 </div>
                                 <span class="loc"
                                     ><i class="rounded d-block fas fa-map-marker-alt"></i
-                                    >Location</span
+                                    >{{ item.address }}</span
                                 >
                             </div>
                             <!-- <a class="thm-btn" href="event-detail2.html" title="">Discover Now</a> -->
@@ -45,111 +45,34 @@
                             </router-link>
                         </div>
                     </div>
-                    <div class="col-md-6 col-sm-6 col-lg-3">
-                        <div class="feat-post-box position-relative w-100">
-                            <div class="feat-post-img position-relative overflow-hidden w-100">
-                                <img
-                                    class="img-fluid w-100"
-                                    src="assets/images/resources/feat-post-img1-2.jpg"
-                                    alt="Featured Post Image 2"
-                                />
-                            </div>
-                            <div
-                                class="feat-post-info d-flex flex-wrap justify-content-between position-absolute w-100"
-                            >
-                                <div class="feat-post-info-inner">
-                                    <h3 class="mb-0">
-                                        <a href="event-detail2.html" title=""
-                                            >Contraband Coffee Bar</a
-                                        >
-                                    </h3>
-                                    <span class="d-inline-block rate-star text-color2"
-                                        ><span class="bg-color3">4.5</span
-                                        ><i class="fas fa-star"></i><i class="fas fa-star"></i
-                                        ><i class="fas fa-star"></i><i class="fas fa-star"></i
-                                        ><i class="fas fa-star"></i
-                                    ></span>
-                                    <i class="d-block cite-cate">Cocktail Bars</i>
-                                </div>
-                                <span class="loc"
-                                    ><i class="rounded d-block fas fa-map-marker-alt"></i
-                                    >Location</span
-                                >
-                            </div>
-                            <a class="thm-btn" href="event-detail2.html" title="">Discover Now</a>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-sm-6 col-lg-3">
-                        <div class="feat-post-box position-relative w-100">
-                            <div class="feat-post-img position-relative overflow-hidden w-100">
-                                <img
-                                    class="img-fluid w-100"
-                                    src="assets/images/resources/feat-post-img1-3.jpg"
-                                    alt="Featured Post Image 3"
-                                />
-                            </div>
-                            <div
-                                class="feat-post-info d-flex flex-wrap justify-content-between position-absolute w-100"
-                            >
-                                <div class="feat-post-info-inner">
-                                    <h3 class="mb-0">
-                                        <a href="event-detail2.html" title=""
-                                            >Contraband Coffee Bar</a
-                                        >
-                                    </h3>
-                                    <span class="d-inline-block rate-star text-color2"
-                                        ><span class="bg-color3">4.5</span
-                                        ><i class="fas fa-star"></i><i class="fas fa-star"></i
-                                        ><i class="fas fa-star"></i><i class="fas fa-star"></i
-                                        ><i class="fas fa-star"></i
-                                    ></span>
-                                    <i class="d-block cite-cate">Cocktail Bars</i>
-                                </div>
-                                <span class="loc"
-                                    ><i class="rounded d-block fas fa-map-marker-alt"></i
-                                    >Location</span
-                                >
-                            </div>
-                            <a class="thm-btn" href="event-detail2.html" title="">Discover Now</a>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-sm-6 col-lg-3">
-                        <div class="feat-post-box position-relative w-100">
-                            <div class="feat-post-img position-relative overflow-hidden w-100">
-                                <img
-                                    class="img-fluid w-100"
-                                    src="assets/images/resources/feat-post-img1-4.jpg"
-                                    alt="Featured Post Image 4"
-                                />
-                            </div>
-                            <div
-                                class="feat-post-info d-flex flex-wrap justify-content-between position-absolute w-100"
-                            >
-                                <div class="feat-post-info-inner">
-                                    <h3 class="mb-0">
-                                        <a href="event-detail2.html" title=""
-                                            >Contraband Coffee Bar</a
-                                        >
-                                    </h3>
-                                    <span class="d-inline-block rate-star text-color2"
-                                        ><span class="bg-color3">4.5</span
-                                        ><i class="fas fa-star"></i><i class="fas fa-star"></i
-                                        ><i class="fas fa-star"></i><i class="fas fa-star"></i
-                                        ><i class="fas fa-star"></i
-                                    ></span>
-                                    <i class="d-block cite-cate">Cocktail Bars</i>
-                                </div>
-                                <span class="loc"
-                                    ><i class="rounded d-block fas fa-map-marker-alt"></i
-                                    >Location</span
-                                >
-                            </div>
-                            <a class="thm-btn" href="event-detail2.html" title="">Discover Now</a>
-                        </div>
-                    </div>
+
                 </div>
             </div>
             <!-- Featured Post Wrap -->
         </div>
     </section>
 </template>
+<script>
+import axios from 'axios';
+
+
+export default {
+    data() {
+        return{
+            
+            event: []
+        }
+    },
+    mounted() {
+        this.getCategory()
+    },
+    methods: {
+        async  getCategory() {
+            const res = await axios.get(`${process.env.VUE_APP_SERVER}/event`);
+            this.event = res.data.data
+            console.log(this.event);
+        },
+    },
+}   
+</script>
+

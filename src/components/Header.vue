@@ -43,13 +43,13 @@
                         </li> -->
                         
                         <li class="menu-item">
-                            <router-link to="/blog">News</router-link>
+                            <router-link to="/news">News</router-link>
                         </li>
                         <li class="menu-item">
                             <router-link to="/aboutus">About Us</router-link>
                         </li>
                         <li class="menu-item">
-                            <router-link to="/contactus">Contact Us</router-link>
+                            <router-link to="/contact-us">Contact Us</router-link>
                         </li>
                         <li class="menu-item">
                             <router-link to="/login">Upload Event</router-link>

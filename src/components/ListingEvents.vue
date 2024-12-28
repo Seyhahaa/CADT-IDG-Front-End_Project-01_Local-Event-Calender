@@ -31,17 +31,16 @@
                                     ><i class="fas fa-star"></i>
                                     <span class="d-inline-block">4.5</span></span
                                 >
-                                <h3 class="mb-0">
-                                    <a href="event-detail.html" title="">{{item.title}}</a>
+                                <h3 class="mb-0 line-clamp-3">
+                                    <routerLink :to="`/event/${item._id}`" title="">{{item.title}}</routerLink>
                                 </h3>
-                                <p class="mb-0">{{ item.subTitle }}</p>
+                                <p class="mb-0">{{  }}</p>
                                 <ul class="post-meta mb-0 list-unstyled w-100">
                                     <li>
                                         <i class="fas fa-map-marker-alt rounded-circle"></i>{{item.address}}
                                     </li>
-                                    <li>
-                                        <i class="fas fa-phone rounded-circle"></i>{{ item.phone }}
-                                    </li>
+                                    <li v-if="item.phone == undefined "><i class="fas fa-phone rounded-circle"></i>+61 2 8236 9200</li>
+                                    <li v-else><i class="fas fa-phone rounded-circle"></i>{{ item.phone }}</li>
                                 </ul>
                                 <span class="evnt-loc d-block thm-bg"
                                     ><i class="fas fa-building rounded-circle"></i>{{item.category}}</span

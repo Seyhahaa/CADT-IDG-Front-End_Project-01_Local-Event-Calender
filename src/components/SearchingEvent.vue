@@ -3,12 +3,13 @@
         <div class="w-100 position-relative">
             <!-- <div class="feat-wrap pt-140 pb-140 dark-layer position-relative opc7 w-100"> -->
             <div class="pt-140 pb-140 dark-layer position-relative opc7 w-100">
-                <div class="fixed-bg" style="background-image: url(assets/images/bg.jpg)"></div>
+                <div class="fixed-bg" style="background-image: url(https://images.unsplash.com/photo-1484914440268-8d352fe4db95?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"></div>
                 <div class="container">
-                    <div class="feat-inner pt-240 w-100">
-                        <h2 class="mb-0 text-center">
-                            Explore on-going and <br />
-                            Upcoming Events Around you...
+                    <div class="pt-[10rem] w-100">
+                        <h2 class="mb-5 text-white font-bold text-[3rem] leading-[5rem] text-center">
+                          ស្វែងរកព្រឹត្តិការណ៍ដែលកំពុងបន្ត និង<br />
+                            
+                            ព្រឹត្តិការណ៍នាពេលខាងមុខនៅជុំវិញអ្នក...
                         </h2>
                         <form class="dir-form d-flex">
                             <div class="field">

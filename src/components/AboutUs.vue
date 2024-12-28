@@ -1,54 +1,30 @@
 <template>
     <section>
-        <div class="w-100 pt-180 pb-110 black-layer opc45 position-relative">
-            <div class="fixed-bg" style="background-image: url(assets/images/pg-tp-bg.jpg)"></div>
-            <div class="container">
-                <div class="pg-tp-wrp text-center w-100">
-                    <h1 class="mb-0">About us</h1>
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item">
-                            <a href="index.html" title="Home">Home</a>
-                        </li>
-                        <li class="breadcrumb-item active">About us</li>
-                    </ol>
-                </div>
-                <!-- Page Top Wrap -->
-            </div>
-        </div>
-    </section>
-    <section>
-        <div class="w-100 pt-140 pb-140 gray-bg position-relative">
-            <div class="container">
-                <div class="about-wrap w-100">
-                    <div class="row align-items-center">
-                        <div class="col-md-12 col-sm-12 col-lg-6">
-                            <span class="p-3 rounded-sm text-white bg-orange-500 position-absolute">ជិតមកដល់...</span>
-                            <img
-                                class="img-fluid w-100"
-                                :src="image"
-                                alt="About Image 1"
-                            />
-                        </div>
-                        <div class="col-md-12 col-sm-12 col-lg-6">
-                            <div class="about-desc w-100">
-                                <p class="text-orange-500">{{ event.date }}</p>
-                                <h2 class="mb-0">{{ event.title }}</h2>
-                                
-                                <p class="mb-0">
-                                    {{ description}}
-                                </p>
-                                <a class="thm-btn" href="listing-layout.html" title=""
-                                    >Discover Now</a
-                                >
+                <div class="w-100 pb-140 position-relative">
+                    <div class="container">
+                        <div class="sec-title text-center w-100">
+                            <span class="d-block thm-clr">Restaurants Event</span>
+                            <h2 class="mb-0">Top Listing Events</h2>
+                        </div><!-- Sec Title -->
+                        <div class="top-list-post-wrap position-relative w-100">
+                            <div class="top-list-img position-relative">
+                                <span class="rounded-pill position-absolute">Now Closed</span>
+                                <img class="img-fluid rounded" :src="image" alt="Top List Image">
                             </div>
-                        </div>
+                            <div class="top-list-info position-absolute rounded">
+                                <span class="d-block"><i class="fas fa-ticket-alt"></i>Ticket: $25 - $35</span>
+                                <h3 class="mb-0"><a href="place-layout-detail.html" title="">{{ event.title }}</a></h3>
+                                <p class="mb-0">{{ description }}</p>
+                                <ul class="post-meta mb-0 list-unstyled w-100">
+                                    <li><i class="fas fa-map-marker-alt rounded-circle"></i>{{ event.address }}</li>
+                                    <!-- <li><i class="fas fa-phone rounded-circle"></i>{{ event.phone }}</li> -->
+                                </ul>
+                                <a class="thm-btn" href="place-layout-detail.html" title="">Discover Now</a>
+                            </div>
+                        </div><!-- Top List Post Wrap -->
                     </div>
                 </div>
-                <!-- About Wrap -->
-            </div>
-        </div>
-    </section>
-
+            </section>
 </template>
 <script>
 import axios from 'axios';
@@ -69,7 +45,7 @@ export default {
                 this.image = result.data.docs[0].images;
                 const description = result.data.docs[0].description;
                 this.description = description.substring(0,330)
-                console.log(this.image);
+                //console.log(this.event);
             } catch (e) {
                 console.log(e.message);
             }
