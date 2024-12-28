@@ -12,6 +12,7 @@ import Event from '@/Pages/Event.vue';
 import NewsDetail from '@/components/ui/news-detail.vue';
 import News from '@/Pages/News.vue';
 import Contact from '@/Pages/Contact.vue';
+import About from '@/Pages/About.vue';
 
 export default [
     { path: '/', component: HomePage },
@@ -22,7 +23,7 @@ export default [
     { path: '/eventimagedetail', component: EventsImageDetail },
     { path: '/eventplacelisitng', component: EventsPlacesListing },
     { path: '/placewithmap', component: PlaceListingWithMap1 },
-    { path: '/aboutus', component: AboutUs },
+    { path: '/about', component: About },
     { path: '/contact', component: Contact },
     { path: '/news', component: News },
     { path: '/media', component: Media },

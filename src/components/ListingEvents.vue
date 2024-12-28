@@ -7,8 +7,8 @@
             ></div>
             <div class="container">
                 <div class="sec-title text-center w-100">
-                    <span class="d-block thm-clr">Restaurants Event</span>
-                    <h2 class="mb-0">Top Listing Events</h2>
+                    <span class="d-block thm-clr">ព្រឹត្តិការណ៍ថ្មីៗ</span>
+                    <h2 class="mb-0">ចំណាត់ថ្នាក់ព្រឹត្តិការណ៍សំខាន់ៗ</h2>
                 </div>
                 <!-- Sec Title -->
                 <div class="">

@@ -3,8 +3,8 @@
                 <div class="w-100 pb-140 position-relative">
                     <div class="container">
                         <div class="sec-title text-center w-100">
-                            <span class="d-block thm-clr">Restaurants Event</span>
-                            <h2 class="mb-0">Top Listing Events</h2>
+                            <span class="d-block thm-clr">Upcoming Event</span>
+                            <h2 class="mb-0">ព្រឹត្តិការណ៍ជិតនិងមកដល់</h2>
                         </div><!-- Sec Title -->
                         <div class="top-list-post-wrap position-relative w-100">
                             <div class="top-list-img position-relative">

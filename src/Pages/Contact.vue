@@ -99,6 +99,15 @@ export default{
         sendMessage(){
             console.log(this.param)
             emailjs.send('service_yeq08zw','template_odbtt2m',this.param).then(alert('email send!!'))
+            this.clearForm()
+        },
+        clearForm(){  
+            this.param = {
+                name: '',
+                email: '',
+                phone: '',
+                message: '',
+            }
         }
       
     }

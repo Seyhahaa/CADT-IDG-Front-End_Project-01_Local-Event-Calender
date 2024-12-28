@@ -2,8 +2,8 @@
     <section>
         <div class="w-100 pb-10 position-relative">
             <div class="sec-title text-center w-100">
-                <span class="d-block thm-clr">acinia viverra lectus. Fusce imperdiet</span>
-                <h2 class="mb-0">There are many upcoming events during this end of year</h2>
+                <span class="d-block thm-clr">ព្រឹត្តិការណ៍សំខាន់ក្នុងប្រភេទនីមួយៗ</span>
+                <h2 class="mb-0">មានព្រឹត្តិការណ៍នាពេលខាងមុខជាច្រើនក្នុងដំណាច់ឆ្នាំនេះ</h2>
             </div>
             <!-- Sec Title -->
             <div class="feat-post-wrap w-100">
@@ -41,7 +41,7 @@
                             </div>
                             <!-- <a class="thm-btn" href="event-detail2.html" title="">Discover Now</a> -->
                             <router-link class="thm-btn" to="/eventdetail">
-                                Discover Now
+                                ស្វែងរកបន្ត
                             </router-link>
                         </div>
                     </div>

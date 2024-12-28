@@ -13,27 +13,27 @@
                         </h2>
                         <form class="dir-form d-flex">
                             <div class="field">
-                                <label class="thm-clr">I'am looking for</label>
-                                <input type="text" placeholder="Event name" />
+                                <label class="thm-clr">ខ្ញុំកំពុងចង់រកអំពី...</label>
+                                <input type="text" placeholder="ឈ្មេាះកម្មវិធី" />
                                 <i class="fas fa-search"></i>
                             </div>
                             <div class="field loc">
-                                <label class="thm-clr">Location</label>
-                                <input type="text" placeholder="15th Feb 2016" />
+                                <label class="thm-clr">ទីតាំង</label>
+                                <input type="text" placeholder="ភ្នំពេញ" />
                                 <i class="fas fa-map-marker-alt"></i>
                             </div>
                             <div class="field slc">
                                 <div class="slc-wp">
                                     <select>
-                                        <option>All Categories</option>
-                                        <option>Category Style 1</option>
-                                        <option>Category Style 2</option>
-                                        <option>Category Style 3</option>
+                                        <option>គ្រប់ប្រភេទកម្មវិធី</option>
+                                        <option>ការតាំងពិពណ៌</option>
+                                        <option>សិក្ខាសាលា</option>
+                                        <option>កិច្ចប្រជុំ</option>
                                     </select>
                                 </div>
                             </div>
                             <button class="thm-btn" type="submit">
-                                <i class="fas fa-search"></i>DISCOVER NOW
+                                <i class="fas fa-search"></i>ស្វែងរកឥឡូវនេះ
                             </button>
                         </form>
                         <!-- <div class="dir-cate-wrap text-center w-100">
