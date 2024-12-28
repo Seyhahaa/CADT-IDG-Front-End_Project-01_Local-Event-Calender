@@ -163,7 +163,6 @@ ol.breadcrumb > li.breadcrumb-item,
 	background: linear-gradient(90deg, rgba(214,105,34,1) 0%, rgba(207,67,40,1) 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d66922', endColorstr='#cf4328',GradientType=1 );
 	-webkit-background-clip: text;
- 	-webkit-text-fill-color: transparent;
 }
 
 .login-btn:hover,
@@ -236,21 +235,3 @@ ul.nav-tabs > li.nav-item a.nav-link.active,
 }
 
 
-{
-	border-top-color: #d35924;
-}
-
-.feat-inner2 > p a
-{
-	border-bottom-color: #d35924;
-}
-
-
-{
-	border-left-color: #d35924;
-}
-
-
-{
-	border-right-color: #d35924;
-}

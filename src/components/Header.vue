@@ -49,11 +49,16 @@
                             <router-link to="/aboutus">About Us</router-link>
                         </li>
                         <li class="menu-item">
-                            <router-link to="/contact-us">Contact Us</router-link>
+                            <router-link class="text-xl" to="/contact">ទំនាក់ទំនងមក</router-link>
                         </li>
-                        <li class="menu-item">
-                            <router-link to="/login">Upload Event</router-link>
-                        </li>
+                        <button class="menu-item">
+                            <router-link to="/login">
+                                <h4 class="!text-white cursor-pointer mb-3 px-4 py-3 !border-2 !border-[#cf4328]
+                                hover:bg-[#cf4328] group-hover:text-white">
+                                    បង្ហេាះព្រឹត្តិការ
+                                </h4> 
+                            </router-link>
+                        </button>
                     </ul>
                 </div>
             </nav>

@@ -4,7 +4,6 @@ import EventsImageDetail from '@/Events/EventsImageDetail.vue';
 import EventsPlacesListing from '@/PlacesListing.vue/EventsPlacesListing.vue';
 import PlaceListingWithMap1 from '@/PlacesListing.vue/PlaceListingWithMap1.vue';
 import AboutUs from '@/components/AboutUs.vue';
-import ContactUs from '@/components/ContactUs.vue';
 import OurBlog from '@/components/OurBlog.vue';
 import Media from '@/components/Media.vue';
 import PageNotFound from '@/components/pageNotFound.vue';
@@ -12,6 +11,7 @@ import HomePage from '@/Pages/HomePage.vue';
 import Event from '@/Pages/Event.vue';
 import NewsDetail from '@/components/ui/news-detail.vue';
 import News from '@/Pages/News.vue';
+import Contact from '@/Pages/Contact.vue';
 
 export default [
     { path: '/', component: HomePage },
@@ -23,7 +23,7 @@ export default [
     { path: '/eventplacelisitng', component: EventsPlacesListing },
     { path: '/placewithmap', component: PlaceListingWithMap1 },
     { path: '/aboutus', component: AboutUs },
-    { path: '/contactus', component: ContactUs },
+    { path: '/contact', component: Contact },
     { path: '/news', component: News },
     { path: '/media', component: Media },
     { path: '/:pathMatch(.*)*', component: PageNotFound },
