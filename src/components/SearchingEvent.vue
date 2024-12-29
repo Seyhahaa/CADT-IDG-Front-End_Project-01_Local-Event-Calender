@@ -11,29 +11,29 @@
                             
                             ព្រឹត្តិការណ៍នាពេលខាងមុខនៅជុំវិញអ្នក...
                         </h2>
-                        <form class="dir-form d-flex">
+                        <form class="dir-form d-flex" @submit.prevent="submitForm">
                             <div class="field">
                                 <label class="thm-clr">ខ្ញុំកំពុងចង់រកអំពី...</label>
-                                <input type="text" placeholder="ឈ្មេាះកម្មវិធី" />
+                                <input type="text" v-model="title" placeholder="ឈ្មេាះកម្មវិធី" />
                                 <i class="fas fa-search"></i>
                             </div>
                             <div class="field loc">
                                 <label class="thm-clr">ទីតាំង</label>
-                                <input type="text" placeholder="ភ្នំពេញ" />
+                                <input type="text" v-model="address" placeholder="ភ្នំពេញ" />
                                 <i class="fas fa-map-marker-alt"></i>
                             </div>
                             <div class="field slc">
                                 <div class="slc-wp">
-                                    <select>
-                                        <option>គ្រប់ប្រភេទកម្មវិធី</option>
-                                        <option>ការតាំងពិពណ៌</option>
-                                        <option>សិក្ខាសាលា</option>
-                                        <option>កិច្ចប្រជុំ</option>
+                                    <select v-model="category">
+                                        <option value="">គ្រប់ប្រភេទកម្មវិធី</option>
+                                        <option value="exhibition">ការតាំងពិពណ៌</option>
+                                        <option value="seminar">សិក្ខាសាលា</option>
+                                        <option value="conference">កិច្ចប្រជុំ</option>
                                     </select>
                                 </div>
                             </div>
                             <button class="thm-btn" type="submit">
-                                <i class="fas fa-search"></i>ស្វែងរកឥឡូវនេះ
+                              <i class="fas fa-search"></i>ស្វែងរកឥឡូវនេះ
                             </button>
                         </form>
                         <!-- <div class="dir-cate-wrap text-center w-100">
@@ -77,4 +77,65 @@
             </div>
         </div>
     </section>
+    <!-- <section>
+     <SearchEvent v-for="item in event" :key="item.id"
+      :title = "item.title"
+      :description = "item.description"
+      :date = "item.date"
+      :address = "item.location"
+      :images = "item.images"
+      :category = "item.category"
+
+      :name = "item.uploadBy.firstname"
+      :pfofile = "item.uploadBy.path"
+      :email = "item.uploadBy.email"
+     />
+    </section> -->
 </template>
+<script>
+import { searchStore } from '@/stores/searchStore';
+import axios from 'axios';
+import { mapActions } from 'pinia';
+import SearchEvent from './ui/searchEvent.vue';
+
+export default{
+  components: { SearchEvent },
+  data(){
+    return {
+      event: '',
+      
+        title: '',
+        address: '',
+        category: '',
+      
+    }
+  },
+  methods: {
+        // async submitForm(){
+        //   console.log(this.title,this.address,this.category);
+        //   try {
+        //         const response = await axios.get(`${process.env.VUE_APP_SERVER}/event/search-events?title=${this.title}&address=${this.address}&category=${this.category}`)
+        //         //console.log(response.data) 
+        //         if(response.status == 200){
+        //           const array = JSON.stringify(response.data)
+        //           this.event = JSON.parse(array);
+        //           console.log(this.event)
+        //           this.$router.push('/search-event')
+        //         }
+
+        //     } catch (error) {
+        //         console.log(error.messaga);
+        //     }
+
+        // }
+
+        ...mapActions(searchStore, ['searchEvent']),
+        async submitForm() {
+            await this.searchEvent(this.title, this.address, this.category)
+            this.$router.push('/search-event')
+        }
+    },
+
+  }
+</script>
+
