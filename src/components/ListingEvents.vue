@@ -16,10 +16,9 @@
                 <div v-for="(item, index) in event" :key="index">
                         <div class="post-box brd-rd5 w-100 overflow-hidden">
                             <div class="post-img w-100">
-                                <span class="rounded-pill bg-white position-absolute">Now Closed</span>
                                 <routerLink :to="`/event/${item._id}`" title=""
                                     ><img
-                                        class="img-fluid w-100"
+                                        class="h-[15rem] object-cover w-100"
                                         :src="item.images"
                                         alt="Post Image 1"
                                 /></routerLink>
@@ -105,7 +104,7 @@ export default {
             try {
                 const result = await axios.get(`${process.env.VUE_APP_SERVER}/event/all-events?limit=6`);
                 this.event = result.data.docs;
-                console.log(this.event);
+                //console.log(this.event);
             } catch (e) {
                 console.log(e.message);
             }

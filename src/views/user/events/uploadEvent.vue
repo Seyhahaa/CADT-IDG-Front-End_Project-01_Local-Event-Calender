@@ -16,80 +16,86 @@
 
         <section class="bg-gray-100">
             <div class="mx-auto max-w-screen-xl px-4 py-6 sm:px-6 lg:px-6">
-                <form @submit.prevent="uploadEvent" class="space-y-4">
+                <Form @submit="uploadEvent" class="space-y-4">
                     <div class="grid grid-cols-1 gap-x-8 gap-y-8 lg:grid-cols-5">
                         <div class="rounded-lg bg-white p-8 shadow-lg lg:col-span-3 lg:p-12">
                             <div class="mb-5">
                                 <label class="sr-only" for="name">Title</label>
-                                <input
-                                    class="w-full rounded-lg border-gray-200 p-3 text-sm"
-                                    placeholder="Event title"
+                                <Field
+                                    class="w-full rounded-lg required border-gray-200 p-3 text-sm" name="title"
+                                    placeholder="ឈ្មេាះកម្មវិធី"
+                                    :rules="titleRule"
                                     type="text"
                                     id="title"
                                     v-model="formData.title"
                                 />
+                                <ErrorMessage class="text-red-400" name="title" />
                             </div>
 
                             <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 mb-5">
-                                <div>
-                                    <input
-                                   
-                                        class="w-full rounded-lg border-gray-200 p-3 text-sm"
-                                        placeholder="Email"
-                                        type="email"
-                                        id="email"
-                                        v-model="formData.email"
-                                    />
-                                </div>
-
-                                <div class="mb-5">
-                                    <label class="sr-only" for="phone">Phone</label>
-                                    <input
-                                        class="w-full rounded-lg border-gray-200 p-3 text-sm"
-                                        placeholder="Phone Number"
-                                        type="tel"
-                                        id="phone"
-                                        v-model="formData.phone"
-                                    />
-                                </div>
+                                
                                 <div class="mb-5">
                                     <label class="sr-only" for="name">Address</label>
-                                    <input
-                                        class="w-full rounded-lg border-gray-200 p-3 text-sm"
-                                        placeholder="Address"
+                                    <Field
+                                        class="w-full rounded-lg border-gray-200 p-3 text-sm" name="address"
+                                        placeholder="អាស័យដ្ខាន"
                                         type="text"
                                         id="address"
+                                        :rules="addressRule"
                                         v-model="formData.address"
                                     />
+                                    <ErrorMessage class="text-red-400" name="address" />
                                 </div>
                                 <div class="mb-5">
                                     <label class="sr-only" for="name">Category</label>
-                                    <input
+                                    <!-- <input
                                         class="w-full rounded-lg border-gray-200 p-3 text-sm"
-                                        placeholder="Category"
+                                        placeholder="ប្រភេទកម្មវិធី"
                                         type="text"
                                         id="category"
                                         v-model="formData.category"
+                                    /> -->
+                                    <select v-model="formData.category" class="w-full rounded-lg border-gray-200 p-3 text-sm">
+                                        <option value="">គ្រប់ប្រភេទកម្មវិធី</option>
+                                        <option value="exhibition">ការតាំងពិពណ៌</option>
+                                        <option value="seminar">សិក្ខាសាលា</option>
+                                        <option value="conference">កិច្ចប្រជុំ</option>
+                                        <option value="social event">កម្មវិធីសង្គម</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="mb-5">
+                                    <label class="" for="name">ថ្ងៃចាប់ផ្តើម</label>
+                                    <Field
+                                        class="w-full rounded-lg border-gray-200 p-3 text-sm" name="date"
+                                        placeholder="ពេលវេលា​ និងកាលបរិច្ឆេទ"
+                                        type="datetime-local"
+                                        :rules="dateRule"
+                                        id="startdate"
+                                        v-model="formData.startdate"
+                                    />
+                                    <ErrorMessage class="text-red-400" name="date" />
+                                </div>
+                                <div class="mb-5">
+                                    <label class="" for="name">ថ្ងៃបញ្ចប់</label>
+                                    <input
+                                        class="w-full rounded-lg border-gray-200 p-3 text-sm"
+                                        placeholder="ពេលវេលា​ និងកាលបរិច្ឆេទ"
+                                        type="datetime-local"
+                                        id="enddate"
+                                        v-model="formData.enddate"
                                     />
                                 </div>
                                 <div class="mb-5">
-                                    <label class="text-gray-400" for="name">Your Profile Picture</label>
-                                    <input
-                                        class="w-full rounded-lg border-gray-200 p-3 text-sm"
+                                    <label class="text-gray-400" for="name">រូបភាពអំពីកម្មវិធី</label>
+                                    <Field
+                                        class="w-full rounded-lg border-gray-200 p-3 text-sm" name="file"
                                          @change="onFileSelected"
                                         type="file"
-                                        id="files"
+                                        id="file"
+                                        :rules="fileRule"
                                     />
-                                </div>
-                                <div class="mb-5">
-                                    <label class="sr-only" for="name">Category</label>
-                                    <input
-                                        class="w-full rounded-lg border-gray-200 p-3 text-sm"
-                                        placeholder="Date And Time"
-                                        type="datetime-local"
-                                        id="date"
-                                        v-model="formData.date"
-                                    />
+                                    <ErrorMessage class="text-red-400" name="file" />
                                 </div>
                             </div>
                         </div>
@@ -98,13 +104,15 @@
                             <div class="">
                                 <label class="sr-only" for="message">description</label>
 
-                                <textarea
-                                    class="w-full rounded-lg border-gray-200 p-3 text-sm"
-                                    placeholder="Description"
+                                <Field as="textarea"
+                                    class="w-full rounded-lg border-gray-200 p-3 text-sm" name="description"
+                                    placeholder="ខ្លឹមសារកម្មវិធី"
                                     rows="18"
                                     id="description"
+                                    :rules="descriptionRule"
                                     v-model="formData.description"
-                                ></textarea>
+                                ></Field>
+                                <ErrorMessage class="text-red-400" name="description" />
                             </div>
                             <div class="flex justify-end mt-5">
                             <button
@@ -117,7 +125,7 @@
                         </div>
                         
                     </div>
-                </form>
+                </Form>
             </div>
         </section>
     </div>
@@ -126,19 +134,34 @@
 <script>
 import { useRoute } from 'vue-router';
 import axios from 'axios';
+import { ErrorMessage, Field, FieldContextKey, Form } from 'vee-validate';
+import * as Yup from "yup";
 export default {
+    components: {
+        Form,
+        Field,
+        ErrorMessage,
+    },
     data() {
         return {
             eventId: useRoute().params.id,
+
+            titleRule: Yup.string().required(),
+            descriptionRule: Yup.string().min(200).required(),
+            addressRule: Yup.string().required(),
+            dateRule: Yup.string().required(),
+            fileRule: Yup.string().required(),
+
+
             data: '',
             formData: {
                 title: '',
                 description: '',
-                phone: '',
                 address: '',
                 category: '',
-                date: '',
-                files: [],
+                enddate: '',
+                startdate: '',
+                file: null,
             },
         };
     },
@@ -153,8 +176,9 @@ export default {
             formData.append('phone', this.formData.phone);
             formData.append('address', this.formData.address);
             formData.append('category', this.formData.category);
-            formData.append('date', this.formData.date);
-            formData.append('files', this.formData.files);
+            formData.append('startdate', this.formData.startdate);
+            formData.append('enddate', this.formData.enddate);
+            formData.append('file', this.formData.file);
             console.log(this.formData.title);
             try{
             const response = await axios.post(`${process.env.VUE_APP_SERVER}/event/`,formData,
@@ -168,8 +192,8 @@ export default {
             }catch(e){console.log(e.message)}
         },
     onFileSelected(event){
-        this.formData.files = event.target.files;
-        console.log(this.formData.files);
+        this.formData.file = event.target.files[0];
+        console.log(this.formData.file);
     }
 },
     

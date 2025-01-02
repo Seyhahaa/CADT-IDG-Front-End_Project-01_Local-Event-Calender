@@ -5,12 +5,12 @@
             <div class="fixed-bg" style="background-image: url(https://images.unsplash.com/photo-1503428593586-e225b39bddfe?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjR8fEV2ZW50fGVufDB8fDB8fHww)"></div>
             <div class="container">
                 <div class="pg-tp-wrp text-center w-100">
-                    <h1 class="mb-0">All Events</h1>
+                    <h1 class="mb-0">ព្រឹត្តិការណ៍ទាំងអស់</h1>
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
-                            <routerLink to="/" title="Home">Home</routerLink>
+                            <routerLink to="/" title="Home">ទំព័រដើម</routerLink>
                         </li>
-                        <li class="breadcrumb-item active">Events</li>
+                        <li class="breadcrumb-item active">ព្រឹត្តិការណ៍ទាំងអស់</li>
                     </ol>
                 </div>
                 <!-- Page Top Wrap -->
@@ -36,27 +36,27 @@
                                 <div class="col-md-6 col-sm-6 col-lg-4" v-for="item in data" :key="item.id">
                                     <div class="list-post-box brd-rd5 overflow-hidden position-relative w-100">
                                         <div class="list-post-img overflow-hidden position-relative w-100">
-                                            <img class="img-fluid w-100" :src="item.images" alt="List Post Image 1">
+                                            <img class="h-[15rem] object-cover w-100" :src="item.images" alt="List Post Image 1">
                                             <span class="list-post-cat position-absolute"><a class="rounded-pill" href="javascript:void(0);" title="">{{ item.category }}</a></span>
                                             <span class="list-post-like position-absolute rounded-circle"><a class="" href="javascript:void(0);" title=""><i class="far fa-heart"></i></a></span>
                                         </div>
                                         <div class="list-post-info w-100">
                                             <div class="list-post-inner w-100">
                                                 <div class="list-post-info-top d-flex flex-wrap justify-content-between">
-                                                    <span class="list-post-date"><i class="thm-clr far fa-clock"></i>27 May 2020</span>
-                                                    <span class="list-post-rate text-color2"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><span>4.0/5</span></span>
+                                                    <span class="list-post-date"><i class="thm-clr far fa-clock"></i>{{ item.date }}</span>
+                                                    <span class="list-post-rate text-color2"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><span></span></span>
                                                 </div>
-                                                <h3 class="mb-0"><routerLink :to="`event/${item._id}`" title="">Seafood Rooftop into Dinner and Wine</routerLink></h3>
+                                                <h3 class="mb-0 line-clamp-3"><routerLink :to="`event/${item._id}`" title="">{{item.title}}</routerLink></h3>
                                                 <div class="list-post-author-stats d-flex flex-wrap justify-content-between align-items-center">
                                                     <div class="list-post-author d-inline-flex align-items-center">
-                                                        <img class="rounded-circle img-fluid" src="assets/images/resources/author-img1-1.jpg" alt="Author Image 1">
-                                                        <span>By Master Event</span>
+                                                        <img class="rounded-circle w-8" :src="item.uploadBy.path" alt="Author Image 1">
+                                                        <span>By {{ item.uploadBy.firstname }}</span>
                                                     </div>
-                                                    <span class="rounded-pill bg-color5">Open</span>
+                                                    
                                                 </div>
                                             </div>
                                             <ul class="list-post-meta mb-0 list-unstyled">
-                                                <li class="active"><i class="thm-clr fas fa-map-marker-alt"></i><span>27th Brooklyn New York, USA</span></li>
+                                                <li class="active"><i class="thm-clr fas fa-map-marker-alt"></i><span>{{item.address}}</span></li>
                                                 <li v-if="item.uploadBy.phone == undefined "><i class="thm-clr far fa-envelope"></i><a href="javascript:void(0);" title="">+61 2 8236 9200</a></li>
                                                 <li v-else><i class="thm-clr far fa-envelope"></i><a href="javascript:void(0);" title="">{{ item.uploadBy.phone }}</a></li>
                                             </ul>

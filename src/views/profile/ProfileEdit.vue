@@ -7,17 +7,9 @@
             </p>
         </div>
 
-        <!-- Loading State -->
-        <div v-if="userStore.loading" class="mt-6 text-center">
-            <p class="text-gray-500">Loading profile...</p>
-        </div>
+        
 
-        <!-- Error State -->
-        <div v-else-if="userStore.error" class="mt-6 text-center text-red-600">
-            {{ userStore.error }}
-        </div>
-
-        <form v-else @submit.prevent="handleSubmit" class="mt-6">
+        <Form @submit="handleSubmit" class="mt-6">
             <!-- Basic Information -->
             <div class="space-y-12">
                 <div class="border-b border-gray-900/10 pb-12">
@@ -26,15 +18,71 @@
                             <label
                                 for="name"
                                 class="block text-sm font-medium leading-6 text-gray-900"
-                                >Full name</label
+                                >First Name</label
                             >
                             <div class="mt-2">
-                                <input
+                                <input name="firstname"
                                     type="text"
-                                    id="name"
-                                    v-model="formData.name"
+                                    :placeholder="user.firstname"
+                                    :rules="firstnameRule"
+                                    id="firstname"
+                                    v-model="formData.firstname"
                                     class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                 />
+                                <ErrorMessage class="text-red-400" name="firstname" />
+                            </div>
+                        </div>
+                        <div class="sm:col-span-4">
+                            <label
+                                for="name"
+                                class="block text-sm font-medium leading-6 text-gray-900"
+                                >Last Name</label
+                            >
+                            <div class="mt-2">
+                                <Field name="lastname"
+                                    type="text"
+                                    :placeholder="user.lastname"
+                                    :rules="lastnameRule"
+                                    id="lastname"
+                                    v-model="formData.lastname"
+                                    class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                />
+                                <ErrorMessage class="text-red-400" name="lastname" />
+                            </div>
+                        </div>
+                        <div class="sm:col-span-4">
+                            <label
+                                for="date"
+                                class="block text-sm font-medium leading-6 text-gray-900"
+                                >Data of Birth</label
+                            >
+                            <div class="mt-2">
+                                <Field name="date"
+                                    type="date"
+                                    id="dob"
+                                    v-model="formData.date"
+                                    class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                />
+
+                            </div>
+                        </div>
+
+                        <div class="sm:col-span-4">
+                            <label
+                                for="gender"
+                                class="block text-sm font-medium leading-6 text-gray-900"
+                                >Gender</label
+                            >
+                            <div class="mt-2">
+                                <select v-model="formData.gender" name="gender"  required :rules="genderRule"
+                                class="w-full rounded-lg border-gray-200 p-3 text-sm">
+                                        <option value="">{{ user.gender }}</option>
+                                        <option value="female">Male</option>
+                                        <option value="male">Female</option>
+                                        <option value="other">Other</option>
+
+                                    </select>
+                                    <ErrorMessage class="text-red-400" name="gender" />
                             </div>
                         </div>
 
@@ -45,12 +93,15 @@
                                 >Email address</label
                             >
                             <div class="mt-2">
-                                <input
+                                <Field name="email"
                                     type="email"
+                                    :placeholder="user.email"
+                                    :rules="emailRule"
                                     id="email"
                                     v-model="formData.email"
                                     class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                 />
+                                <ErrorMessage class="text-red-400" name="email" />
                             </div>
                         </div>
 
@@ -61,32 +112,92 @@
                                 >Phone number</label
                             >
                             <div class="mt-2">
-                                <input
+                                <Field name="phone"
                                     type="tel"
+                                    :placeholder="user.phone"
+                                    :rules="phoneRule"
                                     id="phone"
                                     v-model="formData.phone"
                                     class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                 />
+                                <ErrorMessage class="text-red-400" name="phone" />
                             </div>
                         </div>
 
                         <div class="sm:col-span-4">
                             <label
-                                for="location"
+                                for="address"
                                 class="block text-sm font-medium leading-6 text-gray-900"
-                                >Location</label
+                                >Address</label
                             >
                             <div class="mt-2">
-                                <input
+                                <Field name="address"
+                                    :rules="addressRule"
+                                    :placeholder="user.address"
                                     type="text"
-                                    id="location"
-                                    v-model="formData.location"
+                                    id="address"
+                                    v-model="formData.address"
                                     class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                 />
+                                <ErrorMessage class="text-red-400" name="address" />
                             </div>
                         </div>
+                        <div class="sm:col-span-4">
+                            <label
+                                for="file"
+                                class="block text-sm font-medium leading-6 text-gray-900"
+                                >Photo</label
+                            >
+                            <div class="mt-2">
+                                <Field @change="handlefile" name="file"
+                                    type="file"
+                                    :rules="fileRule"
+                                    id="file"
+                                    class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                />
+                                <ErrorMessage class="text-red-400" name="file" />
+                            </div>
+                        </div>
+                        <div class="sm:col-span-4">
+                            <label
+                                for="Organization"
+                                class="block text-sm font-medium leading-6 text-gray-900"
+                                >Organization</label
+                            >
+                            <div class="mt-2">
+                                <Field name="organization"
+                                    :placeholder="user.organization"
+                                    type="text"
+                                    :rules="organizationRule"
+                                    id="organization"
+                                    v-model="formData.organization"
+                                    class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                />
+                                <ErrorMessage class="text-red-400" name="organization" />
+                            </div>
+                        </div>
+                        <div class="sm:col-span-4">
+                            <label
+                                for="position"
+                                class="block text-sm font-medium leading-6 text-gray-900"
+                                >Position</label
+                            >
+                            <div class="mt-2">
+                                <Field name="position"
+                                    :placeholder="user.position"
+                                    :rules="positionRule"
+                                    type="text"
+                                    id="organization"
+                                    v-model="formData.position"
+                                    class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                />
+                                <ErrorMessage class="text-red-400" name="position" />
+                            </div>
+                        </div>
+                        
+                        
 
-                        <div class="col-span-full">
+                        <!-- <div class="col-span-full">
                             <label
                                 for="about"
                                 class="block text-sm font-medium leading-6 text-gray-900"
@@ -100,58 +211,14 @@
                                     class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                 ></textarea>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
 
-                <!-- Interests -->
-                <div class="border-b border-gray-900/10 pb-12">
-                    <h2 class="text-base font-semibold leading-7 text-gray-900">Interests</h2>
-                    <div class="mt-10 space-y-6">
-                        <div class="flex gap-x-3">
-                            <div class="flex-grow">
-                                <input
-                                    type="text"
-                                    v-model="newInterest"
-                                    @keyup.enter="addInterest"
-                                    placeholder="Add an interest"
-                                    class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                />
-                            </div>
-                            <button
-                                type="button"
-                                @click="addInterest"
-                                class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500"
-                            >
-                                Add
-                            </button>
-                        </div>
-                        <div class="flex flex-wrap gap-2">
-                            <span
-                                v-for="interest in formData.interests"
-                                :key="interest"
-                                class="inline-flex items-center gap-x-1 rounded-md bg-gray-100 px-2 py-1 text-sm font-medium text-gray-600"
-                            >
-                                {{ interest }}
-                                <button
-                                    type="button"
-                                    @click="removeInterest(interest)"
-                                    class="group relative rounded-sm hover:bg-gray-200"
-                                >
-                                    <span class="sr-only">Remove interest {{ interest }}</span>
-                                    <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                                        <path
-                                            d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z"
-                                        />
-                                    </svg>
-                                </button>
-                            </span>
-                        </div>
-                    </div>
-                </div>
+               
 
                 <!-- Social Links -->
-                <div class="border-b border-gray-900/10 pb-12">
+                <!-- <div class="border-b border-gray-900/10 pb-12">
                     <h2 class="text-base font-semibold leading-7 text-gray-900">Social Links</h2>
                     <div class="mt-10 space-y-6">
                         <div class="flex gap-x-3">
@@ -179,64 +246,12 @@
                                 Add
                             </button>
                         </div>
-                        <div class="space-y-2">
-                            <div
-                                v-for="(link, platform) in formData.socialLinks"
-                                :key="platform"
-                                class="flex items-center justify-between rounded-md border border-gray-200 p-2"
-                            >
-                                <div>
-                                    <span class="font-medium">{{ platform }}:</span>
-                                    <a
-                                        :href="link"
-                                        target="_blank"
-                                        class="ml-2 text-indigo-600 hover:text-indigo-500"
-                                        >{{ link }}</a
-                                    >
-                                </div>
-                                <button
-                                    type="button"
-                                    @click="removeSocialLink(platform)"
-                                    class="text-gray-400 hover:text-gray-500"
-                                >
-                                    <span class="sr-only">Remove {{ platform }}</span>
-                                    <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                        <path
-                                            d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z"
-                                        />
-                                    </svg>
-                                </button>
-                            </div>
-                        </div>
+                        
+                        
                     </div>
-                </div>
+                </div> -->
 
-                <!-- Admin-only fields -->
-                <div v-if="isAdmin" class="border-b border-gray-900/10 pb-12">
-                    <h2 class="text-base font-semibold leading-7 text-gray-900">
-                        Administrative Settings
-                    </h2>
-                    <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-                        <div class="sm:col-span-4">
-                            <label
-                                for="accessLevel"
-                                class="block text-sm font-medium leading-6 text-gray-900"
-                                >Access Level</label
-                            >
-                            <div class="mt-2">
-                                <select
-                                    id="accessLevel"
-                                    v-model="formData.accessLevel"
-                                    class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                >
-                                    <option value="user">User</option>
-                                    <option value="moderator">Moderator</option>
-                                    <option value="admin">Admin</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+              
             </div>
 
             <!-- Form Actions -->
@@ -250,102 +265,97 @@
                 <button
                     type="submit"
                     class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                    :disabled="userStore.loading"
+                    
                 >
                     Save
                 </button>
             </div>
-        </form>
+        </Form>
     </div>
 </template>
 
-<script setup>
-    import { ref, computed, onMounted } from 'vue';
-    import { useUserStore } from '@/stores/userStore';
-    import { RouterLink, useRouter, useRoute } from 'vue-router';
+<script>
+import axios from 'axios';
+import * as Yup from "yup";
+import { ErrorMessage, Field, Form } from 'vee-validate';
+export default{
+    components:{
+        Field,
+        Form,
+        ErrorMessage,
+    },
+    data(){
+        return{
+            firstnameRule: Yup.string().required(),
+            laststnameRule: Yup.string().required(),
+            genderRule: Yup.string().oneOf(['Male', 'Female', 'Other']),
+            emailRule: Yup.string().email('Invalid email format').required('Email is required'),
+            phoneRule: Yup.string().required('Phone number is required'),
+            addressRule: Yup.string().required('Address is required'),
+            organizationRule: Yup.string().required('Organization is required'),
+            positionRule: Yup.string().required('Position is required'),
+            fileRule: Yup.string().required('File is required'),
 
-    const router = useRouter();
-    const route = useRoute();
-    const userStore = useUserStore();
+            user: '',
 
-    const isAdmin = computed(() => {
-        return route.path.startsWith('/admin') || userStore.user?.role === 'admin';
-    });
+            formData:{
+                firstname:'',
+                lastname:'',
+                email:'',
+                phone:'',
+                address:'',
+                gender:'',
+                organization:'',
+                position:'',
+                dob: '',
+                file:null,
+            },
+        }
+    },
 
-    const profileRoute = computed(() => {
-        return isAdmin.value ? '/admin/profile' : '/user/profile';
-    });
+    methods:{
+        async handleSubmit(){
+            const formData = new FormData();
+            formData.append('firstname', this.formData.firstname);
+            formData.append('lastname', this.formData.lastname);
+            formData.append('email', this.formData.email);
+            formData.append('phone', this.formData.phone);
+            formData.append('address', this.formData.address);
+            formData.append('gender', this.formData.gender);
+            formData.append('organization', this.formData.organization);
+            formData.append('position', this.formData.position);
+            formData.append('dob', this.formData.dob);
+            formData.append('file', this.formData.file);
 
-    const formData = ref({
-        name: '',
-        email: '',
-        phone: '',
-        location: '',
-        about: '',
-        interests: [],
-        socialLinks: {},
-        accessLevel: 'user',
-    });
-
-    const newInterest = ref('');
-    const newSocialPlatform = ref('');
-    const newSocialLink = ref('');
-
-    // Initialize form data from store
-    onMounted(async () => {
-        try {
-            const userId = userStore.user?.id;
-            if (!userId) {
-                console.error('No user ID available');
-                return;
+            try{
+                const response = await axios.put(`${process.env.VUE_APP_SERVER}/user/update-user/${this.user._id}`,formData)
+                if(response.status == 200){
+                    localStorage.removeItem('user');
+                    localStorage.setItem('user', JSON.stringify(response.data));
+                }
+                 this.$router.push("/user/profile")
+            }catch(e){
+                alert(e.message);
             }
-            await userStore.fetchUserProfile(userId);
-            if (userStore.userProfile) {
-                formData.value = {
-                    ...formData.value,
-                    ...userStore.userProfile,
-                    interests: userStore.userProfile.interests || [],
-                    socialLinks: userStore.userProfile.socialLinks || {},
-                };
-            }
-        } catch (error) {
-            console.error('Error loading profile:', error);
-        }
-    });
 
-    // Interest management
-    function addInterest() {
-        if (newInterest.value.trim()) {
-            formData.value.interests.push(newInterest.value.trim());
-            newInterest.value = '';
-        }
-    }
+        },
+        getUserProfile(){
+            const user = localStorage.getItem("user")
+            this.user = JSON.parse(user);
+            
+            console.log(this.user);
+        },
 
-    function removeInterest(interest) {
-        formData.value.interests = formData.value.interests.filter((i) => i !== interest);
-    }
+        async handlefile(event){
+            this.formData.file = event.target.files[0];
+        },
 
-    // Social links management
-    function addSocialLink() {
-        if (newSocialPlatform.value.trim() && newSocialLink.value.trim()) {
-            formData.value.socialLinks[newSocialPlatform.value.trim()] = newSocialLink.value.trim();
-            newSocialPlatform.value = '';
-            newSocialLink.value = '';
-        }
-    }
+    },
+    mounted() {
+            const user = localStorage.getItem("user")
+            this.user = JSON.parse(user);
+            console.log(this.user._id);
+        },
+}
 
-    function removeSocialLink(platform) {
-        const { [platform]: removed, ...rest } = formData.value.socialLinks;
-        formData.value.socialLinks = rest;
-    }
-
-    // Form submission
-    async function handleSubmit() {
-        try {
-            await userStore.updateProfile(formData.value);
-            router.push(profileRoute.value);
-        } catch (error) {
-            console.error('Failed to update profile:', error);
-        }
-    }
 </script>

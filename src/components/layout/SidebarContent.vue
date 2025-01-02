@@ -73,7 +73,7 @@
                                 <div class="relative flex justify-start">
                                     <span
                                         class="bg-white pr-2 text-sm font-semibold leading-6 text-gray-900"
-                                        >{{ item.name }}</span
+                                        >{{  }}</span
                                     >
                                 </div>
                             </li>

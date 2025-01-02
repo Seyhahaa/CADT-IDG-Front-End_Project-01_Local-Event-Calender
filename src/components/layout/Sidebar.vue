@@ -28,7 +28,7 @@
         logo: {
             type: Object,
             default: () => ({
-                src: 'https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=600',
+                src: '/assets/Wegocolor.png',
                 alt: 'Your Company',
             }),
         },

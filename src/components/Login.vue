@@ -3,16 +3,16 @@
     <div class="w-100 pt-180 pb-110 black-layer opc45 position-relative">
       <div
         class="fixed-bg"
-        style="background-image: url(assets/images/pg-tp-bg.jpg)"
+        style="background-image: url(https://media.istockphoto.com/id/2054541846/photo/network-security-security-internet-technology-security-internet-data-privacy-technology.webp?a=1&b=1&s=612x612&w=0&k=20&c=y1JjTeeI_jFvqcXtGSBBvaXOzKTfZOiMViV_1o0ZDj8=)"
       ></div>
       <div class="container">
         <div class="pg-tp-wrp text-center w-100">
-          <h1 class="mb-0">Login & Register</h1>
+          <h1 class="mb-0">ចូលប្រើ / ចុះឈ្មេាះ</h1>
           <ol class="breadcrumb">
             <li class="breadcrumb-item">
-              <a href="index.html" title="Home">this is Event calender</a>
+              <a href="index.html" title="Home">ទំព័រដើម</a>
             </li>
-            <li class="breadcrumb-item active">Login & Register</li>
+            <li class="breadcrumb-item active">ចូលប្រើប្រាស់</li>
           </ol>
         </div>
         <!-- Page Top Wrap -->

@@ -70,7 +70,7 @@ import axios from 'axios';
                 const jsonString = JSON.stringify(result.data.docs);
                 this.news = JSON.parse(jsonString);
                 //this.news = result.data;
-                console.log(this.news );
+                //console.log(this.news );
             } catch (e) {
                 console.log(e.message);
             }

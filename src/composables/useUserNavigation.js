@@ -10,7 +10,6 @@ import {
     StarIcon,
     ClipboardDocumentListIcon,
     BuildingStorefrontIcon,
-    UserGroupIcon,
 } from '@heroicons/vue/24/outline';
 import { ref, computed } from 'vue';
 import { useRoute } from 'vue-router';
@@ -38,63 +37,17 @@ export function useUserNavigation() {
             icon: CalendarIcon,
             current: isCurrentRoute('/user/calendar'),
         },
-        {
-            name: 'Favorites',
-            to: '/user/favorites',
-            icon: StarIcon,
-            current: isCurrentRoute('/user/favorites'),
-        },
+
     ];
 
     // Settings navigation
     const settingsNavigation = [
-        { name: 'Settings', type: 'divider' },
-        {
-            name: 'General Settings',
-            to: '/user/settings',
-            icon: Cog6ToothIcon,
-            current: isCurrentRoute('/user/settings'),
-        },
-        {
-            name: 'Security',
-            to: '/user/settings/security',
-            icon: ShieldCheckIcon,
-            current: isCurrentRoute('/user/settings/security'),
-        },
-        {
-            name: 'Notifications',
-            to: '/user/settings/notifications',
-            icon: BellIcon,
-            current: isCurrentRoute('/user/settings/notifications'),
-        },
-        {
-            name: 'Privacy',
-            to: '/user/settings/privacy',
-            icon: UserIcon,
-            current: isCurrentRoute('/user/settings/privacy'),
-        },
+        
     ];
 
     // Organizer-specific navigation items
     const organizerNavigation = [
-        {
-            name: 'Organizer Dashboard',
-            to: '/user/organizer/dashboard',
-            icon: ClipboardDocumentListIcon,
-            current: isCurrentRoute('/user/organizer/dashboard'),
-        },
-        {
-            name: 'My Events',
-            to: '/user/organizer/events',
-            icon: BuildingStorefrontIcon,
-            current: isCurrentRoute('/user/organizer/events'),
-        },
-        {
-            name: 'Organizer Profile',
-            to: '/user/organizer/profile',
-            icon: UserGroupIcon,
-            current: isCurrentRoute('/user/organizer/profile'),
-        },
+        
     ];
 
     // Main navigation computed property

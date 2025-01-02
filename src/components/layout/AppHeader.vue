@@ -2,6 +2,7 @@
     import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue';
     import { Bars3Icon, BellIcon } from '@heroicons/vue/24/outline';
     import { ChevronDownIcon, MagnifyingGlassIcon } from '@heroicons/vue/20/solid';
+import ProfileView from '@/views/profile/ProfileView.vue';
 
     async function logout (){
         localStorage.removeItem('token');
@@ -125,12 +126,14 @@
                             <MenuItems
                                 class="absolute right-0 z-10 mt-2.5 w-32 origin-top-right rounded-md bg-white py-2 shadow-lg ring-1 ring-gray-900/5 focus:outline-none"
                             >
-                                <MenuItem>
+                               
+
+                                    <router-link to="/user/profile">Your Profile</router-link>
                             
                                     <button @click="logout" class="btn btn-danger ml-3">ចាកចេញ</button>
                                         
                                     
-                                </MenuItem>
+                               
                             </MenuItems>
                         </transition>
                     </Menu>

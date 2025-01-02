@@ -12,7 +12,7 @@
                         <div class="feat-post-box position-relative w-100">
                             <div class="feat-post-img position-relative overflow-hidden w-100">
                                 <img
-                                    class="w-100 h-[27rem]"
+                                    class="w-100 object-cover h-[27rem]"
                                     :src="item.images"
                                     alt="Featured Post Image 1"
                                 />
@@ -21,10 +21,9 @@
                                 class="feat-post-info d-flex flex-wrap justify-content-between position-absolute w-100"
                             >
                                 <div class="feat-post-info-inner">
-                                    <h3 class="mb-0">
-                                        <a href="event-detail2.html" title=""
-                                            >{{item.title}}</a
-                                        >
+                                    <h3 class="mb-0 line-clamp-4">
+                                        <routerLink :to="`/category/${item.category}`" title=""
+                                            >{{item.title}}</routerLink>
                                     </h3>
                                     <span class="d-inline-block rate-star text-color2"
                                         ><span class="bg-color3">4.5</span
@@ -40,7 +39,7 @@
                                 >
                             </div>
                             <!-- <a class="thm-btn" href="event-detail2.html" title="">Discover Now</a> -->
-                            <router-link class="thm-btn" to="/eventdetail">
+                            <router-link :to="`/category/${item.category}`" class="thm-btn">
                                 ស្វែងរកបន្ត
                             </router-link>
                         </div>
@@ -54,8 +53,6 @@
 </template>
 <script>
 import axios from 'axios';
-
-
 export default {
     data() {
         return{
