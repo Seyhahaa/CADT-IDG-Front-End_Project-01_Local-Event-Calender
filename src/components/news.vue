@@ -4,7 +4,7 @@
                     <div class="container">
                         <div class="sec-title text-center w-100">
                             <span class="d-block thm-clr">ស្វែងរកដំណឹងចុងក្រោយបំផុតទាក់ទងនិងព្រឹត្តិការរបស់ពួកយើង</span>
-                            <h2 class="mb-0">ពត៌មាន​និងគន្លឹះថ្មីៗ</h2>
+                            <h2 class="mb-0 font-semibold">ពត៌មាន​និងគន្លឹះថ្មីៗ</h2>
                         </div><!-- Sec Title -->
                         <div class="blog-wrap res-row w-100">
                             <div class="row">

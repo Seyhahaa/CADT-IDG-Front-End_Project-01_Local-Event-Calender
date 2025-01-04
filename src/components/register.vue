@@ -3,137 +3,171 @@
             <div class="register-wrap w-100">
               <div class="register-inner">
                 <div class="title2 w-100">
-                  <h2 class="mb-0">Don't have an Account? Register Now</h2>
+                  <h2 class="mb-0">មិនមានគណនីទេ? ចុះឈ្មោះឥឡូវនេះ</h2>
                   <p class="mb-0">
-                    By creating an account with our store, you will be able to
-                    move through the checkout process faster,store multiple
-                    shipping addresses.
+                    តាមរយៈការបង្កើតគណនីជាមួយយើងអ្នកនឹងអាចធ្វើកាបង្ហោះព្រឹត្តិការណ៍និងពត៌មានជាច្រើនទៅកាន់អ្នកមើលគ្រប់ពេលវេលា។
                   </p>
                 </div>
-                <form @submit.prevent="registerNewUser" class="w-100">
+                <Form @submit="registerNewUser" class="w-100">
                   <div class="row mrg20">
                     <div class="col-md-6 col-sm-6 col-lg-6">
-                      <input
+                      <Field name="firstname"
                         class="rounded-pill"
                         type="text"
-                        placeholder="First Name"
+                        :rules="fnameRule"
+                        placeholder="នាមត្រកូល*"
                         id="firstname"
                         v-model="formData.firstname"
                       />
+                      <ErrorMessage class="text-red-400" name="firstname" />
                     </div>
                     <div class="col-md-6 col-sm-6 col-lg-6">
-                      <input
+                      <Field name="lastname"
                         class="rounded-pill"
                         type="text"
-                        placeholder="Last Name"
+                        :rules="lnameRule"
+                        placeholder="នាមខ្លួន*"
                         id="lastname"
                         v-model="formData.lastname"
                       />
+                      <ErrorMessage class="text-red-400" name="lastname" />
                     </div>
                     <div class="col-md-6 col-sm-6 col-lg-6">
-                      <input
-                        class="rounded-pill"
-                        type="text"
-                        placeholder="Gender"
-                        id="gender"
-                        v-model="formData.gender"
-                      />
+                     
+                      <select v-model="formData.gender" class="w-full rounded-full border-gray-200 p-3 text-sm">
+                          <option value="">ភេទ</option>
+                          <option value="male">ប្រុស</option>
+                          <option value="female">ស្រី</option>
+                          <option value="other">ផ្សេងៗ</option>
+                      </select>
                     </div>
                     <div class="col-md-6 col-sm-6 col-lg-6">
-                      <input
+                      <Field name="phone"
                         class="rounded-pill"
                         type="tel"
-                        placeholder="Phone Number"
+                        :rules="phoneRule"
+                        placeholder="លេខទូរស័ព្ទ*"
                         id="phone"
                         v-model="formData.phone"
                       />
+                      <ErrorMessage class="text-red-400" name="phone" />
                     </div>
                     <div class="col-md-6 col-sm-6 col-lg-6">
-                      <input
+                      <Field name="email"
                         class="rounded-pill"
-                        type="tel"
-                        placeholder="Email"
+                        type="email"
+                        :rules="emailRule"
+                        placeholder="អ៊ីម៉េល*"
                         id="email"
                         v-model="formData.email"
                       />
+                      <ErrorMessage class="text-red-400" name="email" />
                     </div>
                     <div class="col-md-6 col-sm-6 col-lg-6">
                       <input
                         class="rounded-pill"
                         type="text"
-                        placeholder="Address"
+                        placeholder="អាស័យដ្ខាន"
                         id="address"
                         v-model="formData.address"
                       />
                     </div>
                     <div class="col-md-6 col-sm-6 col-lg-6">
-                      <input @change="onFileSelected"
+                      <Field @change="onFileSelected" name="file"
                         class="rounded-pill"
                         type="file"
+                        :rules="fileRule"
                         placeholder="Photo"
                       />
+                      <ErrorMessage class="text-red-400" name="file" />
                     </div>
                     <div class="col-md-6 col-sm-6 col-lg-6">
-                      <input
+                      <Field name="organizer"
                         class="rounded-pill"
                         type="text"
-                        placeholder="Companey/Organisation"
+                        placeholder="ក្រុមហ៊ុន/ស្ថាប័ន*"
+                        :rules="organizeRule"
                         id="organization"
                         v-model="formData.organization"
                       />
+                      <ErrorMessage class="text-red-400" name="organizer" />
                     </div>
                     <div class="col-md-6 col-sm-6 col-lg-6">
-                      <input
+                      <Field name="position"
                         class="rounded-pill"
                         type="text"
-                        placeholder="Position"
+                        placeholder="តំណែង*"
+                        :rules="positionRule"
                         id="position"
                         v-model="formData.position"
                       />
+                      <ErrorMessage class="text-red-400" name="position" />
                     </div>
                     <div class="col-md-6 col-sm-6 col-lg-6">
                       <input
                         class="rounded-pill"
                         type="date"
-                        placeholder="Data of Birth"
+                        placeholder="ថ្ងៃខែឆ្នាំកំណើត"
                         id="dob"
                         v-model="formData.dob"
                       />
                     </div>
                     <div class="col-md-6 col-sm-6 col-lg-6">
-                      <input
+                      <Field name="password" ref="password"
                         class="rounded-pill"
                         type="password"
-                        placeholder="Password"
-                        id="newPassword"
+                        :rules="password"
+                        placeholder="លេខសំងាត់*"
+                        id="password"
                         v-model="formData.password"
                       />
+                      <ErrorMessage class="text-red-400" name="password" />
                     </div>
                     <div class="col-md-6 col-sm-6 col-lg-6">
-                      <input
+                      <Field name="cfpassword"
                         class="rounded-pill"
                         type="password"
-                        placeholder="Re - Password"
+                        :rules="cfpassRule"
+                        placeholder="បញ្ចាក់លេខសម្ងាត់*"
                         id="confirmPassword"
                         v-model="formData.confirmPassword"
                       />
+                      <ErrorMessage class="text-red-400" name="cfpassword" />
                     </div>
                     <div class="col-md-12 col-sm-12 col-lg-12">
                       <button class="thm-btn rounded-pill" type="submit">
-                        Register Now
+                        ចុះឈ្មោះឥឡូវនេះ
                       </button>
                     </div>
                   </div>
-                </form>
+                </Form>
               </div>
             </div>
           </div>
 </template>
 <script>
     import axios from 'axios';
+    import { ErrorMessage, Field, Form } from 'vee-validate';
+import * as Yup from "yup";
 export default {
+  components: { 
+        Form,
+        Field,
+        ErrorMessage,
+  },
     data() {
         return {
+          emailRule: Yup.string().email().required(),
+          phoneRule: Yup.string().required(),
+          fnameRule: Yup.string().required(),
+          lnameRule: Yup.string().required(),
+          organizeRule: Yup.string().required(),
+          positionRule: Yup.string().required(),
+          password: Yup.string().required().min(8),
+          cfpassRule: Yup.string().required(),
+          fileRule: Yup.string().required(),
+          isLoading: false,
+
           formData: {
             email: '',
             password: '',
@@ -178,19 +212,18 @@ export default {
                 });
                 
               console.log(response);
-              if(response.status == 201){
-                this.$toast.success('Register Success. Continou login', {
-                // override the global option
-                position: 'bottom'
-              })
+              if(response.status == 400){
+                alert(response.data.message)
               this.$router.push('/login')
             }
             else{
-              this.$router.push('/login')
+              alert('Success continue login')
+            this.$router.push('/login')
+              
             }
             } catch (error) {
                 console.log(error);
-                alert('Registration failed');
+                alert(error.response.data.message);
             }
             
         },

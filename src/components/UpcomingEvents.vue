@@ -3,7 +3,7 @@
         <div class="w-100 pb-10 position-relative">
             <div class="sec-title text-center w-100">
                 <span class="d-block thm-clr">ព្រឹត្តិការណ៍សំខាន់ក្នុងប្រភេទនីមួយៗ</span>
-                <h2 class="mb-0">មានព្រឹត្តិការណ៍នាពេលខាងមុខជាច្រើនក្នុងដំណាច់ឆ្នាំនេះ</h2>
+                <h2 class="mb-0 font-semibold">មានព្រឹត្តិការណ៍នាពេលខាងមុខជាច្រើនក្នុងដំណាច់ឆ្នាំនេះ</h2>
             </div>
             <!-- Sec Title -->
             <div class="feat-post-wrap w-100">

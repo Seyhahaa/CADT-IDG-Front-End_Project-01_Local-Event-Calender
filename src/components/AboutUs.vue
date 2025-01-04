@@ -4,7 +4,7 @@
                     <div class="container">
                         <div class="sec-title text-center w-100">
                             <span class="d-block thm-clr">Upcoming Event</span>
-                            <h2 class="mb-0">ព្រឹត្តិការណ៍ជិតនិងមកដល់</h2>
+                            <h2 class="mb-0 font-semibold">ព្រឹត្តិការណ៍ជិតនិងមកដល់</h2>
                         </div><!-- Sec Title -->
                         <div class="top-list-post-wrap position-relative w-100">
                             <div class="top-list-img position-relative">
@@ -12,7 +12,7 @@
                             </div>
                             <div class="top-list-info position-absolute rounded">
                                 <span class="!text-yellow-500 d-block">{{ date }}</span>
-                                <h3 class="mb-0 line-clamp-3"><a href="place-layout-detail.html" title="">{{ event.title }}</a></h3>
+                                <h3 class="mb-0 line-clamp-3"><routerLink :to="`/event/${event._id}`" title="">{{ event.title }}</routerLink></h3>
                                 <p class="mb-0">{{ description }}</p>
                                 <ul class="post-meta mb-0 list-unstyled w-100">
                                     <li><i class="fas fa-map-marker-alt rounded-circle"></i>{{ event.address }}</li>

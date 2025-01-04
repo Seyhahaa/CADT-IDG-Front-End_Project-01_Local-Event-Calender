@@ -10,7 +10,7 @@
           <h1 class="mb-0">ចូលប្រើ / ចុះឈ្មេាះ</h1>
           <ol class="breadcrumb">
             <li class="breadcrumb-item">
-              <a href="index.html" title="Home">ទំព័រដើម</a>
+              <routerLink to="/" title="Home">ទំព័រដើម</routerLink>
             </li>
             <li class="breadcrumb-item active">ចូលប្រើប្រាស់</li>
           </ol>
@@ -30,44 +30,35 @@
             >
               <div class="login-inner">
                 <div class="title2 w-100">
-                  <h2 class="mb-0">Login your Account</h2>
-                  <p class="mb-0">
-                    Login to your account to discovery all great features in
-                    this template.
-                  </p>
+                  <h2 class="mb-0">ចូលគណនីរបស់អ្នក</h2>
+                  
                 </div>
-                <form @submit.prevent="passwordLogin" class="w-100">
-                  <input
-                  v-model="email"
-                  id="email"
-                  class="rounded-pill"
-                  type="email"
-                  placeholder="Email Address"
-                  />
-                  <input
-                    v-model="password"
-                    id="password"
-                    class="rounded-pill"
-                    type="password"
-                    placeholder="Password"
-                  />
-                  <div
-                    class="kep-forget-pas d-flex flex-wrap justify-content-between align-items-center"
-                  >
-                    <span class="check-box"
-                      ><input type="checkbox" id="keep-login" /><label
-                        for="keep-login"
-                        >Keep me logged in</label
-                      ></span
-                    >
-                    <a href="javascript:void(0);" title=""
-                      >Forgot your Password?</a
-                    >
+                <Form @submit="passwordLogin" class="w-100">
+                  <div>
+                    <Field name="email"
+                      v-model="email"
+                      id="email"
+                      :rules="emailRule"
+                      class="rounded-pill"
+                      type="email"
+                      placeholder="អ៊ីម៉ែល"
+                      />
+                      <ErrorMessage class="text-red-400" name="email" />
+                      <Field name="password"
+                        v-model="password"
+                        id="password"
+                        :rules="passRule"
+                        class="rounded-pill"
+                        type="password"
+                        placeholder="លេខសម្ងាត់"
+                      />
+                      <ErrorMessage class="text-red-400" name="password" />
                   </div>
+ 
                   <button class="thm-btn brd-btn rounded-pill" type="submit">
-                    Login
+                    ចូល
                   </button>
-                </form>
+                </Form>
               </div>
             </div>
           </div>
@@ -86,10 +77,22 @@
 import { mapActions } from 'pinia';
 import { useAuthStore } from '@/stores/auth.js'
 import register from './register.vue';
+import { ErrorMessage, Field, Form } from 'vee-validate';
+import * as Yup from "yup";
+import Register from './register.vue';
 export default {
-  components: { register },
+  components: { 
+        Form,
+        Field,
+        ErrorMessage,
+    Register,
+     },
     data() {
         return {
+
+          emailRule: Yup.string().required(),
+          passRule: Yup.string().required().min(8),
+
             username: '',
             password: ''
         };

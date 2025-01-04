@@ -15,6 +15,7 @@ import Contact from '@/Pages/Contact.vue';
 import About from '@/Pages/About.vue';
 import SearchEvent from '@/components/searchEvent.vue';
 import Category from '@/Pages/category.vue';
+import GoogleLogin from '@/Pages/googleLogin.vue';
 
 export default [
     { path: '/', component: HomePage },
@@ -25,6 +26,7 @@ export default [
     { path: '/eventimage', component: EventImage },
     { path: '/eventimagedetail', component: EventsImageDetail },
     { path: '/eventplacelisitng', component: EventsPlacesListing },
+    {path: '/oauth-callback', component: GoogleLogin},
 
     {path: '/search-event', component: SearchEvent},
     { path: '/placewithmap', component: PlaceListingWithMap1 },

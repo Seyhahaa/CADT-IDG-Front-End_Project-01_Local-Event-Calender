@@ -5,12 +5,12 @@
            <div class="fixed-bg" style="background-image: url(https://images.unsplash.com/photo-1503428593586-e225b39bddfe?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjR8fEV2ZW50fGVufDB8fDB8fHww)"></div>
            <div class="container">
                <div class="pg-tp-wrp text-center w-100">
-                   <h1 class="mb-0">All Events</h1>
+                   <h1 class="mb-0 font-semibold">ព្រឹត្តិការណទាំងអស់</h1>
                    <ol class="breadcrumb">
                        <li class="breadcrumb-item">
-                           <routerLink to="/" title="Home">Home</routerLink>
+                           <routerLink to="/" title="Home">ទំព័រដើម</routerLink>
                        </li>
-                       <li class="breadcrumb-item active">Events</li>
+                       <li class="breadcrumb-item active">ព្រឹត្តិការណ៍</li>
                    </ol>
                </div>
                <!-- Page Top Wrap -->

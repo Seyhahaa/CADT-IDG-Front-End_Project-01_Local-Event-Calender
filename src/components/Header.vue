@@ -23,7 +23,7 @@
                 <div>
                     <ul class="mb-0 list-unstyled d-inline-flex">
                         <li class="menu-item">
-                            <router-link to="/"><v-icon name="fc-home" scale="2.5" /></router-link>
+                            <router-link to="/" class="font-bold text-2xl">ទំព័រដើម</router-link>
                         </li>
                         <li class="menu-item">
                             <router-link to="/event" class="font-bold text-2xl">កម្មវិធី</router-link>

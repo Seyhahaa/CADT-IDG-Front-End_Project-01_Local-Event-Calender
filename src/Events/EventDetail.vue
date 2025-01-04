@@ -9,7 +9,7 @@
                         <div class="feat-item">
                             <div
                                 class="feat-img"
-                                :style="`background-image: url(${image})`"
+                                :style="`background-image: url(${data?.images})`"
                             ></div>
                         </div>
                     </div>
@@ -36,11 +36,11 @@
                             <div class="col-md-12 col-sm-12 col-lg-8">
                                 <div class="event-detail-inner2 bg-white w-100 overlap205">
                                     <div class="event-detail-info2 w-100">
-                                        <h2 class="mb-0">{{ data.title }}</h2>
-                                        <span class="d-inline-block thm-clr">{{data.date}}</span
+                                        <h2 class="mb-0">{{ data?.title }}</h2>
+                                        <span class="d-inline-block thm-clr">{{data?.date}}</span
                                         >
                                         <ul class="event-detail-list mb-0 list-unstyled w-100">
-                                            <li>Location:<span>{{data.address}}</span></li>
+                                            <li>Location:<span>{{data?.address}}</span></li>
                                             <li>
                                                 Review:<span
                                                     ><span class="rate text-color2"
@@ -52,7 +52,7 @@
                                                     >563 reviews</span
                                                 >
                                             </li>
-                                            <li>Phone:<span>{{ user.phone }}</span></li>
+                                            <li>Phone:<span>{{ }}</span></li>
                                             <li>Website:<span>www.jthemes.com</span></li>
                                         </ul>
                                         <div
@@ -70,11 +70,11 @@
                                         <h3>About Event</h3>
                                         <p class="mb-0">
                                             
-                                            {{ data.description }}
+                                            {{ data?.description }}
                                         </p>
                                         
                                     </div>
-                                    <div class="event-detail-content-inner">
+                                    <div v-if="speaker.length != 0" class="event-detail-content-inner">
                                         <h3>Who Speaking?</h3>
                                         <div class="speaker-wrap">
                                             <div class="row">
@@ -109,7 +109,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="event-detail-content-inner w-100">
+                                    <div v-if="partner.length != 0"  class="event-detail-content-inner w-100">
                                         <h3>Our Sponsors</h3>
                                         <div class="sponsors-wrap w-100">
                                             <div class="row">
@@ -129,7 +129,40 @@
                                     </div>
 
                                 </div>
+                                <!-- Comment section -->
+                                 <br>
+                                <hr />
+                            <div class="event-detail-content-inner ">
+                                <h3>មតិទាំងអស់</h3>
+                                <div class="pl-3 mb-3" v-for="cmt in allComments" :key="cmt.id">
+                                    <div class="flex items-center">
+
+                                            <p class="font-bold">{{ cmt?.byUser?.username }}:</p>
+                                            <p class="ml-2 font-medium px-3 py-2 bg-white rounded-full"> {{ cmt?.content }}</p>
+                                    </div>
+                                </div>
+                                <Form @submit="handleComment" class="w-100">
+                                    <div class="mb-3">
+                                        <Field name="comment"
+                                        v-model="comment"
+                                        id="comment"
+                                        :rules="commentRule"
+                                        class="rounded-pill w-full px-2 py-2"
+                                        type="text"
+                                        placeholder="មតិរបស់អ្នក"
+                                        />
+                                        <ErrorMessage class="text-red-400" name="comment" />
+                                        
+                                    </div>
+                    
+                                    <button class="btn btn-success" :disabled="comment === ''" type="submit">
+                                        រក្សាទុក
+                                    </button>
+                                    </Form>
                             </div>
+                            </div>
+                            
+
                             <div class="col-md-6 col-sm-12 col-lg-4">
                                 <div class="sidebar-wrap2 pt-140 w-100">
                                     <div class="widget-box w-100">
@@ -146,7 +179,7 @@
                                                         >
                                                             <img
                                                                 class="img-fluid rounded-circle"
-                                                                :src="user.path"
+                                                                :src="data?.uploadBy?.path"
                                                                 alt="Event Organizer Image 1"
                                                             />
                                                             <div class="event-organizer-info-inner">
@@ -163,19 +196,19 @@
                                                                 <i
                                                                     class="fas fa-map-marker-alt rounded-circle"
                                                                 ></i
-                                                                > {{ user.address}}
+                                                                > {{ data?.uploadBy?.address}}
                                                             </li>
                                                             <li>
                                                                 <i
                                                                     class="far fa-envelope rounded-circle"
                                                                 ></i
-                                                                >{{ user.email}}
+                                                                >{{ data?.uploadBy?.email}}
                                                             </li>
                                                             <li>
                                                                 <i
                                                                     class="fas fa-phone rounded-circle"
                                                                 ></i
-                                                                >{{ user.phone}}
+                                                                >{{data?.uploadBy?.phone }}
                                                             </li>
                                                             <li>
                                                                 <i
@@ -202,45 +235,113 @@
     </main>
     <!-- Main Wrapper -->
 </template>
-<script setup>
+<script>
 import { useRoute } from 'vue-router';
 import axios from 'axios';
-import { onMounted, ref } from 'vue';
+import { ErrorMessage, Field, Form } from 'vee-validate';
+import * as Yup from 'yup'
+import { mapState } from 'pinia';
+import { viewStore } from '@/stores/viewStore';
+import { computed } from 'vue';
 
-const data = ref([]);
-const image = ref([]);
-const user = ref([]);
-const username = ref('');
+export default{
+    components:{
+        ErrorMessage,
+        Field,
+        Form,
+    },
+    data(){
+        return{
+            //commentRule : Yup.string().required('សូមបញ្ចូលមតិ...'),
+
+            eventId : useRoute().params.id,
+
+            data :null,
+            username : '',
+            allComments : '',
+
+            comment: '',
+            speaker : '',
+
+            partner : '',
+
+        }
+    },
 
     // speaker
-const speaker = ref([]);
 
-const partner = ref([]);
 
-onMounted(async () => {
-    const eventId = useRoute().params.id;
-    console.log(eventId);
+mounted() {
+    this.getData();
+    this.getComments();
+},
+
+
+methods:{
+    async getData(){
+    //console.log(eventId);
     try{
-        const response = await axios.get(`${process.env.VUE_APP_SERVER}/event/${eventId}`);
-        const speakers = await axios.get(`${process.env.VUE_APP_SERVER}/event/speaker/${eventId}/`);
-        const result = await axios.get(`${process.env.VUE_APP_SERVER}/event/partner/${eventId}/`);
+        const response = await axios.get(`${process.env.VUE_APP_SERVER}/event/${this.eventId}`);
+        const speakers = await axios.get(`${process.env.VUE_APP_SERVER}/event/speaker/${this.eventId}/`);
+        const result = await axios.get(`${process.env.VUE_APP_SERVER}/event/partner/${this.eventId}/`);
 
-        data.value = response.data;
-        image.value = response.data.images
-        const { phone, email, path, firstname, lastname, address, organization } = response.data.uploadBy
-        user.value = { phone, email, path, firstname, lastname, address, organization }
-        username.value = firstname + " " + lastname;
+        
+        const arrayData = JSON.stringify(response.data);
+        this.data = JSON.parse(arrayData);
+        console.log(this.data);
 
-        partner.value = result.data;
+        this.username = this.data.firstname + " " + this.data.lastname;
 
-        speaker.value = speakers.data
+        this.partner = result.data;
 
+        this.speaker = speakers.data
 
-        console.log(partner.value);
     }catch(e){
         console.log(e.message)
     }
 
-    return { data,image,username };
-});
+},
+async getComments(){
+    try{
+        const comment = await axios.get(`${process.env.VUE_APP_SERVER}/comments/${this.eventId}`);
+        const comments = JSON.stringify(comment.data);
+        this.allComments = JSON.parse(comments);
+        console.log(this.allComments);
+    }catch(e) {
+        console.log(e.message);
+    }
+},
+
+    async handleComment(){
+        const token = localStorage.getItem('viewerToken')
+        console.log(token);
+        if(!token){
+            let alert = 'អ្នកត្រូវចុះឈ្មេាះមុននឹងអាចបញ្ចេញមតិបាន!';
+            if(confirm(alert) === true) {
+            this.googleLogin();
+            }
+        }else{
+            try{
+                const response =await axios.post(`${process.env.VUE_APP_SERVER}/comments/${this.eventId}/`, {content: comment.value },{
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                });
+                
+            }catch(e){console.log(e.message)}
+            this.clearComment();
+            this.getComments();
+        }
+        
+    },
+    clearComment() {
+        this.comment = '';
+    },
+    googleLogin() {
+            const googleAuthUrl = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${process.env.VUE_APP_GOOGLE_CLIENT_ID}&redirect_uri=${process.env.VUE_APP_GOOGLE_REDIRECT_URL}&response_type=code&scope=profile%20email&access_type=offline`;
+            window.open(googleAuthUrl)
+        },
+}
+}
+
 </script>
