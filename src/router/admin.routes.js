@@ -1,7 +1,19 @@
 import AdminLayout from '@/layouts/AdminLayout.vue';
+import { useAdminStore } from '@/stores/adminStore';
 
 export const adminRoutes = {
-    path: '/admin',
+    path: '/admin-dashboard',
+    beforeEnter: (to, from,next) => {
+        const adminStore = useAdminStore()
+        const {role} = localStorage.getItem('user')
+        console.log(role)
+        // reject the navigation
+        if(adminStore.isAuthenticated && role == 'admin'){
+            next();
+        }
+        next('/admin');
+        return false
+      },
     component: AdminLayout,
     meta: { requiresAuth: true, requiresAdmin: true },
     children: [

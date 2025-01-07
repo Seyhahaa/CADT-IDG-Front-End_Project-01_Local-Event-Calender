@@ -6,8 +6,8 @@
                 <div class="pg-tp-wrp text-center w-100">
                     <h1 class="mb-0">{{news.title}}</h1>
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html" title="Home">Home</a></li>
-                        <li class="breadcrumb-item active">Listing Place</li>
+                        <li class="breadcrumb-item"><routerLink to="/" title="Home">ទំព័រដើម</routerLink></li>
+                        <li class="breadcrumb-item active">News</li>
                     </ol>
                 </div><!-- Page Top Wrap -->
             </div>
@@ -20,7 +20,7 @@
                     <div class="row">
                         <div class="col-md-12 col-sm-12 col-lg-8">
                             <div class="place-layout-detail-content w-100">
-                                <div class="place-layout-detail-top d-flex justify-content-between align-items-end w-100">
+                                <!-- <div class="place-layout-detail-top d-flex justify-content-between align-items-end w-100">
                                     <div class="place-layout-detail-info d-inline-flex">
                                         <span class="rounded-circle text-center"><i class="fas fa-map-marker-alt"></i><span>Find</span></span>
                                         <div class="place-layout-detail-info-inner">
@@ -33,7 +33,7 @@
                                         <a class="thm-btn brd-btn" href="javascript:void(0);" title=""><i class="far fa-bookmark"></i>Bookmark</a>
                                         <a class="opt-btn" href="javascript:void(0);" title=""><i class="fas fa-ellipsis-h"></i></a>
                                     </div>
-                                </div>
+                                </div> -->
                                 <img class="img-fluid w-100" :src="news.image" alt="Place Layout Detail Image 2">
                                 <p class="mb-0">{{ news.content }}</p>
                                 <div class="place-layout-detail-links d-flex flex-wrap w-100">
@@ -50,7 +50,7 @@
                                 <div class="wdgt2 w-100">
                                     <div class="listing-loc-map place-map" id="listing-loc-map"></div>
                                 </div>
-                                <div class="wdgt2 w-100">
+                                <!-- <div class="wdgt2 w-100">
                                     <div class="slc-wp w-100">
                                         <select>
                                             <option>Location</option>
@@ -59,14 +59,14 @@
                                         </select>
                                     </div>
                                     <button class="thm-btn" type="submit">Search Now</button>
-                                </div>
+                                </div> -->
                
                                 <div class="wdgt2 w-100">
-                                    <h4>Social Networks</h4>
+                                    <h4 class="font-bold !text-3xl">បណ្តាញទំនាក់ទំនងសង្គម</h4>
                                     <div class="social-links5 w-100">
-                                        <a class="facebook" href="javascript:void(0);" title="Facebook" target="_blank"><i class="fab fa-facebook-f"></i>Facebook</a>
-                                        <a class="tumblr" href="javascript:void(0);" title="Tumblr" target="_blank"><i class="fab fa-tumblr"></i>Tumblr</a>
-                                        <a class="youtube" href="javascript:void(0);" title="Youtube" target="_blank"><i class="fab fa-youtube"></i>Youtube</a>
+                                        <a v-if="social[0]?.facebook != undefined "  class="facebook" :href="social[0]?.facebook" title="Facebook" target="_blank"><i class="fab fa-facebook-f"></i>Facebook</a>
+                                        <a v-if="social[1]?.instagram != undefined "  class="instagram" :href="social[1]?.instagram" title="Instagram" target="_blank"><i class="fab fa-instagram"></i>Instagram</a>
+                                        <a v-if="social[2]?.youtube != undefined "  class="youtube" :href="social[2]?.youtube" title="Youtube" target="_blank"><i class="fab fa-youtube"></i>Youtube</a>
                                     </div>
                                 </div>
                                
@@ -85,6 +85,7 @@ import { useRoute } from 'vue-router';
         data() {
         return {
             news: '',
+            social: '',
         };
     },
 
@@ -95,6 +96,11 @@ import { useRoute } from 'vue-router';
                 const result = await axios.get(`${process.env.VUE_APP_SERVER}/news/${newsId}`);
                 const jsonString = JSON.stringify(result.data);
                 this.news = JSON.parse(jsonString);
+
+                //get social
+                const arrSocial = JSON.stringify(result.data.socialMedia)
+                this.social = JSON.parse(arrSocial)
+
                 //this.news = result.data;
                 console.log(this.news );
             } catch (e) {

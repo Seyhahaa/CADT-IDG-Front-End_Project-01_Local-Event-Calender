@@ -1,3 +1,4 @@
+
 import { createRouter, createWebHistory } from 'vue-router';
 import LandingPageLayout from '@/layouts/LandingPageLayout.vue';
 import { adminRoutes } from './admin.routes';
