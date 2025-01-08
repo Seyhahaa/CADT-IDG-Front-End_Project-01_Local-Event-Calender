@@ -36,9 +36,5 @@ export default [
     { path: '/contact', component: Contact },
     { path: '/news', component: News },
     { path: '/media', component: Media },
-
-    { path: 'admin',
-        
-        component: Admin},
     { path: '/:pathMatch(.*)*', component: PageNotFound },
 ];

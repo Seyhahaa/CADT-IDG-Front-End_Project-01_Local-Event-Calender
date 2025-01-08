@@ -9,7 +9,7 @@ export const useAdminStore = defineStore('admin', {
     },
     getters: {
         isAuthenticated: (state) => {
-            const accessToken = localStorage.getItem('token')
+            const accessToken = localStorage.getItem('adminToken')
             if (!accessToken) {
                 return false
             }
@@ -28,7 +28,7 @@ export const useAdminStore = defineStore('admin', {
                     email: email,
                     password: password,
                 });
-                localStorage.setItem('token', response.data.token)
+                localStorage.setItem('adminToken', response.data.token)
                 this.token = response.data.token;
                 if(response.status == 200){
                     const data = await axios.get(`${process.env.VUE_APP_SERVER}/auth/me`,{
@@ -37,7 +37,7 @@ export const useAdminStore = defineStore('admin', {
                         },
                     })
                     const user = JSON.stringify(data.data)
-                    localStorage.setItem('user', user)
+                    localStorage.setItem('admin', user)
                     this.user = user;
                     console.log(user)
                     
@@ -45,7 +45,7 @@ export const useAdminStore = defineStore('admin', {
             }
                 
             } catch (error) {
-                localStorage.removeItem('token');
+                localStorage.removeItem('adminToken');
                 alert('Login failed');
             }
         },

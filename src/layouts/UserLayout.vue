@@ -1,6 +1,6 @@
 <template>
     <div>
-        <MobileSidebar
+        <UserMobileSibebar
             :open="sidebarOpen"
             :navigation="navigation"
             :isAdmin="false"
@@ -8,7 +8,7 @@
         />
 
         <!-- Static sidebar for desktop -->
-        <Sidebar :navigation="navigation" :isAdmin="false" />
+        <UserSidebar :navigation="navigation" :isAdmin="false" />
 
         <div class="lg:pl-72">
             <AppHeader
@@ -30,10 +30,12 @@
 
 <script setup>
     import { ref } from 'vue';
-    import Sidebar from '@/components/layout/Sidebar.vue';
-    import MobileSidebar from '@/components/layout/MobileSidebar.vue';
-    import AppHeader from '@/components/layout/AppHeader.vue';
+    import Sidebar from '@/components/layout/admin/Sidebar.vue';
+    import MobileSidebar from '@/components/layout/admin/MobileSidebar.vue';
+    import AppHeader from '@/components/layout/user/AppHeader.vue';
     import { useUserNavigation } from '@/composables/useUserNavigation';
+import UserMobileSibebar from '@/components/layout/user/userMobileSibebar.vue';
+import UserSidebar from '@/components/layout/user/userSidebar.vue';
 
     const { navigation, userNavigation } = useUserNavigation();
     const auth = localStorage.getItem('user');

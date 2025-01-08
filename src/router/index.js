@@ -5,6 +5,7 @@ import { adminRoutes } from './admin.routes';
 import LandingPageRoute from './landing-page.routes';
 import { userRoutes } from './user.routes';
 import Login from '@/components/Login.vue';
+import Admin from '@/Pages/Admin.vue';
 
 // Marketing routes
 const landingPageRoute = {
@@ -18,6 +19,10 @@ const router = createRouter({
     history: createWebHistory(process.env.BASE_URL),
     routes: [
         landingPageRoute,
+
+    { path: '/admin',
+        
+        component: Admin},
         adminRoutes,
         userRoutes,
         // Catch-all / 404 route

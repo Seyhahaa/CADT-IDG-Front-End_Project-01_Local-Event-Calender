@@ -4,9 +4,10 @@
     import { ChevronDownIcon, MagnifyingGlassIcon } from '@heroicons/vue/20/solid';
 import ProfileView from '@/views/profile/ProfileView.vue';
 
+
     async function logout (){
-        localStorage.removeItem('token');
-        localStorage.removeItem('user');
+        localStorage.removeItem('admin');
+        localStorage.removeItem('adminToken');
         window.location.reload();
 
 }
@@ -128,7 +129,7 @@ import ProfileView from '@/views/profile/ProfileView.vue';
                             >
                                
 
-                                    <router-link to="/user/profile">Your Profile</router-link>
+                                    <!-- <router-link to="/user/profile">Your Profile</router-link> -->
                             
                                     <button @click="logout" class="btn btn-danger ml-3">ចាកចេញ</button>
                                         

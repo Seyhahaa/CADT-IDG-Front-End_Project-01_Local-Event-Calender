@@ -108,9 +108,9 @@
 
                         <div class="wdgt2 w-100">
                             <div class="social-links5 w-100">
-                                <a v-if="social[0]?.facebook != undefined " class="facebook py-3" :href="social[0]?.facebook" title="Facebook" target="_blank"><i class="fab fa-facebook-f"></i>Facebook</a>
-                                <a v-if="social[1]?.instagram != undefined " class="instagram py-3" :href="social[1]?.instagram" title="Instagram" target="_blank"><i class="fab fa-instagram"></i>Instagram</a>
-                                <a v-if="social[2]?.youtube != undefined " class="youtube py-3" :href="social[2]?.youtube" title="Youtube" target="_blank"><i class="fab fa-youtube"></i>Youtube</a>
+                                <a v-if="social[0]?.facebook != undefined " class="facebook py-3" :href="`https://${social[0]?.facebook}`" title="Facebook" target="_blank"><i class="fab fa-facebook-f"></i>Facebook</a>
+                                <a v-if="social[1]?.instagram != undefined " class="instagram py-3" :href="`https://${social[1]?.instagram}`" title="Instagram" target="_blank"><i class="fab fa-instagram"></i>Instagram</a>
+                                <a v-if="social[2]?.youtube != undefined " class="youtube py-3" :href="`https://${social[2]?.youtube}`" title="Youtube" target="_blank"><i class="fab fa-youtube"></i>Youtube</a>
                             </div>
                         </div>
 

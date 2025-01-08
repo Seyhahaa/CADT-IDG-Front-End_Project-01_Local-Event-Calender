@@ -5,17 +5,17 @@ export const adminRoutes = {
     path: '/admin-dashboard',
     beforeEnter: (to, from,next) => {
         const adminStore = useAdminStore()
-        const {role} = localStorage.getItem('user')
-        console.log(role)
+        const admin = JSON.parse(localStorage.getItem('admin'))
+
+        //console.log(admin.role)
         // reject the navigation
-        if(adminStore.isAuthenticated && role == 'admin'){
+        if(adminStore.isAuthenticated && admin.role == 'admin'){
             next();
         }
         next('/admin');
         return false
       },
     component: AdminLayout,
-    meta: { requiresAuth: true, requiresAdmin: true },
     children: [
         {
             path: '',
@@ -29,14 +29,14 @@ export const adminRoutes = {
             meta: { title: 'User Management' },
         },
         {
-            path: 'events',
+            path: '/admin/event',
             name: 'admin-events',
-            component: () => import('@/views/admin/events/Events.vue'),
+            component: () => import('@/views/admin/event.vue'),
         },
         {
-            path: 'events/create',
-            name: 'admin-event-create',
-            component: () => import('@/views/admin/events/EventForm.vue'),
+            path: '/admin/news',
+            name: 'admin-news',
+            component: () => import('@/views/admin/news.vue'),
         },
         {
             path: 'events/:id/edit',

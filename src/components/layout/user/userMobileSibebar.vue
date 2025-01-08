@@ -1,7 +1,8 @@
 <script setup>
     import { Dialog, DialogPanel, TransitionChild, TransitionRoot } from '@headlessui/vue';
     import { XMarkIcon } from '@heroicons/vue/24/outline';
-    import SidebarContent from './SidebarContent.vue';
+    import SidebarContent from '../user/SidebarContent.vue';
+
 
     defineProps({
         open: {
@@ -76,12 +77,9 @@
                         </TransitionChild>
 
                         <div class="flex grow flex-col gap-y-5 overflow-y-auto bg-white px-6 pb-4">
-                            <SidebarContent
-                                :navigation="navigation"
-                                :isAdmin="isAdmin"
-                                :showSettings="showSettings"
-                                :logo="logo"
-                            />
+                           
+                            <SidebarContent />
+
                         </div>
                     </DialogPanel>
                 </TransitionChild>

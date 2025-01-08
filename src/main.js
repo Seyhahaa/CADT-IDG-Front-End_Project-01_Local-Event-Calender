@@ -15,7 +15,7 @@ router.beforeEach((to, from,next) => {
     if(to.meta.requiresAuth && !authStore.isAuthenticated){
      next({name: 'login'})
     }
-    else if(to.meta.isRedirect && authStore.isAuthenticated){
+    else if(to.meta.isRedirect && authStore.isAuthenticated ){
      next({name: 'user-dashboard'})
     }
     next()

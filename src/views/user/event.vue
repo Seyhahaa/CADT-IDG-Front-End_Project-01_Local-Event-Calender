@@ -11,44 +11,7 @@
         </div>
 
         <!-- Quick Stats -->
-        <dl class="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            <div
-                class="relative overflow-hidden rounded-lg bg-white px-4 pb-12 pt-5 shadow sm:px-6 sm:pt-6"
-            >
-                <dt>
-                    <div class="absolute rounded-md bg-indigo-500 p-3">
-                        <CalendarIcon class="h-6 w-6 text-white" aria-hidden="true" />
-                    </div>
-                    <p class="ml-16 truncate text-sm font-medium text-gray-500">All your Events</p>
-                </dt>
-                <dd class="ml-16 flex items-baseline pb-6 sm:pb-7">
-                    
-                    <p class="ml-2 flex items-baseline text-2xl font-semibold text-green-600">
-                        
-                        {{ total }}
-                    </p>
-                </dd>
-            </div>
-
-            <div
-                class="relative overflow-hidden rounded-lg bg-white px-4 pb-12 pt-5 shadow sm:px-6 sm:pt-6"
-            >
-                <dt>
-                    <div class="absolute rounded-md bg-indigo-500 p-3">
-                        <StarIcon class="h-6 w-6 text-white" aria-hidden="true" />
-                    </div>
-                    <p class="ml-16 truncate text-sm font-medium text-gray-500">All News</p>
-                </dt>
-                <dd class="ml-16 flex items-baseline pb-6 sm:pb-7">
-                    <p class="ml-2 flex items-baseline text-2xl font-semibold text-green-600">
-                        
-                        {{ allNews }}
-                    </p>
-                </dd>
-            </div>
-
-            
-        </dl>
+        
 
         
         <div class="mt-8">
@@ -116,70 +79,6 @@
             </div>
         </div>
 
-        <!-- News/blog -->
-        <div class="mt-20">
-            <div class="flex justify-between">
-                <h2 class="text-3xl font-bold leading-6 text-gray-900">News/blogs</h2>
-                <routerLink to="/user/events/uploadNews" class="btn btn-primary">បង្ហេាះពត៌មានថ្មី</routerLink>
-            </div>
-            <div class="mt-4 overflow-hidden shadow ring-1 ring-black ring-opacity-5 sm:rounded-lg">
-                <table class="min-w-full divide-y divide-gray-300">
-                    <thead class="bg-gray-50">
-                        <tr>
-                            <th
-                                scope="col"
-                                class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6"
-                            >
-                                News
-                            </th>
-                            <th
-                                scope="col"
-                                class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
-                            >
-                                Image
-                            </th>
-                            <th
-                                scope="col"
-                                class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
-                            >
-                                Action
-                            </th>
-                            <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6">
-                                <span class="sr-only">Actions</span>
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-gray-200 bg-white">
-                        <tr v-for="item in news" :key="item.id">
-                            <td
-                                class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6"
-                            >
-                                {{ item.title.substring(0,100) }}
-                            </td>
-                            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                                <img class="w-12" :src="item.image" alt="">
-                            </td>
-                            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                                <span>
-                                    <button class="btn btn-danger" @click="deleteNews(item._id)">លុប</button>
-                                    <button class="ml-3 btn btn-warning text-white" @click="edditNews(item._id)">កែប្រែ</button>
-                                </span>
-                            </td>
-                            <td
-                                class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6"
-                            >
-                                <RouterLink
-                                    :to="`/user/news/${item._id}`"
-                                    class="text-indigo-600 hover:text-indigo-900"
-                                >
-                                    View
-                                </RouterLink>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
     </div>
 </template>
 <script>

@@ -1,10 +1,6 @@
 <template>
     <div>
         <MobileSidebar
-            :open="sidebarOpen"
-            :navigation="navigation"
-            :isAdmin="true"
-            @close="sidebarOpen = false"
         />
 
         <!-- Static sidebar for desktop -->
@@ -32,19 +28,20 @@
     import { ref } from 'vue';
     import { useRouter } from 'vue-router';
     import { useUserStore } from '@/stores/userStore';
-    import Sidebar from '@/components/layout/Sidebar.vue';
-    import MobileSidebar from '@/components/layout/MobileSidebar.vue';
-    import AppHeader from '@/components/layout/AppHeader.vue';
+    import Sidebar from '@/components/layout/admin/Sidebar.vue';
+    import MobileSidebar from '@/components/layout/admin/MobileSidebar.vue';
+    import AppHeader from '@/components/layout/admin/AppHeader.vue';
     import { useNavigation } from '@/composables/useNavigation';
 
     const router = useRouter();
     const userStore = useUserStore();
     const { navigation, userNavigation } = useNavigation();
 
+    const admin = JSON.parse(localStorage.getItem('admin'))
+
     const user = {
-        name: userStore.user?.name || 'Admin User',
+        name: admin.username,
         imageUrl:
-            userStore.user?.avatar ||
             'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
     };
 

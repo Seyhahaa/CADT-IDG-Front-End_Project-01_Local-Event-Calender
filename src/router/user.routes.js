@@ -44,6 +44,16 @@ export const userRoutes = {
             name: 'uploadNews',
             component: () => import('@/views/user/events/uploadNews.vue'),
         },
+        {
+            path: '/user/event',
+            name: 'events',
+            component: () => import('@/views/user/event.vue'),
+        },
+        {
+            path: '/user/news',
+            name: 'News',
+            component: () => import('@/views/user/news.vue'),
+        },
         // Schedule/Calendar
         {
             path: 'calendar',
