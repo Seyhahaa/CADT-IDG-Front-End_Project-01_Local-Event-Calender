@@ -6,8 +6,9 @@
                     >
                     <img
                         class="max-w-[10rem] top-[-2rem] relative"
-                        src="assets/Wegocolor.png"
+                        src="../../public/assets/Wegocolor.png"
                         alt="Logo"
+                        
                 /></a>
             </h1>
         </div>
@@ -66,7 +67,7 @@
         <!-- Menu Wrap -->
     </header>
     <!-- Header -->
-    <div class="rspn-hdr">
+    <!-- <div class="rspn-hdr">
         <div class="lg-mn">
             <div class="logo">
                 <a href="/" title="Home"
@@ -118,6 +119,5 @@
                 <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px"></div>
             </div>
         </div>
-        <!-- Responsive Menu -->
-    </div>
+    </div> -->
 </template>

@@ -56,7 +56,7 @@
                                                </div>
                                            </div>
                                            <ul class="list-post-meta mb-0 list-unstyled">
-                                               <li class="active"><i class="thm-clr fas fa-map-marker-alt"></i><span>27th Brooklyn New York, USA</span></li>
+                                               <li class="active"><i class="thm-clr fas fa-map-marker-alt"></i><span>{{ item.address }}</span></li>
                                                <li v-if=" item.uploadBy.email == undefined "><i class="thm-clr far fa-envelope"></i><a href="javascript:void(0);" title="">+61 2 8236 9200</a></li>
                                                <li v-else><i class="thm-clr far fa-envelope"></i><a href="javascript:void(0);" title="">{{ item.email }}</a></li>
                                            </ul>
@@ -159,7 +159,7 @@ export default {
     },
     async created() {
         this.events = this.event
-        //console.log(this.events)
+        console.log(this.events)
     }
 }
 </script>

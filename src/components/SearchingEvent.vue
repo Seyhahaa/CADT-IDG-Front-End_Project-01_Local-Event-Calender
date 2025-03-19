@@ -29,7 +29,7 @@
                                         <option value="exhibition">ការតាំងពិពណ៌</option>
                                         <option value="seminar">សិក្ខាសាលា</option>
                                         <option value="conference">កិច្ចប្រជុំ</option>
-                                        <option value="social event">កម្មវិធីសង្គម</option>
+                                        <option value="social-event">កម្មវិធីសង្គម</option>
                                         
                                     </select>
                                 </div>

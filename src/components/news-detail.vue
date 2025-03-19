@@ -34,12 +34,13 @@
                                         <a class="opt-btn" href="javascript:void(0);" title=""><i class="fas fa-ellipsis-h"></i></a>
                                     </div>
                                 </div> -->
+                                
                                 <img class="img-fluid w-100" :src="news.image" alt="Place Layout Detail Image 2">
                                 <p class="mb-0">{{ news.content }}</p>
                                 <div class="place-layout-detail-links d-flex flex-wrap w-100">
-                                    <a class="text-color21" href="javascript:void(0);" title="">Like (50)</a>
-                                    <a class="text-color22" href="javascript:void(0);" title="">Comment (12)</a>
-                                    <a class="text-color23" href="javascript:void(0);" title="">Unlike (00)</a>
+                                    <!-- <a class="text-color21" href="javascript:void(0);" title="">Like (50)</a> -->
+                                    <!-- <a class="text-color22" href="javascript:void(0);" title="">Comment (12)</a> -->
+                                    <!-- <a class="text-color23" href="javascript:void(0);" title="">Unlike (00)</a> -->
                                 </div>
                                 
                                 
@@ -47,22 +48,43 @@
                         </div>
                         <div class="col-md-6 col-sm-6 col-lg-4">
                             <div class="place-detail-sidebar-wrap w-100">
+                                <p class="text-yellow-500">{{date}}</p>
                                 <div class="wdgt2 w-100">
-                                    <div class="listing-loc-map place-map" id="listing-loc-map"></div>
-                                </div>
-                                <!-- <div class="wdgt2 w-100">
-                                    <div class="slc-wp w-100">
-                                        <select>
-                                            <option>Location</option>
-                                            <option>Location 1</option>
-                                            <option>Location 2</option>
-                                        </select>
+                                    <h1 class="text-2xl font-bold">បង្ហេាះដោយ</h1>
+                                    <img class="max-w-[10rem]" :src="news?.uploadBy?.path" alt="">
+                                    
+                                    <div class="flex gap-3 items-center mb-3">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5">
+                                        <path d="M10 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM3.465 14.493a1.23 1.23 0 0 0 .41 1.412A9.957 9.957 0 0 0 10 18c2.31 0 4.438-.784 6.131-2.1.43-.333.604-.903.408-1.41a7.002 7.002 0 0 0-13.074.003Z" />
+                                        </svg>
+
+                                        <h2 class="font-bold text-2xl">{{news?.uploadBy?.firstname}}</h2>
                                     </div>
-                                    <button class="thm-btn" type="submit">Search Now</button>
-                                </div> -->
+                                    <div class="flex gap-3  items-center mb-3">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5">
+                                        <path d="M3 4a2 2 0 0 0-2 2v1.161l8.441 4.221a1.25 1.25 0 0 0 1.118 0L19 7.162V6a2 2 0 0 0-2-2H3Z" />
+                                        <path d="m19 8.839-7.77 3.885a2.75 2.75 0 0 1-2.46 0L1 8.839V14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8.839Z" />
+                                        </svg>
+                                        
+                                        <p>{{ news?.uploadBy?.email }}</p>
+                                    </div>
+                                    <div class="flex gap-3  items-center mb-3">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5">
+                                        <path d="M8 16.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z" />
+                                        <path fill-rule="evenodd" d="M4 4a3 3 0 0 1 3-3h6a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V4Zm4-1.5v.75c0 .414.336.75.75.75h2.5a.75.75 0 0 0 .75-.75V2.5h1A1.5 1.5 0 0 1 14.5 4v12a1.5 1.5 0 0 1-1.5 1.5H7A1.5 1.5 0 0 1 5.5 16V4A1.5 1.5 0 0 1 7 2.5h1Z" clip-rule="evenodd" />
+                                        </svg>
+
+<p>{{ news?.uploadBy?.phone }}</p>
+                                    </div>
+
+
+
+                                </div>
+                                <div>
+                                </div>
                
                                 <div class="wdgt2 w-100">
-                                    <h4 class="font-bold !text-3xl">បណ្តាញទំនាក់ទំនងសង្គម</h4>
+                                    <h4 class="font-bold !text-2xl">បណ្តាញទំនាក់ទំនងសង្គម</h4>
                                     <div class="social-links5 w-100">
                                         <a v-if="social[0]?.facebook != undefined "  class="facebook" :href="social[0]?.facebook" title="Facebook" target="_blank"><i class="fab fa-facebook-f"></i>Facebook</a>
                                         <a v-if="social[1]?.instagram != undefined "  class="instagram" :href="social[1]?.instagram" title="Instagram" target="_blank"><i class="fab fa-instagram"></i>Instagram</a>
@@ -81,11 +103,15 @@
 <script>
 import axios from 'axios';
 import { useRoute } from 'vue-router';
+import { UserIcon } from '@heroicons/vue/24/solid'
+import moment from 'moment';
     export default{
+        components: { UserIcon },
         data() {
         return {
             news: '',
             social: '',
+            date: '',
         };
     },
 
@@ -100,6 +126,8 @@ import { useRoute } from 'vue-router';
                 //get social
                 const arrSocial = JSON.stringify(result.data.socialMedia)
                 this.social = JSON.parse(arrSocial)
+
+                this.date = moment(this.social.date).format('LLLL')
 
                 //this.news = result.data;
                 console.log(this.news );

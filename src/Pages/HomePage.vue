@@ -1,7 +1,7 @@
 <template>
     <searchingEvent></searchingEvent>
     <ListingEvents></ListingEvents>
-    <UpcomingEvents></UpcomingEvents>
+    <!-- <UpcomingEvents></UpcomingEvents> -->
     <CalenderEvents></CalenderEvents>
     <AboutUs></AboutUs>
     <news />

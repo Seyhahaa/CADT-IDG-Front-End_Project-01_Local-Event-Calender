@@ -1,4 +1,23 @@
 import './assets/style.css';
+import '../public/assets/css/style.css';
+import '../public/assets/css/all.min.css';
+import '../public/assets/css/bootstrap.min.css'
+import '../public/assets/css/bootstrap-select.min.css'
+import '../public/assets/css/jquery.fancybox.min.css'
+import '../public/assets/css/perfect-scrollbar.css'
+import '../public/assets/css/slick.css'
+import '../public/assets/css/responsive.css'
+
+import '../public/assets/css/colors/color.css'
+import '../public/assets/css/colors/color2.css'
+import '../public/assets/css/colors/color3.css'
+import '../public/assets/css/colors/color4.css'
+import '../public/assets/css/colors/color5.css'
+import '../public/assets/css/colors/color6.css'
+import '../public/assets/css/colors/color7.css'
+import '../public/assets/css/colors/color8.css'
+import '../public/assets/css/colors/color9.css'
+import '../public/assets/css/colors/color10.css'
 
 import { createApp } from 'vue';
 import { createPinia } from 'pinia';

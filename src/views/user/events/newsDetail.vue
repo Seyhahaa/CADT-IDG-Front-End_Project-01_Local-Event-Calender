@@ -71,7 +71,7 @@
                 <div class="lg:col-span-2">
                     <div class="prose max-w-none mb-5">
                         <h3 class="text-2xl font-bold mb-5">About this News</h3>
-                        <p>{{ data.content }}</p>
+                        <p class="text-wrap">{{ data.content }}</p>
                     </div>
 
                 </div>
