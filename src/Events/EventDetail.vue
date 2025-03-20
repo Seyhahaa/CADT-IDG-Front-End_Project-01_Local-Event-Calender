@@ -13,7 +13,7 @@
                             ></div>
                         </div>
                     </div>
-                    <div class="feat-nav-caro">
+                    <!-- <div class="feat-nav-caro">
  
 
                         <div class="feat-nav-item">
@@ -23,7 +23,7 @@
                                 alt="Featured Nav Image 6"
                             />
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <!-- Featured Wrap 2 -->
             </div>
@@ -37,37 +37,28 @@
                                 <div class="event-detail-inner2 bg-white w-100 overlap205">
                                     <div class="event-detail-info2 w-100">
                                         <h2 class="mb-0">{{ data?.title }}</h2>
-                                        <span class="d-inline-block thm-clr">{{data?.date}}</span
-                                        >
+                                        
                                         <ul class="event-detail-list mb-0 list-unstyled w-100">
-                                            <li>Location:<span>{{data?.address}}</span></li>
+                                            <li>ទីកន្លែង:<span>{{data?.address}}</span></li>
                                             <li>
-                                                Review:<span
-                                                    ><span class="rate text-color2"
-                                                        ><i class="fas fa-star"></i
-                                                        ><i class="fas fa-star"></i
-                                                        ><i class="fas fa-star"></i
-                                                        ><i class="fas fa-star"></i
-                                                        ><i class="far fa-star"></i></span
-                                                    >563 reviews</span
-                                                >
+                                                កាលបរិច្ឆេទ:<span>{{ date }}</span>
                                             </li>
-                                            <li>Phone:<span>{{ }}</span></li>
-                                            <li>Website:<span>www.jthemes.com</span></li>
+                                            <li>លេខទូរស័ព្ទ:<span>{{ data?.uploadBy?.phone }}</span></li>
+                                            <!-- <li>Website:<span>www.jthemes.com</span></li> -->
                                         </ul>
                                         <div
                                             class="reviewer-review-btns d-inline-flex align-items-center w-100"
                                         >
                                             <a class="share-btn" href="javascript:void(0);" title=""
-                                                >Share</a
+                                                >ចែករំលែក</a
                                             >
-                                            <a class="thm-btn" href="javascript:void(0);" title=""
-                                                >Join Event</a
+                                            <a class="thm-btn" disabled href="javascript:void(0);" title=""
+                                                >ចូលរួម</a
                                             >
                                         </div>
                                     </div>
                                     <div class="event-detail-content-inner w-100">
-                                        <h3>About Event</h3>
+                                        <h3>អំពីកម្មវិធី</h3>
                                         <p class="mb-0">
                                             
                                             {{ data?.description }}
@@ -166,7 +157,7 @@
                             <div class="col-md-6 col-sm-12 col-lg-4">
                                 <div class="sidebar-wrap2 pt-140 w-100">
                                     <div class="widget-box w-100">
-                                        <h3 class="thm-bg">Who Host this Event</h3>
+                                        <h3 class="thm-bg">អ្នកបង្កេាះព្រឹត្តិការណ៍នេះ</h3>
                                         <div class="event-organizer w-100">
                                             <div class="tab-content">
                                                 <div
@@ -178,11 +169,11 @@
                                                             class="event-organizer-info d-flex flex-wrap align-items-center w-100"
                                                         >
                                                             <img
-                                                                class="img-fluid rounded-circle"
+                                                                class="img-fluid rounded-full"
                                                                 :src="data?.uploadBy?.path"
                                                                 alt="Event Organizer Image 1"
                                                             />
-                                                            <div class="event-organizer-info-inner">
+                                                            <div class="event-organizer-info-inner mt-3">
                                                                  <h4 class="mb-0">{{ username }}</h4>
                                                                 <span class="thm-clr"
                                                                     >Posted 3 days ago</span
@@ -243,6 +234,7 @@ import * as Yup from 'yup'
 import { mapState } from 'pinia';
 import { viewStore } from '@/stores/viewStore';
 import { computed } from 'vue';
+import moment from 'moment';
 
 export default{
     components:{
@@ -264,6 +256,7 @@ export default{
             speaker : '',
 
             partner : '',
+            date: null,
 
         }
     },
@@ -290,11 +283,12 @@ methods:{
         this.data = JSON.parse(arrayData);
         console.log(this.data);
 
-        this.username = this.data.firstname + " " + this.data.lastname;
+        this.username = this.data.uploadBy.firstname + " " + this.data.uploadBy.lastname;
 
         this.partner = result.data;
 
         this.speaker = speakers.data
+        this.date = moment(this.data.date).format('MMMM Do YYYY');
 
     }catch(e){
         console.log(e.message)

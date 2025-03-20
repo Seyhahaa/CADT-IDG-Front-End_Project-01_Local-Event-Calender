@@ -18,6 +18,7 @@ import Category from '@/Pages/category.vue';
 import GoogleLogin from '@/Pages/googleLogin.vue';
 import Admin from '@/Pages/Admin.vue';
 import { useAdminStore } from '@/stores/adminStore';
+import Login from '@/Pages/Login.vue';
 
 export default [
     { path: '/', component: HomePage },
@@ -36,5 +37,6 @@ export default [
     { path: '/contact', component: Contact },
     { path: '/news', component: News },
     { path: '/media', component: Media },
-    //{ path: '/:pathMatch(.*)*', component: PageNotFound },
+    { path: '/login', component: Login},
+    { path: '/:pathMatch(.*)*', component: PageNotFound },
 ];

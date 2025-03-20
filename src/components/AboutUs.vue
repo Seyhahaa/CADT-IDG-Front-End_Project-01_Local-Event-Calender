@@ -46,7 +46,7 @@ export default {
                 this.event = result.data.docs[0];
                 this.image = result.data.docs[0].images;
                 const description = result.data.docs[0].description;
-                this.description = description.substring(0,330)
+                this.description = description.substring(0,200)
 
                 this.date = moment(result.data.docs[0].startdate).format('ddd DD-MMM-YYYY')
                 //console.log(this.event);

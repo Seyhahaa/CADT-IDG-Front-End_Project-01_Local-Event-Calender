@@ -24,12 +24,7 @@
                                 /></routerLink>
                             </div>
                             <div class="post-info w-100">
-                                <span class="d-inline-block text-color2"
-                                    ><i class="fas fa-star"></i><i class="fas fa-star"></i
-                                    ><i class="fas fa-star"></i><i class="fas fa-star"></i
-                                    ><i class="fas fa-star"></i>
-                                    <span class="d-inline-block">4.5</span></span
-                                >
+                                <span class="d-inline-block text-color2">{{ date }}</span>
                                 <h3 class="mb-0 line-clamp-3">
                                     <routerLink :to="`/event/${item._id}`" title="">{{item.title}}</routerLink>
                                 </h3>
@@ -38,7 +33,7 @@
                                     <li>
                                         <i class="fas fa-map-marker-alt rounded-circle"></i>{{item.address}}
                                     </li>
-                                    <li v-if="item.phone == undefined "><i class="fas fa-phone rounded-circle"></i>+61 2 8236 9200</li>
+                                    <li v-if="item.phone == undefined "><i class="fas fa-phone rounded-circle"></i>{{ item?.uploadBy?.phone }}</li>
                                     <li v-else><i class="fas fa-phone rounded-circle"></i>{{ item.phone }}</li>
                                 </ul>
                                 <span class="evnt-loc d-block thm-bg"
@@ -92,10 +87,12 @@
 </template>
 <script>
 import axios from 'axios';
+import moment from 'moment';
 export default {
     data() {
         return {
             event: [],
+            date: null,
         };
     },
 
@@ -104,6 +101,7 @@ export default {
             try {
                 const result = await axios.get(`${process.env.VUE_APP_SERVER}/event/all-events?limit=6`);
                 this.event = result.data.docs;
+                this.date = moment(result.data.docs.date).format('MMMM Do YYYY');
                 //console.log(this.event);
             } catch (e) {
                 console.log(e.message);

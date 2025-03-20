@@ -21,15 +21,15 @@
                         <div class="listing-top-bar d-flex flex-wrap align-items-center justify-content-between w-100">
                             <div class="listing-filter-inner d-inline-flex align-items-center">
                                 <a class="rounded advanc-filter-btn" href="javascript:void(0);" title=""><i class="fas fa-sliders-h"></i>Show Filter</a>
-                                <p class="mb-0">20 Result Found in Cambodia<strong>( Showing 1 - 20 )</strong></p>
+                                <p class="mb-0">Result Found in Cambodia</p>
                             </div>
-                            <div class="slc-wp">
+                            <!-- <div class="slc-wp">
                                 <select>
                                     <option>Sort By</option>
                                     <option>Date</option>
                                     <option>Name</option>
                                 </select>
-                            </div>
+                            </div> -->
                         </div><!-- Listing Top Bar -->
                         <div class="listing-layout mt-70 w-100">
                             <div class="row">
@@ -68,7 +68,7 @@
                             </div>
                         </div><!-- Listing Layout -->
                         <div class="view-all mt-30 text-center w-100">
-                            <a class="thm-btn brd-btn" href="listing-layout2.html" title="">Load More</a>
+                            <a class="thm-btn brd-btn" title="">Load More</a>
                         </div><!-- View All -->
                         <div class="listing-explore-info-wrap advance-filter-wrap">
                             <span class="advanc-filter-close-btn"><i class="fas fa-times"></i></span>

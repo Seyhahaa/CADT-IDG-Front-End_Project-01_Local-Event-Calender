@@ -20,15 +20,15 @@
                         <div class=" pb-100 pt-100 listing-top-bar d-flex flex-wrap align-items-center justify-content-between w-100">
                             <div class="listing-filter-inner d-inline-flex align-items-center">
                                 <a class="rounded advanc-filter-btn" href="javascript:void(0);" title=""><i class="fas fa-sliders-h"></i>Show Filter</a>
-                                <p class="mb-0">20 Result Found in Cambodia<strong>( Showing 1 - 20 )</strong></p>
+                                <p class="mb-0">Result Found in Cambodia<strong></strong></p>
                             </div>
-                            <div class="slc-wp">
+                            <!-- <div class="slc-wp">
                                 <select>
                                     <option>Sort By</option>
                                     <option>Date</option>
                                     <option>Name</option>
                                 </select>
-                            </div>
+                            </div> -->
                         </div>
 
                         

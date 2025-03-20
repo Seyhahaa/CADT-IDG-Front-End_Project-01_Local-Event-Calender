@@ -15,7 +15,7 @@
                                         </div>
                                         <div class="blog-post-info w-100">
                                             <span class="post-date d-inline-block">{{item.date}}</span>
-                                            <h3 class="mb-0 line-clamp-1"><routerLink :to="`news/${item._id}`" title="">{{ item.title }}</routerLink></h3>
+                                            <h3 class="mb-0 line-clamp-2"><routerLink :to="`news/${item._id}`" title="">{{ item.title }}</routerLink></h3>
                                             <p class="mb-0 line-clamp-2">{{ item.content }}</p>
                                             <span class="post-auth d-inline-block">Posted by <a href="" title="">{{ item.uploadBy.firstname }}</a></span>
                                         </div>

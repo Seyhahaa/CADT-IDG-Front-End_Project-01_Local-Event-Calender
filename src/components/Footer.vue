@@ -9,8 +9,8 @@
                         <div class="footer-cont-info">
                             <ul class="mb-0 list-unstyled d-inline-flex">
                                 <li>
-                                    <i class="rounded thm-bg fas fa-phone"></i>ផ្តល់ជំនួយ: +01
-                                    5426 24400
+                                    <i class="rounded thm-bg fas fa-phone"></i>ផ្តល់ជំនួយ: +855
+                                    93 274 166
                                 </li>
                                 <li>
                                     <i class="rounded thm-bg fas fa-envelope"></i>អ៊ីម៉េល:
@@ -19,7 +19,7 @@
                             </ul>
                         </div>
                         <div class="footer-cont-btn">
-                            <a class="thm-btn rounded" href="about.html" title="">អំពីពួកយើង</a>
+                            <router-link class="thm-btn rounded" to="/about" title="">អំពីពួកយើង</router-link>
                         </div>
                     </div>
                 </div>
@@ -32,7 +32,7 @@
                             <div class="widget w-100">
                                 <div class="logo">
                                     <h1 class="mb-0">
-                                        <a href="index.html" title="Home"
+                                        <a href="/" title="Home"
                                             ><img
                                                 class="w-[10rem]"
                                                 src="assets/Wegocolor.png"
@@ -189,13 +189,13 @@
     <div class="copyright text-center w-100">
         <div class="container">
             <p class="mb-0">
-                &copy; 2020 <a href="" title="">WegoKh</a> — Event & 
+                &copy; 2024 <a href="" title="">WegoKh</a> — Event & 
                 Social Opportunity. Developed by
                 <a
                     href=""
                     title="Jthemes"
                     target="_blank"
-                    >Group-Rean</a
+                    >MCFA</a
                 >
             </p>
         </div>

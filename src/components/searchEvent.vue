@@ -20,17 +20,18 @@
                    <div class="container">
                        <div class="listing-top-bar d-flex flex-wrap align-items-center justify-content-between w-100">
                            <div class="listing-filter-inner d-inline-flex align-items-center">
-                               <a class="rounded advanc-filter-btn" href="javascript:void(0);" title=""><i class="fas fa-sliders-h"></i>Show Filter</a>
-                               <p class="mb-0">20 Result Found in Cambodia<strong>( Showing 1 - 20 )</strong></p>
+                               <!-- <a class="rounded advanc-filter-btn" href="javascript:void(0);" title=""><i class="fas fa-sliders-h"></i>Show Filter</a> -->
+                               <p v-if="events.length != 0" class="mb-0">Result Found in Cambodia</p>
+                                <p v-else class="mb-0">No Result Found in Cambodia</p>
                            </div>
-                           <div class="slc-wp">
+                           <!-- <div class="slc-wp">
                                <select>
                                    <option>Sort By</option>
                                    <option>Date</option>
                                    <option>Name</option>
                                </select>
-                           </div>
-                       </div><!-- Listing Top Bar -->
+                           </div> -->
+                       </div>
                        <div class="listing-layout mt-70 w-100">
                            <div class="row">
                                <div class="col-md-6 col-sm-6 col-lg-4" v-for="item in events" :key="item.id">
@@ -44,9 +45,9 @@
                                            <div class="list-post-inner w-100">
                                                <div class="list-post-info-top d-flex flex-wrap justify-content-between">
                                                    <span class="list-post-date"><i class="thm-clr far fa-clock"></i>{{ item.date }}</span>
-                                                   <span class="list-post-rate text-color2"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><span>4.0/5</span></span>
+                                                   <span class="list-post-rate text-color2">{{ date }}</span>
                                                </div>
-                                               <h3 class="mb-0"><routerLink :to="`event/${item._id}`" title="">{{ item.title }}</routerLink></h3>
+                                               <h3 class="mb-0 line-clamp-3"><routerLink :to="`event/${item._id}`" title="">{{ item.title }}</routerLink></h3>
                                                <div class="list-post-author-stats d-flex flex-wrap justify-content-between align-items-center">
                                                    <div class="list-post-author d-inline-flex align-items-center">
                                                        <img class="rounded-circle w-8" :src="item.uploadBy.path" alt="Author Image 1">
@@ -145,12 +146,14 @@
 <script>
 import { searchStore } from '@/stores/searchStore';
 import axios from 'axios';
+import moment from 'moment';
 import { mapState } from 'pinia';
 
 export default {
    data(){
      return {
-         events: null
+         events: null,
+         date: null,
      }
    },
    computed: {
@@ -159,7 +162,8 @@ export default {
     },
     async created() {
         this.events = this.event
-        console.log(this.events)
+        this.date = moment(this.event.date).format('MMMM Do YYYY');
+        //console.log(this.events)
     }
 }
 </script>

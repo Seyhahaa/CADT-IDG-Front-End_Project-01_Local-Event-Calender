@@ -1,11 +1,11 @@
 <template>
-    <header class="stick style1 w-100 d-flex flex-wrap justify-content-between align-items-center">
+    <header class="stick style1 w-100 d-flex flex-wrap justify-content-between align-items-center bg-gray-600/20">
         <div class="logo">
             <h1 class="mb-0">
                 <a href="/" title="Home"
                     >
                     <img
-                        class="max-w-[10rem] top-[-2rem] relative"
+                        class="max-w-[7rem] top-[-2rem] relative"
                         src="../../public/assets/Wegocolor.png"
                         alt="Logo"
                         
@@ -55,7 +55,7 @@
                         <button class="menu-item">
                             <router-link to="/login">
                                 <h4 class="font-bold text-2xl !text-white cursor-pointer mb-3 px-4 py-3 !border-2 !border-[#cf4328]
-                                hover:bg-[#cf4328] group-hover:text-white">
+                                hover:bg-[#cf4328] group-hover:text-white hover:decoration-clone">
                                     បង្ហេាះព្រឹត្តិការ
                                 </h4> 
                             </router-link>
